@@ -28,7 +28,7 @@
   <section id="hero">
     <h1>Isagawa</h1>
     <h2>A conversational agent factory.</h2>
-    <p>You describe intent in <strong>natural language</strong>. The factory produces structured artifacts — including new capabilities — under runtime governance. Those capabilities <strong>become part of the factory</strong>. The <strong>loop closes</strong>.</p>
+    <p>You describe intent in <strong>natural language</strong>. The factory produces structured artifacts (including new capabilities) under runtime governance. Those capabilities <strong>become part of the factory</strong>. The <strong>loop closes</strong>.</p>
     <div class="terminal">
       <div class="terminal__header">
         <span class="terminal__dot terminal__dot--red"></span>
@@ -368,7 +368,7 @@
       // Intent text — the literal sentence that started each pipeline
       const intentStrings = {
         'attestation-bundle-1': '"Build a portfolio site from conversational intent"',
-        'attestation-bundle-2': '"Visual refactor of the portfolio site — 2nd iteration"',
+        'attestation-bundle-2': '"Visual refactor of the portfolio site, 2nd iteration"',
         'attestation-bundle-3': '"Build portfolio site V2 with floating terminal and scroll animations"'
       };
       const intentEl = card.querySelector('.intent-text');
@@ -414,7 +414,7 @@
             }
           } catch(e) {
             badgeEl.className = 'verification-badge verification-badge--pending';
-            badgeEl.textContent = '⏳ Verification unavailable — view on Rekor directly';
+            badgeEl.textContent = '⏳ Verification unavailable. View on Rekor directly';
           }
         })();
       }
