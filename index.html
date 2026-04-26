@@ -28,13 +28,13 @@
   <section id="hero">
     <h1>Isagawa</h1>
     <h2>A conversational agent factory.</h2>
-    <p>You describe intent in <strong>natural language</strong>. The factory produces structured artifacts (including new capabilities) under mechanical management. Those capabilities <strong>become part of the factory</strong>. The <strong>loop closes</strong>.</p>
+    <p>You describe intent in <strong>natural language</strong>. The factory produces structured artifacts — including new capabilities — under runtime governance. Those capabilities <strong>become part of the factory</strong>. The <strong>loop closes</strong>.</p>
     <div class="terminal">
       <div class="terminal__header">
         <span class="terminal__dot terminal__dot--red"></span>
         <span class="terminal__dot terminal__dot--yellow"></span>
         <span class="terminal__dot terminal__dot--green"></span>
-        <span class="terminal__title">isagawa session</span>
+        <span class="terminal__title">~/isagawa</span>
       </div>
       <div class="terminal__body" id="terminal-body">
         <span class="terminal__cursor"></span>
@@ -47,12 +47,12 @@
   <section id="seed" class="anchor-section parallax-section">
     <span class="anchor-section__number parallax-number reveal">01</span>
     <h2 class="anchor-section__title reveal">The Seed</h2>
-    <p class="anchor-section__subtitle reveal">A minimal kernel (hooks, commands, and a protocol) that manages everything built after it.</p>
-    <p class="anchor-section__narrative reveal">The kernel is a set of interlocking mechanisms, produced by conversation. Together they make management a property of the system, not a layer on top of it. Every action the factory takes passes through these gates. They <strong>cannot be bypassed</strong>. Not by the agent, not by prompt engineering, not by editing state files.</p>
+    <p class="anchor-section__subtitle reveal">A minimal kernel (hooks, commands, and a protocol) that governs everything built after it.</p>
+    <p class="anchor-section__narrative reveal">The kernel is a set of interlocking mechanisms, produced by conversation. Together they make governance a property of the system, not a layer on top of it. Every action the factory takes passes through these gates. They <strong>cannot be bypassed</strong>. Not by the agent, not by prompt engineering, not by editing state files.</p>
     <div class="anchor-section__content">
       <div class="evidence-grid reveal-stagger">
         <div class="evidence-card reveal" style="--stagger-index:0">
-          <p class="card-tags">MANAGEMENT / PROTOCOL / TOKEN</p>
+          <p class="card-tags">GOVERNANCE / PROTOCOL / TOKEN</p>
           <h3>Anchor Token</h3>
           <p>Every N actions (configurable), the system forces a full protocol re-read. A UUID token proves the agent actually re-centered. It cannot fake compliance by flipping a boolean.</p>
         </div>
@@ -95,10 +95,10 @@
           <p>A pipeline that compiles natural language into structured domain specs. The factory itself was produced by the kernel. The system built its own compiler.</p>
         </div>
         <div class="evidence-card reveal" style="--stagger-index:2">
-          <p class="card-tags">ENVIRONMENTS / MANAGEMENT / INHERITANCE</p>
-          <span class="evidence-stat">MANAGED</span>
+          <p class="card-tags">ENVIRONMENTS / GOVERNANCE / INHERITANCE</p>
+          <span class="evidence-stat">GOVERNED</span>
           <h3>Workspaces</h3>
-          <p>Complete development environments with hooks, commands, and protocols. Each workspace inherits kernel management. Each one can produce new capabilities the kernel has never seen.</p>
+          <p>Complete development environments with hooks, commands, and protocols. Each workspace inherits kernel governance. Each one can produce new capabilities the kernel has never seen.</p>
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
     <span class="anchor-section__number parallax-number reveal">04</span>
     <h2 class="anchor-section__title reveal">This Page</h2>
     <p class="reveal-text reveal">You are looking at the output.</p>
-    <p class="anchor-section__narrative">This page was <strong>built by the system it describes</strong>. The kernel managed. The backlog captured intent. The pipeline decomposed and built. The attestation signed the work. Three pipelines, 55 tasks, under two hours. The Rekor timestamps below prove it. Every section you just scrolled through was <strong>produced from conversational intent, including this one</strong>.</p>
+    <p class="anchor-section__narrative">This page was <strong>built by the system it describes</strong>. The kernel governed. The backlog captured intent. The pipeline decomposed and built. The attestation signed the work. Three pipelines, 55 tasks, under two hours. The Rekor timestamps below prove it. Every section you just scrolled through was <strong>produced from conversational intent, including this one</strong>.</p>
     <div class="anchor-section__content">
       <ol class="chain-list">
         <li>Kernel <span class="chain-note">produced by conversation</span></li>
@@ -365,12 +365,15 @@
       const invocation = pred.invocation || {};
       const chain = invocation.intent_chain || [];
 
-      // Intent text leads — show the backlog path as the human-readable intent
+      // Intent text — the literal sentence that started each pipeline
+      const intentStrings = {
+        'attestation-bundle-1': '"Build a portfolio site from conversational intent"',
+        'attestation-bundle-2': '"Visual refactor of the portfolio site — 2nd iteration"',
+        'attestation-bundle-3': '"Build portfolio site V2 with floating terminal and scroll animations"'
+      };
       const intentEl = card.querySelector('.intent-text');
       if (intentEl) {
-        const backlog = meta.pipeline_backlog || 'Unknown pipeline';
-        const name = backlog.split('/').pop().replace('.md','').replace(/-/g,' ');
-        intentEl.textContent = name;
+        intentEl.textContent = intentStrings[bundleId] || meta.pipeline_backlog || 'Unknown pipeline';
       }
 
       // Metadata
