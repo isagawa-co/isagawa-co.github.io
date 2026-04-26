@@ -720,7 +720,8 @@ footer {
 
 .terminal__body {
   padding: var(--space-md);
-  min-height: 200px;
+  height: 420px;
+  overflow: hidden;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   line-height: 1.8;
