@@ -29,33 +29,44 @@
     <h1>Isagawa</h1>
     <h2>A conversational agent factory.</h2>
     <p>You describe intent in <strong>natural language</strong>. The factory produces structured artifacts (including new capabilities) under mechanical governance. Those capabilities <strong>become part of the factory</strong>. The <strong>loop closes</strong>.</p>
+    <div class="terminal">
+      <div class="terminal__header">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__title">isagawa session</span>
+      </div>
+      <div class="terminal__body" id="terminal-body">
+        <span class="terminal__cursor"></span>
+      </div>
+    </div>
     <a href="#seed" class="hero__cta">See the loop <span class="arrow">→</span></a>
     <span class="hero__scroll-caption">OR SCROLL ↓</span>
   </section>
 
-  <section id="seed" class="anchor-section">
-    <span class="anchor-section__number">01</span>
-    <h2 class="anchor-section__title">The Seed</h2>
-    <p class="anchor-section__subtitle">A minimal kernel (hooks, commands, and a protocol) that governs everything built after it.</p>
-    <p class="anchor-section__narrative">The kernel is <strong>four mechanisms</strong>, written by hand. Together they make governance a property of the system, not a layer on top of it. Every action the factory takes passes through these four gates. They <strong>cannot be bypassed</strong>. Not by the agent, not by prompt engineering, not by editing state files.</p>
+  <section id="seed" class="anchor-section parallax-section">
+    <span class="anchor-section__number parallax-number reveal">01</span>
+    <h2 class="anchor-section__title reveal">The Seed</h2>
+    <p class="anchor-section__subtitle reveal">A minimal kernel (hooks, commands, and a protocol) that governs everything built after it.</p>
+    <p class="anchor-section__narrative reveal">The kernel is a set of interlocking mechanisms, produced by conversation. Together they make governance a property of the system, not a layer on top of it. Every action the factory takes passes through these gates. They <strong>cannot be bypassed</strong>. Not by the agent, not by prompt engineering, not by editing state files.</p>
     <div class="anchor-section__content">
-      <div class="evidence-grid">
-        <div class="evidence-card">
+      <div class="evidence-grid reveal-stagger">
+        <div class="evidence-card reveal" style="--stagger-index:0">
           <p class="card-tags">GOVERNANCE / PROTOCOL / TOKEN</p>
           <h3>Anchor Token</h3>
-          <p>Every 10 actions, the system forces a full protocol re-read. A UUID token proves the agent actually re-centered. It cannot fake compliance by flipping a boolean.</p>
+          <p>Every N actions (configurable), the system forces a full protocol re-read. A UUID token proves the agent actually re-centered. It cannot fake compliance by flipping a boolean.</p>
         </div>
-        <div class="evidence-card">
+        <div class="evidence-card reveal" style="--stagger-index:1">
           <p class="card-tags">HOOK / RUNTIME / WRITE-GATE</p>
           <h3>Gate Enforcer</h3>
           <p>A hook at the tool-call boundary that blocks writes until prerequisites are met. Missing a lesson? Blocked. Skipped an anchor? Blocked. The agent must fix the root cause to proceed.</p>
         </div>
-        <div class="evidence-card">
+        <div class="evidence-card reveal" style="--stagger-index:2">
           <p class="card-tags">LESSONS / MECHANICAL / PERSISTENCE</p>
           <h3>Learn Loop</h3>
           <p>Every failure records a lesson. The protocol updates mechanically. The same mistake becomes impossible. Not because the agent remembers, but because the system enforces.</p>
         </div>
-        <div class="evidence-card">
+        <div class="evidence-card reveal" style="--stagger-index:3">
           <p class="card-tags">STATE / LIFECYCLE / RECOVERY</p>
           <h3>Session Protocol</h3>
           <p>Start, anchor, work, complete. The same loop, every session. State survives restarts. Context survives compression. The system picks up where it left off.</p>
@@ -64,26 +75,26 @@
     </div>
   </section>
 
-  <section id="growth" class="anchor-section">
-    <span class="anchor-section__number">02</span>
-    <h2 class="anchor-section__title">Growth</h2>
-    <p class="anchor-section__subtitle">The kernel produced everything it now uses to operate: specs, a factory, workspaces.</p>
-    <p class="anchor-section__narrative"><strong>None of this was hand-coded</strong>. The kernel governed conversations that produced domain specifications. Those specifications taught the system new fields. A factory pipeline emerged to <strong>compile natural language into structured specs automatically</strong>. Workspaces followed. Complete development environments that inherit kernel governance from birth.</p>
+  <section id="growth" class="anchor-section parallax-section">
+    <span class="anchor-section__number parallax-number reveal">02</span>
+    <h2 class="anchor-section__title reveal">Growth</h2>
+    <p class="anchor-section__subtitle reveal">The kernel produced everything it now uses to operate: specs, a factory, workspaces.</p>
+    <p class="anchor-section__narrative reveal"><strong>None of this was hand-coded</strong>. The kernel governed conversations that produced domain specifications. Those specifications taught the system new fields. A factory pipeline emerged to <strong>compile natural language into structured specs automatically</strong>. Workspaces followed. Complete development environments that inherit kernel governance from birth.</p>
     <div class="anchor-section__content">
       <div class="evidence-grid">
-        <div class="evidence-card">
+        <div class="evidence-card reveal" style="--stagger-index:0">
           <p class="card-tags">VERTICALS / CORPUS / CONVERSATIONAL</p>
           <span class="evidence-stat">27+</span>
           <h3>Domain Specs</h3>
           <p>Domain specifications produced from conversational intent. Each one teaches the system a new field: QA, healthcare, DevOps, compliance, real estate, creative production.</p>
         </div>
-        <div class="evidence-card">
+        <div class="evidence-card reveal" style="--stagger-index:1">
           <p class="card-tags">PIPELINE / COMPILER / MECHANICAL</p>
           <span class="evidence-stat">12</span>
           <h3>Spec Factory Steps</h3>
           <p>A pipeline that compiles natural language into structured domain specs. The factory itself was produced by the kernel. The system built its own compiler.</p>
         </div>
-        <div class="evidence-card">
+        <div class="evidence-card reveal" style="--stagger-index:2">
           <p class="card-tags">ENVIRONMENTS / GOVERNANCE / INHERITANCE</p>
           <span class="evidence-stat">GOVERNED</span>
           <h3>Workspaces</h3>
@@ -93,50 +104,50 @@
     </div>
   </section>
 
-  <section id="self-extension" class="anchor-section">
-    <span class="anchor-section__number">03</span>
-    <h2 class="anchor-section__title">Self-Extension</h2>
-    <p class="anchor-section__subtitle">The system now produces new capabilities from conversation. Capabilities that extend what future conversations can produce.</p>
-    <p class="anchor-section__narrative">This is where the <strong>loop becomes visible</strong>. New skills, new commands, new workflows, all produced by the system, all becoming part of the system. Each new capability extends the range of what a single conversation can build next. The factory is not just producing outputs. It is <strong>producing itself</strong>.</p>
+  <section id="self-extension" class="anchor-section parallax-section">
+    <span class="anchor-section__number parallax-number reveal">03</span>
+    <h2 class="anchor-section__title reveal">Self-Extension</h2>
+    <p class="anchor-section__subtitle reveal">The system now produces new capabilities from conversation. Capabilities that extend what future conversations can produce.</p>
+    <p class="anchor-section__narrative reveal">This is where the <strong>loop becomes visible</strong>. New skills, new commands, new workflows, all produced by the system, all becoming part of the system. Each new capability extends the range of what a single conversation can build next. The factory is not just producing outputs. It is <strong>producing itself</strong>.</p>
     <div class="anchor-section__content">
       <div class="evidence-grid">
-        <div class="evidence-card">
-          <p class="card-tags">DECOMPOSITION / VERIFICATION / AUTONOMOUS</p>
-          <span class="evidence-stat">150+</span>
-          <h3>Task Builder</h3>
-          <p>Decomposes any goal into atomic, verifiable tasks. Gate contracts ensure mechanical verification. Over 150 tasks executed autonomously across dozens of pipelines.</p>
+        <div class="evidence-card reveal" style="--stagger-index:0">
+          <p class="card-tags">INTENT / CAPTURE / CONVERSATIONAL</p>
+          <span class="evidence-stat">55+</span>
+          <h3>/kernel/backlog</h3>
+          <p>Every capability begins as a sentence. The backlog captures raw conversational intent and structures it for execution. 55+ items logged, each one a starting point for autonomous production.</p>
         </div>
-        <div class="evidence-card">
-          <p class="card-tags">EXTRACTION / PLAYWRIGHT / DESIGN-TOKENS</p>
-          <span class="evidence-stat">122</span>
-          <h3>Website Cloner</h3>
-          <p>Extracts design tokens from any live site via Playwright: colors, typography, spacing, components. The design tokens for this page were extracted by this skill from two reference sites.</p>
+        <div class="evidence-card reveal" style="--stagger-index:1">
+          <p class="card-tags">DECOMPOSITION / EXECUTION / AUTONOMOUS</p>
+          <span class="evidence-stat">849</span>
+          <h3>/kernel/execute-pipeline</h3>
+          <p>One command decomposes intent into tasks and executes them. 70+ pipelines completed, 849 tasks across 6 repos. No human intervention between start and finish.</p>
         </div>
-        <div class="evidence-card">
-          <p class="card-tags">SIGSTORE / REKOR / CRYPTOGRAPHIC</p>
-          <span class="evidence-stat">5</span>
-          <h3>Attestation Pipeline</h3>
-          <p>Signs every pipeline run with Sigstore. Logs to the public Rekor transparency ledger. The provenance section below uses real attestation bundles. Verify them yourself.</p>
+        <div class="evidence-card reveal" style="--stagger-index:2">
+          <p class="card-tags">OUTPUT / CAPABILITIES / RECURSIVE</p>
+          <h3>Produced Capabilities</h3>
+          <p class="capability-card-list">Website Cloner · Attestation Pipeline · Production Test Framework · Autonomous Cycling · Fraud Detection Platform · Healthcare QA · SSH Compliance Testing</p>
+          <p class="capability-card-more">and more. Each one produced by the same loop.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="this-page" class="anchor-section">
-    <span class="anchor-section__number">04</span>
-    <h2 class="anchor-section__title">This Page</h2>
-    <p class="reveal-text">You are looking at the output.</p>
-    <p class="anchor-section__narrative">This page was <strong>built by the system it describes</strong>. The kernel governed. The task builder decomposed. The website cloner extracted the design tokens. The attestation pipeline signed the work. Every section you just scrolled through was <strong>produced from conversational intent, including this one</strong>.</p>
+  <section id="this-page" class="anchor-section parallax-section">
+    <span class="anchor-section__number parallax-number reveal">04</span>
+    <h2 class="anchor-section__title reveal">This Page</h2>
+    <p class="reveal-text reveal">You are looking at the output.</p>
+    <p class="anchor-section__narrative">This page was <strong>built by the system it describes</strong>. The kernel governed. The backlog captured intent. The pipeline decomposed and built. The attestation signed the work. Three pipelines, 55 tasks, under two hours. The Rekor timestamps below prove it. Every section you just scrolled through was <strong>produced from conversational intent, including this one</strong>.</p>
     <div class="anchor-section__content">
       <ol class="chain-list">
-        <li>Kernel <span class="chain-note">built by hand</span></li>
-        <li>Domain Specs <span class="chain-note">produced by kernel</span></li>
+        <li>Kernel <span class="chain-note">produced by conversation</span></li>
         <li>Spec Factory <span class="chain-note">produced by kernel</span></li>
-        <li>Workspaces <span class="chain-note">produced by factory</span></li>
-        <li>Task Builder <span class="chain-note">produced in workspace</span></li>
-        <li>Website Cloner <span class="chain-note">produced in workspace</span></li>
-        <li>Attestation Pipeline <span class="chain-note">produced in workspace</span></li>
-        <li>This Page <span class="chain-note">produced by all of the above</span></li>
+        <li>Domain Specs <span class="chain-note">produced by factory</span></li>
+        <li>Workspaces <span class="chain-note">produced by specs</span></li>
+        <li>/kernel/backlog <span class="chain-note">intent captured</span></li>
+        <li>/kernel/execute-pipeline <span class="chain-note">decomposed and built</span></li>
+        <li>Signed to Rekor <span class="chain-note">cryptographic provenance</span></li>
+        <li>This Page <span class="chain-note">the output</span></li>
       </ol>
     </div>
     <p class="chain-closing">The loop is not a metaphor. It is the architecture.</p>
@@ -144,8 +155,8 @@
 
   <section id="provenance">
     <div class="provenance-container">
-      <h2 class="anchor-section__title">Provenance</h2>
-      <p class="provenance-subtitle">Every pipeline run is signed with Sigstore and logged to Rekor. These are real attestation bundles. Verify them yourself.</p>
+      <h2 class="anchor-section__title reveal">Provenance</h2>
+      <p class="provenance-subtitle reveal">Every pipeline run is signed with Sigstore and logged to Rekor. These are real attestation bundles. Verify them yourself.</p>
       <div class="attestation-cards">
         <div class="attestation-card" data-bundle="attestation-bundle-1">
           <p class="intent-text"></p>
@@ -182,94 +193,6 @@
   </section>
 
   <script type="application/json" id="attestation-bundle-1">
-{
-  "predicateType": "natural-language-session/v1",
-  "predicate": {
-    "invocation": {
-      "configSource": "4d1c3d34fc9defa756f516041be9c4f700f6704361eb734c21e4fe1ec814a32c",
-      "parameters": "b01e10451e900df6a20a72d2d8e206a69c92def3ca6d7c0565417734306d19a1",
-      "intent_chain": [
-        {
-          "rev": 1,
-          "timestamp": "2026-04-25T22:01:54.805517+00:00",
-          "raw_input_hash": "e20d354903f0d8da075839364f97a62064382b31fcbf29e2faa1780c3a9177f6",
-          "backlog_hash_after": ""
-        }
-      ]
-    },
-    "output": {
-      "artifacts": [
-        {"path": "run-task.sh", "sha256": "4a72a8b5706a36b78218acac6b460eae99b56b5138d589b0ba6608b19a21d441"},
-        {"path": "lib/common.sh", "sha256": "6f13fd754d133365b4ac64515a5c1c5d2c4210c2279d83efc571af35773214d9"}
-      ]
-    },
-    "timestamp": {
-      "start": "2026-04-25T22:16:08.842296+00:00",
-      "end": "2026-04-25T22:16:08.842296+00:00"
-    },
-    "metadata": {
-      "pipeline_backlog": "docs/backlog/050-kernel-fix-run-task-zombie-processes.md",
-      "task_folder": "inline",
-      "task_count": 1,
-      "completed_count": 1,
-      "skipped_count": 0
-    },
-    "rekor": {
-      "entryUrl": "https://search.sigstore.dev/?logIndex=1384683702",
-      "logIndex": "1384683702"
-    }
-  }
-}
-  </script>
-
-  <script type="application/json" id="attestation-bundle-2">
-{
-  "predicateType": "natural-language-session/v1",
-  "predicate": {
-    "invocation": {
-      "configSource": "52d1dd218fed346eebbca0f2f80f337ee4332f8e1dd6caaed6b95bcdf22c7da7",
-      "parameters": "d6e7e06ca8284be212a3cead06c843049768ae0e401f3095659c4eb5817bd3d1",
-      "intent_chain": [
-        {
-          "rev": 1,
-          "timestamp": "2026-04-25T23:30:53.365181+00:00",
-          "raw_input_hash": "e00c79d32744fa8f49058aca45b596526269853f0ff4b9723d547f870c2d5346",
-          "backlog_hash_after": ""
-        },
-        {
-          "rev": 2,
-          "timestamp": "2026-04-25T23:31:19.285639+00:00",
-          "raw_input_hash": "eabf17a3117a142be12ac1e5daeb1b114e1112c85cc06085df37072e450b9d08",
-          "backlog_hash_after": "52d1dd218fed346eebbca0f2f80f337ee4332f8e1dd6caaed6b95bcdf22c7da7"
-        }
-      ]
-    },
-    "output": {
-      "artifacts": [
-        {"path": "tasks/completed/cloner-canvas-svg-blindspot/gate-contract.md", "sha256": "0044bd21b7a72e39979705355435f71191cb3de8cc6252f582396771a409e0eb"},
-        {"path": "tasks/completed/cloner-canvas-svg-blindspot/001-build-add-sanity-check.md", "sha256": "c232de8e199da63c4984ae5148a7e11796c8bc33ceca4d2422acfdd7dc8a07bb"}
-      ]
-    },
-    "timestamp": {
-      "start": "2026-04-26T06:16:44.195977+00:00",
-      "end": "2026-04-26T06:16:44.199976+00:00"
-    },
-    "metadata": {
-      "pipeline_backlog": "docs/backlog/done/052-kernel-fix-cloner-canvas-svg-blindspot.md",
-      "task_folder": "tasks/completed/cloner-canvas-svg-blindspot",
-      "task_count": 9,
-      "completed_count": 9,
-      "skipped_count": 1
-    },
-    "rekor": {
-      "entryUrl": "https://search.sigstore.dev/?logIndex=1387514162",
-      "logIndex": "1387514162"
-    }
-  }
-}
-  </script>
-
-  <script type="application/json" id="attestation-bundle-3">
 {
   "predicateType": "natural-language-session/v1",
   "predicate": {
@@ -314,6 +237,97 @@
     "rekor": {
       "entryUrl": "https://search.sigstore.dev/?logIndex=1387966928",
       "logIndex": "1387966928"
+    }
+  }
+}
+  </script>
+
+  <script type="application/json" id="attestation-bundle-2">
+{
+  "predicateType": "natural-language-session/v1",
+  "predicate": {
+    "invocation": {
+      "configSource": "329d11a1fc21baca896a6b4d0f2945000be0739268ef99989d111a53c7c55976",
+      "parameters": "59088e2f8b74808af6e913b8cdf071eae708a624af1c68bb1429e8e5f484eebc",
+      "intent_chain": [
+        {
+          "rev": 1,
+          "timestamp": "2026-04-26T07:56:00.838171+00:00",
+          "raw_input_hash": "bb46aa9654bfa5e814a618e22b81a2c26a2127571b74fd0e0f9dca646deb539d",
+          "backlog_hash_after": ""
+        },
+        {
+          "rev": 2,
+          "timestamp": "2026-04-26T07:58:31.399327+00:00",
+          "raw_input_hash": "bb46aa9654bfa5e814a618e22b81a2c26a2127571b74fd0e0f9dca646deb539d",
+          "backlog_hash_after": "329d11a1fc21baca896a6b4d0f2945000be0739268ef99989d111a53c7c55976"
+        }
+      ]
+    },
+    "output": {
+      "artifacts": [
+        {"path": "tasks/portfolio-visual-refactor/gate-contract.md", "sha256": "e7cf46a87c6339c728bb873e7c5a6e4e15612225e19c688607d1cfb3915ad904"},
+        {"path": "tasks/portfolio-visual-refactor/001-build-css-typography-hierarchy.md", "sha256": "f2ea5728391519d3e1095b748fdced8ed54e17bc76d062b0f51be7ca1b0734d9"}
+      ]
+    },
+    "timestamp": {
+      "start": "2026-04-26T08:16:00.302958+00:00",
+      "end": "2026-04-26T08:16:00.308950+00:00"
+    },
+    "metadata": {
+      "pipeline_backlog": "docs/backlog/done/053-market-refactor-portfolio-site-visual-layer.md",
+      "task_folder": "tasks/portfolio-visual-refactor",
+      "task_count": 16,
+      "completed_count": 16,
+      "skipped_count": 1
+    },
+    "rekor": {
+      "entryUrl": "https://search.sigstore.dev/?logIndex=1388628067",
+      "logIndex": "1388628067"
+    }
+  }
+}
+  </script>
+
+  <script type="application/json" id="attestation-bundle-3">
+{
+  "predicateType": "natural-language-session/v1",
+  "predicate": {
+    "invocation": {
+      "configSource": "55efdb25cc7c3f1752295b550c0caf328b7b1a255f1cdf7481e633a2de396ad2",
+      "parameters": "",
+      "intent_chain": [
+        {
+          "rev": 1,
+          "timestamp": "2026-04-26T08:29:56.200880+00:00",
+          "raw_input_hash": "c2997805078d038e4f69416fdc1b12fde17d4a20ff8f9556a0559cb449894c0e",
+          "backlog_hash_after": ""
+        },
+        {
+          "rev": 2,
+          "timestamp": "2026-04-26T08:32:02.669009+00:00",
+          "raw_input_hash": "c2997805078d038e4f69416fdc1b12fde17d4a20ff8f9556a0559cb449894c0e",
+          "backlog_hash_after": "55efdb25cc7c3f1752295b550c0caf328b7b1a255f1cdf7481e633a2de396ad2"
+        }
+      ]
+    },
+    "output": {
+      "artifacts": []
+    },
+    "timestamp": {
+      "start": "2026-04-26T09:03:14.490823+00:00",
+      "end": "2026-04-26T09:03:14.491819+00:00"
+    },
+    "metadata": {
+      "pipeline_backlog": "docs/backlog/done/055-market-build-portfolio-site-v2-terminal.md",
+      "task_folder": "tasks/portfolio-site-v2",
+      "task_count": 14,
+      "completed_count": 14,
+      "skipped_count": 0
+    },
+    "rekor": {
+      "entryUrl": "https://search.sigstore.dev/?logIndex=1389042818",
+      "logIndex": "1389042818"
     }
   }
 }
@@ -416,6 +430,132 @@
   })();
   </script>
 
+  <!-- Terminal Typing Animation -->
+  <script>
+  (function() {
+    var body = document.getElementById('terminal-body');
+    if (!body) return;
+
+    var lines = [
+      { text: '> /kernel/backlog Build a portfolio site from conversational intent', cls: 'terminal__line--prompt' },
+      { text: '', cls: '' },
+      { text: '  BACKLOG ITEM CREATED', cls: 'terminal__line--success' },
+      { text: '  File: 047-market-build-portfolio-site-loop-theme.md', cls: '' },
+      { text: '  Scope: BUILD', cls: '' },
+      { text: '  Ready for /kernel/execute-pipeline.', cls: '' },
+      { text: '', cls: '' },
+      { text: '> /kernel/execute-pipeline 047', cls: 'terminal__line--prompt' },
+      { text: '', cls: '' },
+      { text: '  tasks decomposed: 25', cls: '' },
+      { text: '  executing via run-task.sh...', cls: '' },
+      { text: '  \u2713 25/25 complete', cls: 'terminal__line--success' },
+      { text: '  signing with sigstore...', cls: '' },
+      { text: '  \u2713 rekor #1387966928', cls: 'terminal__line--success' },
+      { text: '', cls: '' },
+      { text: '  pipeline 047 complete.', cls: 'terminal__line--emphasis' }
+    ];
+
+    var charDelay = 35;
+    var lineDelay = 500;
+    var restartDelay = 3500;
+
+    function run() {
+      body.innerHTML = '';
+      var cursor = document.createElement('span');
+      cursor.className = 'terminal__cursor';
+      typeLine(0, cursor);
+    }
+
+    function typeLine(lineIdx, cursor) {
+      if (lineIdx >= lines.length) {
+        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+        setTimeout(run, restartDelay);
+        return;
+      }
+
+      var line = lines[lineIdx];
+      var el = document.createElement('div');
+      el.className = 'terminal__line ' + (line.cls || '');
+      body.appendChild(el);
+
+      if (!line.text) {
+        el.innerHTML = '&nbsp;';
+        setTimeout(function() { typeLine(lineIdx + 1, cursor); }, lineDelay / 2);
+        return;
+      }
+
+      var i = 0;
+      el.appendChild(cursor);
+
+      function typeChar() {
+        if (i < line.text.length) {
+          el.insertBefore(document.createTextNode(line.text[i]), cursor);
+          i++;
+          setTimeout(typeChar, charDelay);
+        } else {
+          setTimeout(function() { typeLine(lineIdx + 1, cursor); }, lineDelay);
+        }
+      }
+      typeChar();
+    }
+
+    run();
+  })();
+  </script>
+
+  <!-- Scroll Observer -->
+  <script>
+  (function() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      reveals.forEach(function(el) { el.classList.add('revealed'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+  })();
+  </script>
+
+  <!-- Parallax Scroll -->
+  <script>
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var numbers = document.querySelectorAll('.parallax-number');
+    if (!numbers.length) return;
+
+    var ticking = false;
+
+    function update() {
+      var scrollY = window.scrollY;
+      numbers.forEach(function(el) {
+        var rect = el.getBoundingClientRect();
+        var offset = (rect.top + scrollY - scrollY) * 0.4;
+        el.style.transform = 'translateY(' + (offset * -0.15) + 'px)';
+      });
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+  </script>
+
   <footer>
     <div class="footer__grid">
       <div class="footer__col">
@@ -425,13 +565,13 @@
       </div>
       <div class="footer__col">
         <p class="footer__col-header">Get in touch</p>
-        <a href="mailto:hello@isagawa.dev">hello@isagawa.dev</a>
+        <a href="mailto:alain@isagawa.co">alain@isagawa.co</a>
       </div>
       <div class="footer__col">
         <p class="footer__col-header">Verify</p>
-        <a href="https://search.sigstore.dev/?logIndex=1384683702" target="_blank" rel="noopener">Rekor #1384683702</a>
-        <a href="https://search.sigstore.dev/?logIndex=1387514162" target="_blank" rel="noopener">Rekor #1387514162</a>
         <a href="https://search.sigstore.dev/?logIndex=1387966928" target="_blank" rel="noopener">Rekor #1387966928</a>
+        <a href="https://search.sigstore.dev/?logIndex=1388628067" target="_blank" rel="noopener">Rekor #1388628067</a>
+        <a href="https://search.sigstore.dev/?logIndex=1389042818" target="_blank" rel="noopener">Rekor #1389042818</a>
       </div>
       <div class="footer__col">
         <p class="footer__col-header">&copy; 2026</p>

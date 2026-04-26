@@ -286,11 +286,12 @@ footer {
   font-size: clamp(4rem, 9vw, 8rem);
   font-weight: 700;
   letter-spacing: -0.04em;
-  line-height: 0.95;
+  line-height: 1.0;
   background: linear-gradient(180deg, #fcf9f3 0%, #dcdce8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding-bottom: 0.05em;
   margin-bottom: var(--space-md);
 }
 
@@ -449,6 +450,21 @@ footer {
   font-weight: 700;
   color: var(--accent);
   margin-bottom: var(--space-xs);
+}
+
+.capability-card-list {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.02em;
+}
+
+.capability-card-more {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  opacity: 0.6;
+  margin-top: var(--space-sm);
+  font-style: italic;
 }
 
 /* This Page — reveal section */
@@ -654,6 +670,130 @@ footer {
   display: block;
 }
 
+/* ==========================================
+   V2 — Terminal, Scroll Reveals, Parallax
+   ========================================== */
+
+/* Floating Terminal */
+.terminal {
+  width: min(600px, 90vw);
+  background: rgb(18, 18, 22);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(252, 249, 243, 0.03);
+  transform: perspective(1200px) rotateX(2deg) rotateY(-1deg);
+  animation: terminal-float 5s ease-in-out infinite;
+  margin-top: var(--space-xl);
+}
+
+@keyframes terminal-float {
+  0%, 100% { transform: perspective(1200px) rotateX(2deg) rotateY(-1deg) translateY(0); }
+  50% { transform: perspective(1200px) rotateX(2deg) rotateY(-1deg) translateY(-8px); }
+}
+
+.terminal__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgb(30, 30, 36);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.terminal__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal__dot--red { background: #ff5f57; }
+.terminal__dot--yellow { background: #febc2e; }
+.terminal__dot--green { background: #28c840; }
+
+.terminal__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin-left: 8px;
+}
+
+.terminal__body {
+  padding: var(--space-md);
+  min-height: 200px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+.terminal__line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 1.8em;
+}
+
+.terminal__line--prompt {
+  color: var(--accent);
+}
+
+.terminal__line--success {
+  color: var(--badge-workspace-text);
+}
+
+.terminal__line--emphasis {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.terminal__cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--accent);
+  animation: cursor-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > .reveal {
+  transition-delay: calc(var(--stagger-index, 0) * 120ms);
+}
+
+/* Parallax container */
+.parallax-section {
+  position: relative;
+}
+
+.parallax-number {
+  will-change: transform;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .terminal { animation: none; transform: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .terminal__cursor { animation: none; opacity: 1; }
+  .parallax-number { transform: none !important; }
+}
+
 /* Large desktop and below */
 @media (max-width: 1400px) {
 }
@@ -675,6 +815,20 @@ footer {
 
 /* Mobile */
 @media (max-width: 767px) {
+  .terminal {
+    transform: none;
+    animation: terminal-float-mobile 5s ease-in-out infinite;
+  }
+
+  @keyframes terminal-float-mobile {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .reveal {
+    transform: translateY(20px);
+  }
+
   .nav__links {
     display: none;
     position: absolute;
