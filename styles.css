@@ -213,6 +213,19 @@ a {
   left: 0;
 }
 
+.attested-counter a {
+  color: rgba(134, 239, 172, 0.7);
+  font-size: var(--text-xs);
+}
+
+.attested-counter a:hover {
+  color: rgb(134, 239, 172);
+}
+
+.counter-number {
+  font-weight: 700;
+}
+
 .nav__hamburger {
   display: none;
   flex-direction: column;
