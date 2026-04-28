@@ -30,31 +30,31 @@
   <section class="page-section">
     <p class="page-section__label">The Problem</p>
     <h2>You tell your AI agent to build something. It says "done."</h2>
-    <p class="page-section__narrative">Your agent produces files, runs tests, reports success. But there is <strong>no audit trail</strong>. No way to know if the output was tampered with. No proof for your team — or your auditors — of what actually happened.</p>
+    <p class="page-section__narrative">Your agent produces files, runs tests, reports success. But there is <strong>no audit trail</strong>. No way to know if the output was tampered with. No proof for your team, your auditors, or anyone else that the work actually happened the way the agent claims.</p>
     <ul class="problem-list">
       <li>How do you know what it actually did?</li>
       <li>How do you know the output wasn't tampered with?</li>
-      <li>How do you prove to your team — or auditors — what happened?</li>
+      <li>How do you prove to your team or your auditors what happened?</li>
     </ul>
   </section>
 
   <section class="page-section">
     <p class="page-section__label">How It Works</p>
     <h2>Five steps. Zero infrastructure.</h2>
-    <p class="page-section__narrative">Every pipeline run produces a <strong>tamper-evident attestation bundle</strong> — signed with your identity, logged to a public transparency ledger. The whole chain, from intent to proof, is automated.</p>
+    <p class="page-section__narrative">Every pipeline run produces a <strong>tamper-evident attestation bundle</strong>. Signed with your identity, logged to a public transparency ledger. The whole chain, from intent to proof, is automated.</p>
     <div class="flow-grid">
       <div class="flow-card">
         <span class="flow-num">1</span>
         <div class="flow-content">
           <h3>Intent chain</h3>
-          <p>When the user requests work, the raw text is SHA-256 hashed (never stored) and appended to a tamper-evident JSONL chain. Privacy by design — proves a request was made without revealing what was said.</p>
+          <p>When the user requests work, the raw text is SHA-256 hashed (never stored) and appended to a tamper-evident JSONL chain. Privacy by design. Proves a request was made without revealing what was said.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">2</span>
         <div class="flow-content">
           <h3>Hash collection</h3>
-          <p>After tasks complete, every output file is SHA-256 hashed. The hashes are collected into a manifest — a fingerprint of what the agent produced.</p>
+          <p>After tasks complete, every output file is SHA-256 hashed. The hashes are collected into a manifest, a fingerprint of what the agent produced.</p>
         </div>
       </div>
       <div class="flow-card">
@@ -68,14 +68,14 @@
         <span class="flow-num">4</span>
         <div class="flow-content">
           <h3>Sigstore keyless signing</h3>
-          <p>The bundle is signed using Sigstore's OIDC flow — your GitHub or Google identity, verified in real time. No private keys to manage. No PKI. The signature is ephemeral and tied to your identity at the moment of signing.</p>
+          <p>The bundle is signed using Sigstore's OIDC flow. Your GitHub or Google identity, verified in real time. No private keys to manage. No PKI. The signature is ephemeral and tied to your identity at the moment of signing.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">5</span>
         <div class="flow-content">
           <h3>Rekor transparency log</h3>
-          <p>The signed attestation is automatically logged to Rekor, a public immutable ledger. Anyone can verify the entry. The timestamp is canonical — you can't backdate or forge it.</p>
+          <p>The signed attestation is automatically logged to Rekor, a public immutable ledger. Anyone can verify the entry. The timestamp is canonical. You cannot backdate or forge it.</p>
         </div>
       </div>
     </div>

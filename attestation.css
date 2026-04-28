@@ -58,7 +58,7 @@ a:hover { color: var(--accent-hover); }
 /* Problem — em-dash list */
 .problem-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md); }
 .problem-list li { padding-left: var(--space-lg); position: relative; color: var(--text-secondary); font-size: var(--text-lg); line-height: 1.6; }
-.problem-list li::before { content: "—"; position: absolute; left: 0; color: var(--border-strong); }
+.problem-list li::before { content: none; }
 
 /* Evidence cards — matching main site */
 .evidence-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--grid-gap); margin-top: var(--space-lg); }
