@@ -4,15 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isagawa | SSH Compliance Testing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="ssh-compliance.css">
 </head>
 <body>
   <header class="site-header">
-    <nav class="nav">
-      <a href="index.html" class="nav__logo">ISAGAWA</a>
+    <a href="index.html" class="nav__logo">Isagawa</a>
+    <nav>
       <ul class="nav__links">
         <li><a href="index.html">Home</a></li>
         <li><a href="feed.html">Feed</a></li>
+        <li><a href="attestation.html">Attestation</a></li>
       </ul>
     </nav>
   </header>
@@ -22,153 +26,205 @@
   </div>
 
   <section class="hero">
-    <h1>Automated SSH compliance against four federal frameworks.</h1>
-    <p class="hero__sub">Point it at your hosts. It validates SSH configurations against STIG, CIS, NIST 800-171, and FIPS 140-3. Continuously. Automatically. With reports your auditors will accept.</p>
+    <div class="hero__left">
+      <span class="hero__badge reveal">SSH Compliance Testing</span>
+      <h1 class="reveal">Audit SSH. Auto.</h1>
+      <div class="hero__text-box reveal">
+        <p>Point it at your hosts. It validates SSH configurations against STIG, CIS, NIST 800-171, and FIPS 140-3. Continuously. Automatically. With reports your auditors will accept.</p>
+      </div>
+    </div>
+    <div class="hero__terminal" id="heroTerminal">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__title">compliance-scan</span>
+      </div>
+      <div class="terminal__body" id="terminalBody"></div>
+    </div>
   </section>
 
-  <section class="page-section">
-    <p class="page-section__label">The Problem</p>
-    <h2>SSH configs drift. Manual audits do not scale.</h2>
-    <p class="page-section__narrative">Your infrastructure ships across AWS, GCP, Azure, and bare metal. Each environment has SSH hardening requirements from different compliance frameworks. Manual audits take days. You find out you are non-compliant when the auditor does. <strong>Continuous compliance should not require continuous human effort.</strong></p>
-  </section>
+  <div class="ticker">
+    <div class="ticker__track">
+      <div class="ticker__group">
+        <span class="ticker__item">STIG</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">CIS Benchmarks</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">NIST 800-171</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">FIPS 140-3</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">PCI DSS</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">HIPAA</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">SOC 2</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">ISO 27001</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">Paramiko</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">pytest</span><span class="ticker__sep">/</span>
+      </div>
+      <div class="ticker__group">
+        <span class="ticker__item">STIG</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">CIS Benchmarks</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">NIST 800-171</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">FIPS 140-3</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">PCI DSS</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">HIPAA</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">SOC 2</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">ISO 27001</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">Paramiko</span><span class="ticker__sep">/</span>
+        <span class="ticker__item">pytest</span><span class="ticker__sep">/</span>
+      </div>
+    </div>
+  </div>
 
-  <section class="page-section">
-    <p class="page-section__label">Frameworks</p>
-    <h2>Four compliance standards. One platform.</h2>
-    <p class="page-section__narrative">Each framework targets a different compliance need. The platform validates all four from a single pytest run.</p>
-    <div class="evidence-grid">
-      <div class="evidence-card">
-        <p class="card-tags">DOD / HARDENING / MANDATORY</p>
-        <h3>DISA STIG</h3>
-        <p>Security Technical Implementation Guides. The Department of Defense standard for system hardening. Hundreds of individual checks mapped to STIG rule IDs, each with a severity category. Required for any system on a DoD network.</p>
+  <section class="section section--white" id="frameworks">
+    <p class="section__label reveal">Frameworks</p>
+    <h2 class="reveal">Eight Standards. One Platform.</h2>
+    <p class="section__narrative reveal">Each framework targets a different compliance need. The platform validates all eight from a single pytest run.</p>
+    <div class="fw-grid reveal">
+      <div class="fw-card">
+        <span class="fw-card__tag">Government</span>
+        <h3 class="fw-card__title">DISA STIG</h3>
+        <p class="fw-card__desc">Defense Information Systems Agency Security Technical Implementation Guides. Required for DoD networks.</p>
       </div>
-      <div class="evidence-card">
-        <p class="card-tags">INDUSTRY / BASELINES / LEVEL 1</p>
-        <h3>CIS Benchmarks</h3>
-        <p>Center for Internet Security Level 1 benchmarks. Consensus-driven security baselines adopted across industries. Practical, actionable hardening recommendations that balance security with operational usability.</p>
+      <div class="fw-card">
+        <span class="fw-card__tag">Industry</span>
+        <h3 class="fw-card__title">CIS Benchmarks</h3>
+        <p class="fw-card__desc">Center for Internet Security consensus-based configuration guidelines. The baseline for hardening.</p>
       </div>
-      <div class="evidence-card">
-        <p class="card-tags">FEDERAL / CUI / 110 CONTROLS</p>
-        <h3>NIST 800-171</h3>
-        <p>Protecting Controlled Unclassified Information in nonfederal systems. 110 security controls that map to SSH configuration requirements. Mandatory for defense contractors handling CUI under CMMC 2.0.</p>
+      <div class="fw-card">
+        <span class="fw-card__tag">Federal</span>
+        <h3 class="fw-card__title">NIST 800-171</h3>
+        <p class="fw-card__desc">Protecting Controlled Unclassified Information in nonfederal systems. CMMC requirement.</p>
       </div>
-      <div class="evidence-card">
-        <p class="card-tags">CRYPTO / VALIDATION / FEDERAL</p>
-        <h3>FIPS 140-3</h3>
-        <p>Federal Information Processing Standard for cryptographic modules. Validates that SSH uses approved algorithms, key lengths, and cipher suites. Required when processing federal data at rest or in transit.</p>
+      <div class="fw-card">
+        <span class="fw-card__tag">Cryptography</span>
+        <h3 class="fw-card__title">FIPS 140-3</h3>
+        <p class="fw-card__desc">Federal cryptographic module validation. Ciphers, key exchange, MACs — all validated.</p>
+      </div>
+      <div class="fw-card">
+        <span class="fw-card__tag">Payment</span>
+        <h3 class="fw-card__title">PCI DSS</h3>
+        <p class="fw-card__desc">Payment Card Industry Data Security Standard. SSH hardening for cardholder data environments.</p>
+      </div>
+      <div class="fw-card">
+        <span class="fw-card__tag">Healthcare</span>
+        <h3 class="fw-card__title">HIPAA</h3>
+        <p class="fw-card__desc">Health Insurance Portability and Accountability Act. Technical safeguards for PHI access controls.</p>
+      </div>
+      <div class="fw-card">
+        <span class="fw-card__tag">Audit</span>
+        <h3 class="fw-card__title">SOC 2</h3>
+        <p class="fw-card__desc">Service Organization Control. Trust service criteria for security, availability, and confidentiality.</p>
+      </div>
+      <div class="fw-card">
+        <span class="fw-card__tag">International</span>
+        <h3 class="fw-card__title">ISO 27001</h3>
+        <p class="fw-card__desc">International information security management standard. Annex A control validation.</p>
       </div>
     </div>
   </section>
 
-  <section class="page-section">
-    <p class="page-section__label">How It Works</p>
-    <h2>From host config to compliance report.</h2>
-    <p class="page-section__narrative">The entire flow is fixture-driven. Adding a new host is a JSON file. Adding a new framework is a validator module. No code changes for new targets.</p>
-    <div class="flow-grid">
-      <div class="flow-card">
-        <span class="flow-num">1</span>
-        <div class="flow-content">
-          <h3>Host configuration</h3>
-          <p>Define your target host in a JSON fixture. Hostname, SSH credentials, which compliance frameworks apply, expected packages, expected services. One file per host or environment.</p>
+  <section class="section" id="how">
+    <p class="section__label reveal">How It Works</p>
+    <h2 class="reveal">Host Config to Report</h2>
+    <p class="section__narrative reveal">The entire flow is fixture-driven. Adding a new host is a JSON file. Adding a new framework is a validator module.</p>
+    <div class="flow-steps">
+      <div class="flow-step reveal">
+        <span class="flow-step__num">01</span>
+        <div>
+          <p class="flow-step__title">Host Configuration</p>
+          <p class="flow-step__desc">Define your target host in a JSON fixture. Hostname, SSH credentials, which compliance frameworks apply. One file per host or environment.</p>
         </div>
       </div>
-      <div class="flow-card">
-        <span class="flow-num">2</span>
-        <div class="flow-content">
-          <h3>Validator selection</h3>
-          <p>The conftest reads the host fixture and loads the appropriate compliance validators. STIG rules, CIS benchmarks, NIST controls, FIPS checks. Each validator is a standalone module that composes the base SSH validators.</p>
+      <div class="flow-step reveal reveal-delay-1">
+        <span class="flow-step__num">02</span>
+        <div>
+          <p class="flow-step__title">Validator Selection</p>
+          <p class="flow-step__desc">The conftest reads the host fixture and loads the appropriate compliance validators. STIG rules, CIS benchmarks, NIST controls, FIPS checks.</p>
         </div>
       </div>
-      <div class="flow-card">
-        <span class="flow-num">3</span>
-        <div class="flow-content">
-          <h3>pytest execution</h3>
-          <p>Run pytest. Each compliance check becomes a parameterized test case. The validator connects via SSH, executes the check command, and returns structured results with the compliance framework, rule ID, and severity.</p>
+      <div class="flow-step reveal reveal-delay-2">
+        <span class="flow-step__num">03</span>
+        <div>
+          <p class="flow-step__title">Pytest Execution</p>
+          <p class="flow-step__desc">Each compliance check becomes a parameterized test case. The validator connects via SSH, executes the check command, and returns structured results.</p>
         </div>
       </div>
-      <div class="flow-card">
-        <span class="flow-num">4</span>
-        <div class="flow-content">
-          <h3>Compliance report</h3>
-          <p>Results include pass/fail per rule, per framework, per host. Hand the report to your auditor. Run it in CI/CD. Schedule it nightly. The output is the same every time because the checks are deterministic.</p>
+      <div class="flow-step reveal reveal-delay-3">
+        <span class="flow-step__num">04</span>
+        <div>
+          <p class="flow-step__title">Compliance Report</p>
+          <p class="flow-step__desc">Results include pass/fail per rule, per framework, per host. Run it in CI/CD. Schedule it nightly. Deterministic and auditor-ready.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="page-section">
-    <p class="page-section__label">Architecture</p>
-    <h2>Five layers. Strict separation.</h2>
-    <p class="page-section__narrative">Every validation follows a strict separation of concerns. The AI agent generates validators and tests using this architecture. The kernel enforces it.</p>
-    <div class="arch-block">
-      <pre>
-<span class="hl">Test</span> (Arrange / Act / Assert)          <span class="comment">← pytest test cases</span>
-  └── <span class="hl">Role</span> (batch executor)               <span class="comment">← orchestrates validators</span>
-       └── <span class="hl">Validator</span> (one check category)   <span class="comment">← STIG, CIS, NIST, FIPS</span>
-            └── <span class="hl">Task</span> (single SSH command)    <span class="comment">← atomic command execution</span>
-                 └── <span class="hl">Interface</span> (paramiko)     <span class="comment">← SSH connection, retry, timeout</span></pre>
+  <section class="section section--dark" id="architecture">
+    <p class="section__label reveal">Architecture</p>
+    <h2 class="reveal">Five Layers. Strict Separation.</h2>
+    <div class="arch-card reveal">
+      <pre id="archPre"></pre>
     </div>
   </section>
 
-  <section class="page-section">
-    <p class="page-section__label">Tech Stack</p>
-    <div class="badges">
-      <span class="badge">Python</span>
-      <span class="badge">pytest</span>
-      <span class="badge">Paramiko</span>
-      <span class="badge">DISA STIG</span>
-      <span class="badge">CIS Benchmarks</span>
-      <span class="badge">NIST 800-171</span>
-      <span class="badge">FIPS 140-3</span>
+  <section class="section section--white" id="scan">
+    <p class="section__label reveal">Live Scan</p>
+    <h2 class="reveal">What a Compliance Check Looks Like</h2>
+    <div class="scan-panel reveal" id="scanPanel">
+      <div class="scan-panel__header">
+        <span class="scan-panel__title">sshd_config audit</span>
+        <span class="scan-panel__status" id="scanStatus">waiting</span>
+      </div>
+      <div class="scan-panel__checks" id="scanChecks"></div>
     </div>
   </section>
 
-  <section class="page-section">
-    <p class="page-section__label">Results</p>
-    <div class="results-grid">
-      <div class="result-card">
-        <span class="result-stat">4</span>
-        <span class="result-label">Compliance frameworks</span>
+  <section class="section" id="results">
+    <p class="section__label reveal">Results</p>
+    <h2 class="reveal">By The Numbers</h2>
+    <div class="stats-row">
+      <div class="stat-card reveal">
+        <span class="stat-card__value" data-target="8">0</span>
+        <span class="stat-card__label">Compliance Frameworks</span>
       </div>
-      <div class="result-card">
-        <span class="result-stat">4</span>
-        <span class="result-label">Purpose-built validators</span>
+      <div class="stat-card reveal reveal-delay-1">
+        <span class="stat-card__value" data-target="8">0</span>
+        <span class="stat-card__label">Purpose-Built Validators</span>
       </div>
-      <div class="result-card">
-        <span class="result-stat">110+</span>
-        <span class="result-label">Compliance checks per host</span>
+      <div class="stat-card reveal reveal-delay-2">
+        <span class="stat-card__value" data-target="110" data-suffix="+">0</span>
+        <span class="stat-card__label">Checks Per Host</span>
       </div>
     </div>
   </section>
 
-  <section class="page-section">
-    <p class="page-section__label">Who This Is For</p>
-    <div class="evidence-grid">
-      <div class="evidence-card">
-        <p class="card-tags">DEVSECOPS / FLEET / CONTINUOUS</p>
-        <h3>DevSecOps teams</h3>
-        <p>Maintaining SSH hardening across a fleet of hosts. Run compliance checks in CI/CD. Catch drift before it reaches production. No manual audit spreadsheets.</p>
+  <section class="section section--white" id="audience">
+    <p class="section__label reveal">Who This Is For</p>
+    <h2 class="reveal">Built For Teams That Ship Secure</h2>
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <p class="audience-card__tags">DevSecOps / Fleet / Continuous</p>
+        <h3>DevSecOps Teams</h3>
+        <p>Maintaining SSH hardening across a fleet of hosts. Run compliance checks in CI/CD. Catch drift before it reaches production.</p>
       </div>
-      <div class="evidence-card">
-        <p class="card-tags">GOVERNMENT / DEFENSE / CMMC</p>
-        <h3>Defense contractors</h3>
-        <p>STIG compliance is not optional when your systems sit on a DoD network. Continuous validation replaces the scramble before an audit. CMMC 2.0 readiness built in.</p>
+      <div class="audience-card reveal reveal-delay-1">
+        <p class="audience-card__tags">Government / Defense / CMMC</p>
+        <h3>Defense Contractors</h3>
+        <p>STIG compliance is not optional when your systems sit on a DoD network. Continuous validation replaces the scramble before an audit.</p>
       </div>
-      <div class="evidence-card">
-        <p class="card-tags">SECURITY / AUDIT / REPORTING</p>
-        <h3>Security teams</h3>
-        <p>Running compliance audits before and during production. Structured reports with rule IDs, severity levels, and evidence. Designed to hand directly to an auditor.</p>
+      <div class="audience-card reveal reveal-delay-2">
+        <p class="audience-card__tags">Security / Audit / Reporting</p>
+        <h3>Security Teams</h3>
+        <p>Structured reports with rule IDs, severity levels, and evidence. Designed to hand directly to an auditor.</p>
       </div>
-      <div class="evidence-card">
-        <p class="card-tags">MSP / MULTI-TENANT / SCALABLE</p>
-        <h3>Managed service providers</h3>
-        <p>Managing SSH configurations across customer environments. Each customer gets their own fixture file with their compliance requirements. Scale without writing new code.</p>
+      <div class="audience-card reveal reveal-delay-3">
+        <p class="audience-card__tags">MSP / Multi-Tenant / Scalable</p>
+        <h3>Managed Service Providers</h3>
+        <p>Each customer gets their own fixture file with their compliance requirements. Scale without writing new code.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <a href="https://github.com/isagawa-qa/platform-ssh" class="cta-button" target="_blank" rel="noopener">View on GitHub ↗</a>
+  <section class="cta-section">
+    <a href="https://github.com/isagawa-qa/platform-ssh" class="cta-button reveal" target="_blank" rel="noopener">View on GitHub</a>
   </section>
 
   <footer>
@@ -188,5 +244,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="ssh-compliance.js"></script>
 </body>
 </html>
