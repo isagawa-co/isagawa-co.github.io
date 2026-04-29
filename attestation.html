@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isagawa | Attestation Pipeline</title>
+  <link rel="stylesheet" href="attestation.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">ISAGAWA</a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="feed.html">Feed</a></li>
+        <li class="attested-counter"><a href="feed.html"><span class="counter-number" id="nav-count">--</span> ✓</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="loop-badge">
+    This product was built by the same system described on the <a href="index.html#self-extension">homepage</a>.
+  </div>
+
+  <section class="hero">
+    <h1>Prove your AI agent did what it said it did.</h1>
+    <p class="hero__sub">A drop-in spec that gives any AI coding agent cryptographic proof of every pipeline run. No private keys. No infrastructure. Just Sigstore.</p>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">The Problem</p>
+    <h2>You tell your AI agent to build something. It says "done."</h2>
+    <p class="page-section__narrative">Your agent produces files, runs tests, reports success. But there is <strong>no audit trail</strong>. No way to know if the output was tampered with. No proof for your team, your auditors, or anyone else that the work actually happened the way the agent claims.</p>
+    <ul class="problem-list">
+      <li>How do you know what it actually did?</li>
+      <li>How do you know the output wasn't tampered with?</li>
+      <li>How do you prove to your team or your auditors what happened?</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">How It Works</p>
+    <h2>Five steps. Zero infrastructure.</h2>
+    <p class="page-section__narrative">Every pipeline run produces a <strong>tamper-evident attestation bundle</strong>. Signed with your identity, logged to a public transparency ledger. The whole chain, from intent to proof, is automated.</p>
+    <div class="flow-grid">
+      <div class="flow-card">
+        <span class="flow-num">1</span>
+        <div class="flow-content">
+          <h3>Intent chain</h3>
+          <p>When the user requests work, the raw text is SHA-256 hashed (never stored) and appended to a tamper-evident JSONL chain. Privacy by design. Proves a request was made without revealing what was said.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">2</span>
+        <div class="flow-content">
+          <h3>Hash collection</h3>
+          <p>After tasks complete, every output file is SHA-256 hashed. The hashes are collected into a manifest, a fingerprint of what the agent produced.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">3</span>
+        <div class="flow-content">
+          <h3>Bundle creation</h3>
+          <p>A JSON attestation bundle is created with all hashes, timestamps, task metadata, and the intent chain. This is the claim: "these artifacts were produced from this request at this time."</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">4</span>
+        <div class="flow-content">
+          <h3>Sigstore keyless signing</h3>
+          <p>The bundle is signed using Sigstore's OIDC flow. Your GitHub or Google identity, verified in real time. No private keys to manage. No PKI. The signature is ephemeral and tied to your identity at the moment of signing.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">5</span>
+        <div class="flow-content">
+          <h3>Rekor transparency log</h3>
+          <p>The signed attestation is automatically logged to Rekor, a public immutable ledger. Anyone can verify the entry. The timestamp is canonical. You cannot backdate or forge it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">What's in a Bundle</p>
+    <h2>Annotated attestation bundle</h2>
+    <p class="page-section__narrative">Every field traces back to a <strong>real cryptographic operation</strong>. The intent chain proves what was requested. The artifacts prove what was produced. Rekor proves when it happened.</p>
+    <div class="bundle-block">
+      <pre>{
+  "<span class="hl">predicateType</span>": "natural-language-session/v1",
+  "predicate": {
+    "invocation": {
+      "configSource": "sha256-of-spec-file",     <span class="comment">← what was requested</span>
+      "parameters": "sha256-of-task-decomposition",
+      "<span class="hl">intent_chain</span>": [               <span class="comment">← tamper-evident request log</span>
+        {
+          "rev": 1,
+          "timestamp": "2026-04-28T12:00:00Z",
+          "raw_input_hash": "abc123...",        <span class="comment">← SHA-256 of user's words</span>
+          "spec_hash_after": "def456..."
+        }
+      ]
+    },
+    "output": {
+      "<span class="hl">artifacts</span>": [                   <span class="comment">← what was produced</span>
+        {"path": "src/login.py", "sha256": "abc123..."},
+        {"path": "tests/test_login.py", "sha256": "def456..."}
+      ]
+    },
+    "timestamp": {
+      "start": "2026-04-28T12:00:00Z",         <span class="comment">← when it happened</span>
+      "end": "2026-04-28T12:05:00Z"
+    },
+    "<span class="hl">rekor</span>": {
+      "logIndex": "1387966928",                 <span class="comment">← public, immutable proof</span>
+      "entryUrl": "https://search.sigstore.dev/?logIndex=1387966928"
+    }
+  }
+}</pre>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">Drop-in Setup</p>
+    <h2>Three steps. That's it.</h2>
+    <div class="setup-grid">
+      <div class="setup-card">
+        <span class="setup-num">01</span>
+        <div class="setup-body">
+          <h3>Install Sigstore</h3>
+          <code class="code-block">pip install sigstore</code>
+        </div>
+      </div>
+      <div class="setup-card">
+        <span class="setup-num">02</span>
+        <div class="setup-body">
+          <h3>Copy the attestation library</h3>
+          <code class="code-block">cp -r lib/ your-project/lib/
+mkdir -p your-project/.state/{attestations,intents}</code>
+        </div>
+      </div>
+      <div class="setup-card">
+        <span class="setup-num">03</span>
+        <div class="setup-body">
+          <h3>Run</h3>
+          <code class="code-block"># Self-test (no signing)
+python lib/attest.py --dry-run
+
+# Real attestation
+python lib/attest.py path/to/spec.md path/to/tasks/</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">Tech Stack</p>
+    <div class="badges">
+      <span class="badge">Sigstore</span>
+      <span class="badge">Rekor</span>
+      <span class="badge">OIDC</span>
+      <span class="badge">Python</span>
+      <span class="badge">SHA-256</span>
+      <span class="badge">JSONL</span>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">Results</p>
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="result-stat" id="result-count">--</span>
+        <span class="result-label">Attested pipeline runs</span>
+      </div>
+      <div class="result-card">
+        <span class="result-stat">100%</span>
+        <span class="result-label">Verification success rate</span>
+      </div>
+      <div class="result-card">
+        <span class="result-stat">&lt;5s</span>
+        <span class="result-label">Time per attestation</span>
+      </div>
+    </div>
+    <p class="results-link">See all runs on the <a href="feed.html">live attestation feed</a>.</p>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">Who This Is For</p>
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <p class="card-tags">INDIVIDUAL / ACCOUNTABILITY</p>
+        <h3>Solo developers</h3>
+        <p>Using AI agents who want accountability. Know what your agent actually did, not just what it claimed.</p>
+      </div>
+      <div class="evidence-card">
+        <p class="card-tags">TEAM / AUDIT TRAIL</p>
+        <h3>Teams</h3>
+        <p>Adopting coding agents who need audit trails. Every pipeline run produces verifiable evidence your team can inspect.</p>
+      </div>
+      <div class="evidence-card">
+        <p class="card-tags">ENTERPRISE / COMPLIANCE</p>
+        <h3>Regulated industries</h3>
+        <p>SOC2, HIPAA, audit-ready from day one. Cryptographic proof that your AI agent operated within governance. No retroactive paperwork.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <a href="https://github.com/isagawa-co/agent-attestation-spec" class="cta-button" target="_blank" rel="noopener">View on GitHub ↗</a>
+  </section>
+
+  <footer>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <p class="footer__col-header">Isagawa</p>
+        <p>Built by the system it describes.</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-header">Get in touch</p>
+        <a href="mailto:alain@isagawa.co">alain@isagawa.co</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-header">Verify this page</p>
+        <a href="https://search.sigstore.dev/?logIndex=1397985690" target="_blank" rel="noopener">Rekor #1397985690</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function() {
+    fetch('feed-count.txt')
+      .then(function(r) { return r.text(); })
+      .then(function(t) {
+        var n = parseInt(t.trim(), 10);
+        if (!isNaN(n)) {
+          var el = document.getElementById('nav-count');
+          if (el) el.textContent = n;
+          var rc = document.getElementById('result-count');
+          if (rc) rc.textContent = n;
+        }
+      })
+      .catch(function() {});
+  })();
+  </script>
+</body>
+</html>
