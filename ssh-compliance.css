@@ -5,8 +5,8 @@ html { scroll-behavior: smooth; }
   --primary: #000; --bg: #000; --surface: rgb(12, 12, 12); --elevated: rgb(24, 24, 24);
   --accent: #fcf9f3; --white: #fcf9f3; --border-subtle: rgba(252, 249, 243, 0.08); --border-strong: rgba(252, 249, 243, 0.2);
   --font-body: 'Inter', sans-serif; --font-heading: 'STIX Two Text', serif; --font-display: 'STIX Two Text', serif;
-  --text-xs: clamp(12px, 1.5vw, 14px); --text-sm: clamp(14px, 2vw, 16px); --text-base: clamp(16px, 2.2vw, 18px);
-  --text-lg: clamp(18px, 2.5vw, 22px); --text-xl: clamp(22px, 3vw, 28px);
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem;
   --hl-xs: clamp(20px, 3.5vw, 42px); --hl-sm: clamp(28px, 4vw, 60px); --hl-md: clamp(36px, 5vw, 84px);
   --hl-lg: clamp(48px, 6vw, 120px); --hl-xl: clamp(72px, 8vw, 180px);
   --margin: 5vw; --radius: clamp(16px, 2vw, 36px); --radius-sm: clamp(6px, 1vw, 10px); --bw: 1px;
