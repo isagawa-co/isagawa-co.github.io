@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isagawa | Attestation Feed</title>
+  <link rel="stylesheet" href="feed.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">ISAGAWA</a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#self-extension">Self-Extension</a></li>
+        <li><a href="index.html#provenance">Provenance</a></li>
+        <li class="nav__active"><a href="feed.html">Feed</a></li>
+        <li class="attested-counter"><span class="counter-number" id="nav-count">--</span> ✓</li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="feed-section">
+    <h1 class="feed-header">Attestation Feed</h1>
+    <p class="feed-subtitle">Every entry below was produced from a sentence of natural language, executed under kernel governance, and signed with Sigstore.</p>
+    <p class="feed-count" id="feed-count">Loading...</p>
+    <div class="feed-entries" id="feed-entries"></div>
+    <p class="feed-footer">This feed updates automatically. Come back tomorrow and there will be more.</p>
+  </section>
+
+  <script>
+  (function() {
+    function formatDate(iso) {
+      if (!iso) return 'Unknown date';
+      try {
+        var d = new Date(iso);
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return months[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear() + ' ' + String(d.getUTCHours()).padStart(2,'0') + ':' + String(d.getUTCMinutes()).padStart(2,'0') + ' UTC';
+      } catch(e) { return iso.slice(0,10); }
+    }
+
+    function renderEntry(e) {
+      var rekor = e.rekor_url ? '<a class="rekor-link" href="' + e.rekor_url + '" target="_blank" rel="noopener">Verify on Rekor &#8599;</a>' : '';
+      var revs = e.intent_revisions === 1 ? '1 intent revision' : e.intent_revisions + ' intent revisions';
+      return '<div class="feed-entry cat-' + e.category + '">' +
+        '<span class="feed-entry__cat">' + e.category + '</span>' +
+        '<h3 class="feed-entry__title">' + e.title + '</h3>' +
+        '<div class="feed-meta">' +
+          '<span>' + formatDate(e.timestamp) + '</span>' +
+          '<span>' + e.task_count + ' tasks</span>' +
+          '<span>' + revs + '</span>' +
+        '</div>' + rekor + '</div>';
+    }
+
+    fetch('feed-data.json')
+      .then(function(r) { return r.json(); })
+      .then(function(entries) {
+        var count = entries.length;
+        document.getElementById('nav-count').textContent = count;
+        document.getElementById('feed-count').textContent = count + ' attested pipeline runs';
+        document.getElementById('feed-entries').innerHTML = entries.map(renderEntry).join('');
+      })
+      .catch(function() {
+        document.getElementById('feed-count').textContent = 'Failed to load feed data.';
+      });
+  })();
+  </script>
+</body>
+</html>
