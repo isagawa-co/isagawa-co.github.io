@@ -116,58 +116,6 @@ async function typeArchitecture() {
   }
 }
 
-/* === Live Scan Panel === */
-const checks = [
-  { id: 'STIG-001', name: 'PermitRootLogin', cmd: 'grep -i PermitRootLogin /etc/ssh/sshd_config', expected: 'no', result: 'pass' },
-  { id: 'STIG-002', name: 'Protocol', cmd: 'grep -i ^Protocol /etc/ssh/sshd_config', expected: '2', result: 'pass' },
-  { id: 'CIS-001', name: 'LogLevel', cmd: 'grep -i ^LogLevel /etc/ssh/sshd_config', expected: 'VERBOSE', result: 'pass' },
-  { id: 'NIST-003', name: 'Ciphers', cmd: 'grep -i ^Ciphers /etc/ssh/sshd_config', expected: 'aes256-ctr', result: 'fail' },
-  { id: 'FIPS-001', name: 'KexAlgorithms', cmd: 'grep -i ^KexAlgorithms /etc/ssh/sshd_config', expected: 'curve25519-sha256', result: 'pass' },
-  { id: 'FIPS-002', name: 'MACs', cmd: 'grep -i ^MACs /etc/ssh/sshd_config', expected: 'hmac-sha2-256', result: 'pass' },
-];
-
-const scanObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      scanObserver.unobserve(e.target);
-      runScan();
-    }
-  });
-}, { threshold: 0.3 });
-const scanPanel = document.getElementById('scanPanel');
-if (scanPanel) scanObserver.observe(scanPanel);
-
-async function runScan() {
-  const container = document.getElementById('scanChecks');
-  const status = document.getElementById('scanStatus');
-  container.innerHTML = '';
-  // Build rows
-  checks.forEach(c => {
-    const row = document.createElement('div');
-    row.className = 'scan-row';
-    row.innerHTML = `
-      <span class="scan-row__id">${c.id}</span>
-      <span class="scan-row__name">${c.name}</span>
-      <span class="scan-row__cmd">${c.cmd}</span>
-      <span class="scan-row__badge scan-row__badge--pending">...</span>`;
-    container.appendChild(row);
-  });
-  status.textContent = 'scanning';
-  status.className = 'scan-panel__status scan-panel__status--active';
-  // Animate each check
-  const rows = container.querySelectorAll('.scan-row');
-  for (let i = 0; i < rows.length; i++) {
-    await new Promise(r => setTimeout(r, 400 + Math.random() * 300));
-    const badge = rows[i].querySelector('.scan-row__badge');
-    const c = checks[i];
-    badge.textContent = c.result === 'pass' ? 'PASS' : 'FAIL';
-    badge.className = 'scan-row__badge scan-row__badge--' + c.result;
-    rows[i].classList.add('scan-row--done');
-  }
-  status.textContent = 'complete';
-  status.className = 'scan-panel__status scan-panel__status--done';
-}
-
 /* === Stat Counter === */
 const statObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
