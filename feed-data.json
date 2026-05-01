@@ -1,5 +1,35 @@
 [
   {
+    "title": "Build Ssh Compliance Foundation",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:46:59.747359+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416783260"
+  },
+  {
+    "title": "Build Portfolio Ssh Compliance Showcase",
+    "category": "market",
+    "timestamp": "2026-04-28T21:37:36.041787+00:00",
+    "task_count": 6,
+    "completed_count": 3,
+    "skipped_count": 0,
+    "intent_revisions": 3,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1398096516"
+  },
+  {
+    "title": "Build Portfolio Attestation Showcase",
+    "category": "market",
+    "timestamp": "2026-04-28T21:00:25.418819+00:00",
+    "task_count": 6,
+    "completed_count": 0,
+    "skipped_count": 0,
+    "intent_revisions": 3,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1397985690"
+  },
+  {
     "title": "Build Portfolio Live Feed Update",
     "category": "market",
     "timestamp": "2026-04-28T20:49:17.866106+00:00",
