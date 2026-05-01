@@ -1,5 +1,85 @@
 [
   {
+    "title": "Build Ssh Iso27001 Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:59:57.877223+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416855984"
+  },
+  {
+    "title": "Build Ssh Soc2 Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:59:51.414013+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416855229"
+  },
+  {
+    "title": "Build Ssh Hipaa Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:59:43.221649+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416854276"
+  },
+  {
+    "title": "Build Ssh Pci Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:59:36.584635+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416852950"
+  },
+  {
+    "title": "Build Ssh Fips Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:59:30.141552+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416851831"
+  },
+  {
+    "title": "Build Ssh Nist Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:59:24.492352+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416850945"
+  },
+  {
+    "title": "Build Ssh Cis Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:59:13.880821+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416849730"
+  },
+  {
+    "title": "Build Ssh Stig Validator",
+    "category": "domain",
+    "timestamp": "2026-05-01T02:51:54.012482+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1416802795"
+  },
+  {
     "title": "Build Ssh Compliance Foundation",
     "category": "domain",
     "timestamp": "2026-05-01T02:46:59.747359+00:00",
