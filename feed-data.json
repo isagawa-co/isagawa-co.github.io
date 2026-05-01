@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Portfolio Ui Testing Showcase",
+    "category": "market",
+    "timestamp": "2026-05-01T11:00:05.535789+00:00",
+    "task_count": 11,
+    "completed_count": 11,
+    "skipped_count": 0,
+    "intent_revisions": 3,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417788423"
+  },
+  {
     "title": "Domain Spec: Game Engine",
     "category": "domain",
     "timestamp": "2026-05-01T10:08:46.122543+00:00",
