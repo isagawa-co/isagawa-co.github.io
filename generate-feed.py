@@ -6,7 +6,11 @@ import glob
 import os
 import sys
 
-ATTESTATION_DIR = r"D:\my_ai_projects\project_test_repos\sr_dev_workspace\.claude\state\attestations"
+ATTESTATION_DIRS = [
+    r"D:\my_ai_projects\project_test_repos\sr_dev_workspace\.claude\state\attestations",
+    r"D:\my_ai_projects\project_test_repos\domain-spec-factory\.claude\state\attestations",
+    r"D:\my_ai_projects\project_test_repos\game-dev\.claude\state\attestations",
+]
 OUTPUT_DIR = r"D:\my_ai_projects\isagawa-co.github.io"
 
 
@@ -47,11 +51,23 @@ def parse_bundle(filepath):
     chain = invocation.get("intent_chain", [])
 
     backlog = meta.get("pipeline_backlog", "")
+    task_folder = meta.get("task_folder", "")
     start_time = ts.get("start", "")
 
+    # Use spec name from task folder for factory output attestations
+    title = extract_title(backlog)
+    category = extract_category(backlog)
+    if "domain-spec-factory/output/" in task_folder.replace("\\", "/"):
+        spec_name = task_folder.rstrip("/\\").split("/")[-1].split("\\")[-1]
+        title = f"Domain Spec: {spec_name.replace('-', ' ').title()}"
+        category = "domain"
+    elif "ssh-management-layer" in task_folder:
+        title = "Domain Spec: SSH Compliance Framework"
+        category = "domain"
+
     return {
-        "title": extract_title(backlog),
-        "category": extract_category(backlog),
+        "title": title,
+        "category": category,
         "timestamp": start_time,
         "task_count": meta.get("task_count", 0),
         "completed_count": meta.get("completed_count", 0),
@@ -62,7 +78,9 @@ def parse_bundle(filepath):
 
 
 def main():
-    bundles = glob.glob(os.path.join(ATTESTATION_DIR, "*.json"))
+    bundles = []
+    for att_dir in ATTESTATION_DIRS:
+        bundles.extend(glob.glob(os.path.join(att_dir, "*.json")))
     bundles = [b for b in bundles if not b.endswith(".sigstore.json")]
 
     entries = []

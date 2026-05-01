@@ -1,5 +1,225 @@
 [
   {
+    "title": "Domain Spec: Terminal Game Builder",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:55:19.894050+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417661651"
+  },
+  {
+    "title": "Domain Spec: Sox Audit",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:55:09.609529+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417661535"
+  },
+  {
+    "title": "Domain Spec: Soc Automation",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:54:53.911839+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417661299"
+  },
+  {
+    "title": "Domain Spec: Rag Ai Dev",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:54:42.347522+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417661067"
+  },
+  {
+    "title": "Domain Spec: Platform Deepeval",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:53:37.476025+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417660200"
+  },
+  {
+    "title": "Domain Spec: Pci Dss",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:53:27.870515+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417659947"
+  },
+  {
+    "title": "Domain Spec: Network Automation",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:53:15.940894+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417659731"
+  },
+  {
+    "title": "Domain Spec: Incident Response",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:53:05.810402+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417659546"
+  },
+  {
+    "title": "Domain Spec: Iac Security",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:52:48.979772+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417659424"
+  },
+  {
+    "title": "Domain Spec: Iac Security",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:48:37.667709+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": ""
+  },
+  {
+    "title": "Domain Spec: Hipaa Audit",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:48:28.601448+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417656885"
+  },
+  {
+    "title": "Domain Spec: Healthcare Qa Spec",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:48:18.382554+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417656560"
+  },
+  {
+    "title": "Domain Spec: Game Engine",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:48:09.061315+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417656265"
+  },
+  {
+    "title": "Domain Spec: Creative Finance",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:47:59.522317+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417655897"
+  },
+  {
+    "title": "Domain Spec: Content Production",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:47:50.535936+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417655524"
+  },
+  {
+    "title": "Domain Spec: Aml Kyc",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:47:33.304740+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417654937"
+  },
+  {
+    "title": "Domain Spec: Ai Football",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:47:23.329445+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417653797"
+  },
+  {
+    "title": "Domain Spec: Agent Builders",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:47:13.539205+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417653381"
+  },
+  {
+    "title": "Domain Spec: SSH Compliance Framework",
+    "category": "domain",
+    "timestamp": "2026-05-01T09:45:17.752600+00:00",
+    "task_count": 7,
+    "completed_count": 5,
+    "skipped_count": 1,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417651381"
+  },
+  {
+    "title": "Research Ssh Compliance Spec Decomposition",
+    "category": "kernel",
+    "timestamp": "2026-05-01T07:47:27.500379+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1417401476"
+  },
+  {
+    "title": "Research Ssh Compliance Spec Decomposition",
+    "category": "kernel",
+    "timestamp": "2026-05-01T03:55:14.499959+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": ""
+  },
+  {
+    "title": "Research Ssh Compliance Spec Decomposition",
+    "category": "kernel",
+    "timestamp": "2026-05-01T03:55:10.872703+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": ""
+  },
+  {
     "title": "Build Ssh Iso27001 Validator",
     "category": "domain",
     "timestamp": "2026-05-01T02:59:57.877223+00:00",
@@ -88,6 +308,46 @@
     "skipped_count": 0,
     "intent_revisions": 1,
     "rekor_url": "https://search.sigstore.dev/?logIndex=1416783260"
+  },
+  {
+    "title": "Build Playbooks",
+    "category": "domain",
+    "timestamp": "2026-04-28T23:56:32.385151+00:00",
+    "task_count": 5,
+    "completed_count": 5,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": ""
+  },
+  {
+    "title": "Build 53Man Rosters",
+    "category": "domain",
+    "timestamp": "2026-04-28T22:51:33.718229+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1398402293"
+  },
+  {
+    "title": "Build 53Man Rosters",
+    "category": "domain",
+    "timestamp": "2026-04-28T22:36:54.745014+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": ""
+  },
+  {
+    "title": "Build 53Man Rosters",
+    "category": "domain",
+    "timestamp": "2026-04-28T22:36:40.081844+00:00",
+    "task_count": 9,
+    "completed_count": 9,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": ""
   },
   {
     "title": "Build Portfolio Ssh Compliance Showcase",
@@ -268,6 +528,16 @@
     "skipped_count": 0,
     "intent_revisions": 1,
     "rekor_url": "https://search.sigstore.dev/?logIndex=1397952286"
+  },
+  {
+    "title": "Of Football",
+    "category": "kernel",
+    "timestamp": "2026-04-28T00:00:02.372978+00:00",
+    "task_count": 0,
+    "completed_count": 5,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": ""
   },
   {
     "title": "Build Portfolio Site V2 Terminal",
