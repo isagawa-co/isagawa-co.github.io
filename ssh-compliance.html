@@ -75,6 +75,30 @@
     </div>
   </div>
 
+  <section class="section section--white" id="problem">
+    <p class="section__label reveal">The Problem</p>
+    <h2 class="reveal">SSH compliance is manual, fragmented, and reactive.</h2>
+    <p class="section__narrative reveal">Most teams treat SSH auditing as a quarterly fire drill. Engineers SSH into boxes, grep sshd_config, and paste output into spreadsheets. Drift happens silently between audits. By the time anyone checks, the environment has already failed.</p>
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <h3>Manual evidence collection</h3>
+        <p>Auditors want structured proof. They get terminal screenshots, copy-pasted config snippets, and spreadsheets that are out of date the day they are created. No repeatability, no chain of custody.</p>
+      </div>
+      <div class="audience-card reveal reveal-delay-1">
+        <h3>Configuration drift between audits</h3>
+        <p>You pass an audit in January and drift by March. An admin hotfixes a cipher suite, another disables a setting for troubleshooting, nobody reverts it. Drift persists for weeks or months before anyone notices.</p>
+      </div>
+      <div class="audience-card reveal reveal-delay-2">
+        <h3>Every framework, different rules</h3>
+        <p>STIG, CIS, NIST, PCI, HIPAA, SOC 2, ISO 27001 all have overlapping but different SSH requirements. Teams maintain separate scripts, checklists, or spreadsheets for each one. Nothing is unified.</p>
+      </div>
+      <div class="audience-card reveal reveal-delay-3">
+        <h3>No visibility at scale</h3>
+        <p>Large enterprises accumulate thousands of SSH keys with no centralized inventory. Keys from former employees and decommissioned services persist indefinitely. Auditors find no trail of who provisioned what.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--white" id="frameworks">
     <p class="section__label reveal">Frameworks</p>
     <h2 class="reveal">Eight Standards. One Platform.</h2>
