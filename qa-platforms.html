@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isagawa | AI-Native Test Automation</title>
+  <link rel="stylesheet" href="qa-platforms.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">ISAGAWA</a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="feed.html">Feed</a></li>
+        <li><a href="attestation.html">Attestation</a></li>
+        <li><a href="ssh-compliance.html">SSH Compliance</a></li>
+        <li><a href="vibe-coder.html">Vibe Coder</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="loop-badge">
+    Every platform below was produced from a domain spec by the same system described on the <a href="index.html#self-extension">homepage</a>.
+  </div>
+
+  <section class="hero">
+    <h1>Describe what to test. Get production-grade test code.</h1>
+    <p class="hero__sub">Five test automation platforms, one architecture. Selenium, Playwright, Docker, DeepEval, SSH. Every platform follows the same 5-layer pattern. Every engineer writes the same way. Every test is maintainable.</p>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">The Problem</p>
+    <h2>UI tests are brittle. Every engineer writes them differently.</h2>
+    <p class="page-section__narrative">AI-generated tests make it worse. More code, same chaos, no architecture. Selectors break on every deploy. Test suites become unmaintainable. Teams can't share patterns. Every framework is different.</p>
+    <ul class="problem-list">
+      <li>How do you keep selector locators in one place?</li>
+      <li>How do you ensure every engineer follows the same pattern?</li>
+      <li>How do you make AI-generated tests maintainable, not chaotic?</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">The Architecture</p>
+    <h2>Five layers. One pattern. Five platforms.</h2>
+    <p class="page-section__narrative">Every test follows the same architecture, whether you are testing web UI with Selenium, TypeScript with Playwright, container images, LLM outputs, or SSH configurations. No inheritance. Composition all the way down. State checks in one place. Locators isolated. Tests stay clean.</p>
+    <div class="flow-grid">
+      <div class="flow-card">
+        <span class="flow-num">1</span>
+        <div class="flow-content">
+          <h3>Interface</h3>
+          <p>Connection management. Browser driver setup, SSH sessions, Docker clients. Retry logic, timeout handling, and connection pooling live here. No business logic. The rest of the stack never touches the transport layer directly.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">2</span>
+        <div class="flow-content">
+          <h3>Page Object</h3>
+          <p>Atomic UI actions. Locators live here and nowhere else. Return self for fluent chaining. State-check methods return bool. Tests use these for assertions, not return values.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">3</span>
+        <div class="flow-content">
+          <h3>Task</h3>
+          <p>Domain operations. Composes page objects. One responsibility per method. No locators. Returns None. Orchestration lives in Roles, not Tasks.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">4</span>
+        <div class="flow-content">
+          <h3>Role</h3>
+          <p>User workflows. Composes Tasks in sequence. One workflow method per role behavior. No locators. No return values. Tests call one role method and assert via page object state-checks.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">5</span>
+        <div class="flow-content">
+          <h3>Test</h3>
+          <p>Assertions and data. Load test data from JSON. Call one role workflow. Assert via page object state-check methods. No orchestration. Clean, readable test code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">How It Works</p>
+    <h2>Four steps. From description to test code.</h2>
+    <p class="page-section__narrative">Describe what you want to test in plain English. The AI agent discovers your application structure, generates complete test code following the 5-layer architecture, and you run it. Every time. Every engineer. Every platform.</p>
+    <div class="flow-grid">
+      <div class="flow-card">
+        <span class="flow-num">1</span>
+        <div class="flow-content">
+          <h3>You describe</h3>
+          <p>Write what you want to test in plain English. "Users can log in with valid credentials." "The checkout flow calculates tax correctly." The description goes into a domain spec.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">2</span>
+        <div class="flow-content">
+          <h3>AI discovers</h3>
+          <p>The agent analyzes your application, inspects the page structure, extracts all UI elements and interactions. Learns your application's layout and state transitions.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">3</span>
+        <div class="flow-content">
+          <h3>AI generates</h3>
+          <p>The agent generates complete test code: page objects with locators, tasks, roles, test methods, fixtures, conftest, pytest configs. All following the 5-layer pattern. All production-ready.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">4</span>
+        <div class="flow-content">
+          <h3>You run</h3>
+          <p>Run pytest. Watch tests pass. Maintain tests like you wrote them, because the code follows a strict pattern. Change a locator once. It updates everywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">See It In Action</p>
+    <h2>Test generation from plain English.</h2>
+    <p class="page-section__narrative">Watch the AI agent generate complete test code from a simple description. From specification to passing tests in seconds.</p>
+    <div class="demo-terminal" id="demoTerminal">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__title">test-generation</span>
+      </div>
+      <div class="terminal__body" id="terminalBody"></div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">The Platforms</p>
+    <h2>Same architecture. Different stacks.</h2>
+    <p class="page-section__narrative">Whether you test web browsers, container images, LLM outputs, or SSH configurations, the same 5-layer architecture applies. One pattern. Five platforms.</p>
+    <div class="flow-grid">
+      <div class="flow-card">
+        <span class="flow-content">
+          <h3>Platform Selenium</h3>
+          <p><strong>Stack:</strong> Python, Selenium, pytest</p>
+          <p><strong>Tests:</strong> Web browsers via Selenium WebDriver</p>
+          <p><strong>Use when:</strong> You need cross-browser Selenium tests with strict architecture</p>
+          <a href="https://github.com/isagawa-qa/platform-selenium" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-content">
+          <h3>Platform Playwright</h3>
+          <p><strong>Stack:</strong> TypeScript, Playwright, pytest</p>
+          <p><strong>Tests:</strong> Web UI with modern browser automation</p>
+          <p><strong>Use when:</strong> You need TypeScript tests with full browser control</p>
+          <a href="https://github.com/isagawa-qa/platform-playwright" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-content">
+          <h3>Platform Docker</h3>
+          <p><strong>Stack:</strong> Docker, pytest, Python</p>
+          <p><strong>Tests:</strong> Container image compliance and behavior</p>
+          <p><strong>Use when:</strong> You need infrastructure and container testing</p>
+          <a href="https://github.com/isagawa-qa/platform-docker" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-content">
+          <h3>Platform DeepEval</h3>
+          <p><strong>Stack:</strong> Python, DeepEval, LLM eval</p>
+          <p><strong>Tests:</strong> LLM output quality and correctness</p>
+          <p><strong>Use when:</strong> You need AI output validation and assertions</p>
+          <a href="https://github.com/isagawa-qa/platform-deepeval" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-content">
+          <h3>Platform SSH</h3>
+          <p><strong>Stack:</strong> Python, SSH, compliance frameworks</p>
+          <p><strong>Tests:</strong> SSH configuration and compliance validation</p>
+          <p><strong>Use when:</strong> You need infrastructure compliance testing</p>
+          <a href="https://github.com/isagawa-qa/platform-ssh" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">Tech Stack</p>
+    <div class="badges">
+      <span class="badge">Python</span>
+      <span class="badge">TypeScript</span>
+      <span class="badge">Selenium</span>
+      <span class="badge">Playwright</span>
+      <span class="badge">pytest</span>
+      <span class="badge">Docker</span>
+      <span class="badge">MCP</span>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">Results</p>
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="result-stat">5</span>
+        <span class="result-label">Complete platforms</span>
+      </div>
+      <div class="result-card">
+        <span class="result-stat">5-layer</span>
+        <span class="result-label">Architecture pattern</span>
+      </div>
+      <div class="result-card">
+        <span class="result-stat">100%</span>
+        <span class="result-label">Code consistency</span>
+      </div>
+    </div>
+    <p class="results-link">Works with Claude Code, Cursor, and Windsurf via MCP.</p>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">Who This Is For</p>
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <p class="card-tags">QA LEAD / CONSISTENCY</p>
+        <h3>QA leads</h3>
+        <p>Evaluating test automation frameworks. Need a pattern every engineer follows. Consistent locator management. Maintainable AI-generated tests.</p>
+      </div>
+      <div class="evidence-card">
+        <p class="card-tags">ENGINEERING MANAGER / PATTERNS</p>
+        <h3>Engineering managers</h3>
+        <p>Wanting consistent test patterns across teams. Reduce maintenance overhead. No more "everyone writes tests differently" chaos.</p>
+      </div>
+      <div class="evidence-card">
+        <p class="card-tags">TEAM / AI ADOPTION</p>
+        <h3>Teams adopting AI testing</h3>
+        <p>Using AI agents to generate tests. Need guardrails, not chaos. A strict architecture that keeps AI-generated code clean and maintainable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <a href="https://github.com/orgs/isagawa-qa/repositories" class="cta-button" target="_blank" rel="noopener">Explore All Platforms ↗</a>
+  </section>
+
+  <footer>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <p class="footer__col-header">Isagawa</p>
+        <p>Built by the system it describes.</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-header">Get in touch</p>
+        <a href="mailto:alain@isagawa.co">alain@isagawa.co</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-header">View the source</p>
+        <a href="https://github.com/isagawa-co/isagawa-co.github.io" target="_blank" rel="noopener">GitHub repo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="qa-platforms.js"></script>
+</body>
+</html>
