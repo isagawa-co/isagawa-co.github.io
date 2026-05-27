@@ -43,7 +43,7 @@
   <section class="page-section">
     <p class="page-section__label">The Architecture</p>
     <h2>Five layers. One pattern. Five platforms.</h2>
-    <p class="page-section__narrative">Every test follows the same architecture, whether you are testing web UI with Selenium, TypeScript with Playwright, container images, LLM outputs, or SSH configurations. No inheritance. Composition all the way down. State checks in one place. Constants isolated. Tests stay clean.</p>
+    <p class="page-section__narrative">Derived from the <a href="https://serenity-js.org/handbook/design/screenplay-pattern/" target="_blank" rel="noopener">Screenplay Pattern</a>, adapted for AI-generated code across multiple interfaces. Every test follows the same architecture, whether you are testing web UI with Selenium, TypeScript with Playwright, container images, LLM outputs, or SSH configurations. No inheritance. Composition all the way down. State checks in one place. Constants isolated. Tests stay clean.</p>
     <div class="flow-grid">
       <div class="flow-card">
         <span class="flow-num">1</span>
@@ -116,6 +116,44 @@
           <p>Run pytest. Watch tests pass. Maintain tests like you wrote them, because the code follows a strict pattern. Change a locator once. It updates everywhere.</p>
         </div>
       </div>
+    </div>
+    <p class="page-section__narrative" style="margin-top: 2rem;">The AI generates this exact structure every time. Five files, five layers, one pattern. Here is what the output looks like for a login workflow:</p>
+    <div class="bundle-block">
+      <pre><span class="comment"># Layer 1: Interface (browser_interface.py)</span>
+class BrowserInterface:
+    def click(self, locator):  ...
+    def fill(self, locator, text):  ...
+    def is_visible(self, locator):  ...
+
+<span class="comment"># Layer 2: Domain Object (login_page.py)</span>
+class LoginPage:
+    USERNAME = (By.ID, "username")
+    PASSWORD = (By.ID, "password")
+    SUBMIT   = (By.ID, "login-btn")
+
+    def enter_username(self, user):
+        self.browser.fill(self.USERNAME, user)
+        return self
+
+    def is_on_dashboard(self):
+        return self.browser.is_visible(self.DASHBOARD)
+
+<span class="comment"># Layer 3: Task (auth_tasks.py)</span>
+class AuthTasks:
+    def login(self, username, password):
+        self.login_page.enter_username(username) \
+            .enter_password(password).click_submit()
+
+<span class="comment"># Layer 4: Role (standard_user.py)</span>
+class StandardUser:
+    def login_and_view_dashboard(self, username, password):
+        self.auth_tasks.login(username, password)
+
+<span class="comment"># Layer 5: Test (test_login.py)</span>
+def test_login(browser):
+    user = StandardUser(browser)
+    user.login_and_view_dashboard("admin", "pass123")
+    assert LoginPage(browser).is_on_dashboard()</pre>
     </div>
   </section>
 
