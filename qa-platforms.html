@@ -85,75 +85,106 @@
 
   <section class="page-section">
     <p class="page-section__label">How It Works</p>
-    <h2>Four steps. From description to test code.</h2>
-    <p class="page-section__narrative">Describe what you want to test in plain English. The AI agent discovers your application structure, generates complete test code following the 5-layer architecture, and you run it. Every time. Every engineer. Every platform.</p>
+    <h2>Five steps. From description to passing tests.</h2>
+    <p class="page-section__narrative">You provide a persona, a URL, and a plain-English workflow. The AI agent handles everything else: credential strategy, element discovery, BDD scenario generation, code construction, and test execution. If a test fails, you triage it together.</p>
     <div class="flow-grid">
       <div class="flow-card">
         <span class="flow-num">1</span>
         <div class="flow-content">
-          <h3>You describe</h3>
-          <p>Write what you want to test in plain English. "Users can log in with valid credentials." "The checkout flow calculates tax correctly." The description goes into a domain spec.</p>
+          <h3>User Input</h3>
+          <p>Provide three things: the persona (who is testing), the target URL, and what to test in plain English. "HR Manager logs in and creates an employee." That is the entire input.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">2</span>
         <div class="flow-content">
-          <h3>AI discovers</h3>
-          <p>The agent analyzes your application, inspects the page structure, extracts all UI elements and interactions. Learns your application's layout and state transitions.</p>
+          <h3>Pre-flight</h3>
+          <p>The agent resolves the credential strategy, validates access to the target application, and confirms the environment is ready. No test code is written until pre-flight passes.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">3</span>
         <div class="flow-content">
-          <h3>AI generates</h3>
-          <p>The agent generates complete test code: page objects with locators, tasks, roles, test methods, fixtures, conftest, pytest configs. All following the 5-layer pattern. All production-ready.</p>
+          <h3>AI Processing</h3>
+          <p>The agent generates BDD scenarios from your description, defines expected states, then discovers every element on the target pages. Selectors, interactions, and state transitions are mapped automatically.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">4</span>
         <div class="flow-content">
-          <h3>You run</h3>
-          <p>Run pytest. Watch tests pass. Maintain tests like you wrote them, because the code follows a strict pattern. Change a locator once. It updates everywhere.</p>
+          <h3>Construction</h3>
+          <p>The agent reads the reference implementations and builds all five layers: Domain Objects with locators, Tasks that compose them, Roles that orchestrate workflows, and Tests that assert via state-check methods. Every file follows the pattern.</p>
+        </div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-num">5</span>
+        <div class="flow-content">
+          <h3>Execution</h3>
+          <p>Tests run via pytest. If they pass, you are done. If a test fails, the agent presents the failure for human-in-the-loop triage. You decide: fix the test, fix the app, or skip. No silent failures.</p>
         </div>
       </div>
     </div>
     <p class="page-section__narrative" style="margin-top: 2rem;">The AI generates this exact structure every time. Five files, five layers, one pattern. Here is what the output looks like for a login workflow:</p>
-    <div class="bundle-block">
-      <pre><span class="comment"># Layer 1: Interface (browser_interface.py)</span>
-class BrowserInterface:
-    def click(self, locator):  ...
-    def fill(self, locator, text):  ...
-    def is_visible(self, locator):  ...
+    <div class="demo-terminal">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__title">generated-code</span>
+      </div>
+      <div class="terminal__body">
+        <pre><span class="comment"># Layer 1: Interface (browser_interface.py)</span>
+<span class="comment"># Connection management. Retry logic. Timeout handling.</span>
+<span class="comment"># The rest of the stack never touches the transport layer.</span>
 
 <span class="comment"># Layer 2: Domain Object (login_page.py)</span>
 class LoginPage:
-    USERNAME = (By.ID, "username")
-    PASSWORD = (By.ID, "password")
-    SUBMIT   = (By.ID, "login-btn")
+    LOG_IN_BUTTON  = (By.CSS_SELECTOR, "[data-testid='button-goto-login']")
+    EMAIL_INPUT    = (By.CSS_SELECTOR, "[data-testid='input-email']")
+    PASSWORD_INPUT = (By.CSS_SELECTOR, "[data-testid='input-password']")
+    SIGN_IN_BUTTON = (By.CSS_SELECTOR, "[data-testid='button-sign-in']")
 
-    def enter_username(self, user):
-        self.browser.fill(self.USERNAME, user)
+    def __init__(self, browser: BrowserInterface):
+        self.browser = browser
+
+    def enter_email(self, email: str) -> "LoginPage":
+        self.browser.enter_text(*self.EMAIL_INPUT, email)
         return self
 
-    def is_on_dashboard(self):
-        return self.browser.is_visible(self.DASHBOARD)
+    def is_on_dashboard(self) -> bool:
+        return "/dashboard" in self.browser.get_current_url()
 
-<span class="comment"># Layer 3: Task (auth_tasks.py)</span>
-class AuthTasks:
-    def login(self, username, password):
-        self.login_page.enter_username(username) \
-            .enter_password(password).click_submit()
+<span class="comment"># Layer 3: Task (employee_management_tasks.py)</span>
+class EmployeeManagementTasks:
+    def __init__(self, browser: BrowserInterface):
+        self.login_page = LoginPage(browser)
 
-<span class="comment"># Layer 4: Role (standard_user.py)</span>
-class StandardUser:
-    def login_and_view_dashboard(self, username, password):
-        self.auth_tasks.login(username, password)
+    def login(self, login_url, email, password) -> None:
+        (self.login_page
+            .navigate(login_url)
+            .wait_for_login_button_visible()
+            .click_log_in()
+            .enter_email(email)
+            .enter_password(password)
+            .click_sign_in())
 
-<span class="comment"># Layer 5: Test (test_login.py)</span>
-def test_login(browser):
-    user = StandardUser(browser)
-    user.login_and_view_dashboard("admin", "pass123")
-    assert LoginPage(browser).is_on_dashboard()</pre>
+<span class="comment"># Layer 4: Role (employee_manager.py)</span>
+class EmployeeManager:
+    def __init__(self, browser, login_url, email, password):
+        self.tasks = EmployeeManagementTasks(browser)
+
+    def create_employee(self, name, description="") -> None:
+        self.tasks.login(self.login_url, self.email, self.password)
+        self.tasks.create_employee(name, description)
+
+<span class="comment"># Layer 5: Test (test_create_employee.py)</span>
+class TestCreateEmployee:
+    def test_create_employee(self):
+        manager = EmployeeManager(self.browser, login_url, email, password)
+        manager.create_employee(name=employee_name)
+        assert self.employees_page.is_employee_created_toast_displayed()
+        assert self.employees_page.is_employee_displayed_in_list(employee_name)</pre>
+      </div>
     </div>
   </section>
 
