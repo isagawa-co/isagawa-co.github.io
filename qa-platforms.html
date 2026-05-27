@@ -139,10 +139,10 @@
 
 <span class="comment"># Layer 2: Domain Object (login_page.py)</span>
 class LoginPage:
-    LOG_IN_BUTTON  = (By.CSS_SELECTOR, "[data-testid='button-goto-login']")
-    EMAIL_INPUT    = (By.CSS_SELECTOR, "[data-testid='input-email']")
-    PASSWORD_INPUT = (By.CSS_SELECTOR, "[data-testid='input-password']")
-    SIGN_IN_BUTTON = (By.CSS_SELECTOR, "[data-testid='button-sign-in']")
+    LOG_IN_BUTTON  = (By.ID, "button-goto-login")
+    EMAIL_INPUT    = (By.ID, "input-email")
+    PASSWORD_INPUT = (By.ID, "input-password")
+    SIGN_IN_BUTTON = (By.ID, "button-sign-in")
 
     def __init__(self, browser: BrowserInterface):
         self.browser = browser
