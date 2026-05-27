@@ -43,7 +43,7 @@
   <section class="page-section">
     <p class="page-section__label">The Architecture</p>
     <h2>Five layers. One pattern. Five platforms.</h2>
-    <p class="page-section__narrative">Every test follows the same architecture, whether you are testing web UI with Selenium, TypeScript with Playwright, container images, LLM outputs, or SSH configurations. No inheritance. Composition all the way down. State checks in one place. Locators isolated. Tests stay clean.</p>
+    <p class="page-section__narrative">Every test follows the same architecture, whether you are testing web UI with Selenium, TypeScript with Playwright, container images, LLM outputs, or SSH configurations. No inheritance. Composition all the way down. State checks in one place. Constants isolated. Tests stay clean.</p>
     <div class="flow-grid">
       <div class="flow-card">
         <span class="flow-num">1</span>
@@ -55,29 +55,29 @@
       <div class="flow-card">
         <span class="flow-num">2</span>
         <div class="flow-content">
-          <h3>Page Object</h3>
-          <p>Atomic UI actions. Locators live here and nowhere else. Return self for fluent chaining. State-check methods return bool. Tests use these for assertions, not return values.</p>
+          <h3>Domain Object</h3>
+          <p>One class per domain concept. Page Objects for UI, Validators for SSH, Image Objects for Docker, Metric Objects for LLM eval. Constants and state-check methods live here. Return self for fluent chaining.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">3</span>
         <div class="flow-content">
           <h3>Task</h3>
-          <p>Domain operations. Composes page objects. One responsibility per method. No locators. Returns None. Orchestration lives in Roles, not Tasks.</p>
+          <p>Domain operations. Composes domain objects. One responsibility per method. No constants, no locators. Returns None. Orchestration lives in Roles, not Tasks.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">4</span>
         <div class="flow-content">
           <h3>Role</h3>
-          <p>User workflows. Composes Tasks in sequence. One workflow method per role behavior. No locators. No return values. Tests call one role method and assert via page object state-checks.</p>
+          <p>User workflows. Composes Tasks in sequence. One workflow method per role behavior. No return values. Tests call one role method and assert via domain object state-checks.</p>
         </div>
       </div>
       <div class="flow-card">
         <span class="flow-num">5</span>
         <div class="flow-content">
           <h3>Test</h3>
-          <p>Assertions and data. Load test data from JSON. Call one role workflow. Assert via page object state-check methods. No orchestration. Clean, readable test code.</p>
+          <p>Assertions and data. Load test data from JSON. Call one role workflow. Assert via domain object state-check methods. No orchestration. Clean, readable test code.</p>
         </div>
       </div>
     </div>
