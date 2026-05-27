@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Multi Model Routing",
+    "category": "kernel",
+    "timestamp": "2026-05-27T10:32:44.271819+00:00",
+    "task_count": null,
+    "completed_count": 0,
+    "skipped_count": 0,
+    "intent_revisions": 2,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1642229699"
+  },
+  {
     "title": "Build Sync Model Router To Workspaces",
     "category": "kernel",
     "timestamp": "2026-05-27T10:31:56.266979+00:00",
