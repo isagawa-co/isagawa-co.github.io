@@ -124,68 +124,6 @@
         </div>
       </div>
     </div>
-    <p class="page-section__narrative" style="margin-top: 2rem;">The AI generates this exact structure every time. Five files, five layers, one pattern. This example shows a Selenium UI test, but the same workflow applies to every platform: Playwright, Docker, DeepEval, SSH, and API.</p>
-    <div class="demo-terminal">
-      <div class="terminal__bar">
-        <span class="terminal__dot terminal__dot--red"></span>
-        <span class="terminal__dot terminal__dot--yellow"></span>
-        <span class="terminal__dot terminal__dot--green"></span>
-        <span class="terminal__title">generated-code</span>
-      </div>
-      <div class="terminal__body">
-        <pre><span class="comment"># Layer 1: Interface (browser_interface.py)</span>
-<span class="comment"># Connection management. Retry logic. Timeout handling.</span>
-<span class="comment"># The rest of the stack never touches the transport layer.</span>
-
-<span class="comment"># Layer 2: Domain Object (login_page.py)</span>
-class LoginPage:
-    LOG_IN_BUTTON  = (By.ID, "button-goto-login")
-    EMAIL_INPUT    = (By.ARIA_LABEL, "Email address")
-    PASSWORD_INPUT = (By.TEST_ID, "input-password")
-    SIGN_IN_BUTTON = (By.ID, "button-sign-in")
-
-    def __init__(self, browser: BrowserInterface):
-        self.browser = browser
-
-    def enter_email(self, email: str) -> "LoginPage":
-        self.browser.enter_text(*self.EMAIL_INPUT, email)
-        return self
-
-    def is_on_dashboard(self) -> bool:
-        return "/dashboard" in self.browser.get_current_url()
-
-<span class="comment"># Layer 3: Task (employee_management_tasks.py)</span>
-class EmployeeManagementTasks:
-    def __init__(self, browser: BrowserInterface):
-        self.login_page = LoginPage(browser)
-
-    def login(self, login_url, email, password) -> None:
-        (self.login_page
-            .navigate(login_url)
-            .wait_for_login_button_visible()
-            .click_log_in()
-            .enter_email(email)
-            .enter_password(password)
-            .click_sign_in())
-
-<span class="comment"># Layer 4: Role (employee_manager.py)</span>
-class EmployeeManager:
-    def __init__(self, browser, login_url, email, password):
-        self.tasks = EmployeeManagementTasks(browser)
-
-    def create_employee(self, name, description="") -> None:
-        self.tasks.login(self.login_url, self.email, self.password)
-        self.tasks.create_employee(name, description)
-
-<span class="comment"># Layer 5: Test (test_create_employee.py)</span>
-class TestCreateEmployee:
-    def test_create_employee(self):
-        manager = EmployeeManager(self.browser, login_url, email, password)
-        manager.create_employee(name=employee_name)
-        assert self.employees_page.is_employee_created_toast_displayed()
-        assert self.employees_page.is_employee_displayed_in_list(employee_name)</pre>
-      </div>
-    </div>
   </section>
 
   <section class="page-section">
