@@ -1,4 +1,4 @@
-// Vibe Coder Pack Terminal Animation
+// Vibe Coder Agent Terminal Animation
 (function() {
   'use strict';
 
