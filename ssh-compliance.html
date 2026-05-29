@@ -9,35 +9,191 @@
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="ssh-compliance.css?v=5">
   <link rel="stylesheet" href="nav.css">
+  <style>
+  /* ── Pill Nav Prototype ── */
+  .site-header { display: none; }
+
+  .pill-nav {
+    position: fixed;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0.45rem 0.35rem 0.45rem 1.1rem;
+    background: rgba(8, 8, 8, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    white-space: nowrap;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  .pill-nav__logo {
+    font-family: var(--font-heading, serif);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent, #f5f4ef);
+    text-decoration: none;
+    padding-right: 1rem;
+    margin-right: 0.5rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .pill-nav__items {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .pill-nav__items > a,
+  .pill-nav__dropdown-trigger {
+    font-family: 'Inter', var(--font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.48);
+    letter-spacing: 0.04em;
+    transition: color 0.15s, background 0.15s;
+    text-decoration: none;
+    padding: 0.35rem 0.65rem;
+    border-radius: 100px;
+  }
+
+  .pill-nav__items > a:hover,
+  .pill-nav__dropdown-trigger:hover {
+    color: var(--accent, #f5f4ef);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* Dropdown */
+  .pill-nav__dropdown {
+    position: relative;
+  }
+
+  .pill-nav__dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .pill-nav__chevron {
+    font-size: 0.55rem;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+  }
+
+  .pill-nav__dropdown-trigger[aria-expanded="true"] .pill-nav__chevron {
+    transform: rotate(180deg);
+  }
+
+  .pill-nav__dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(8, 8, 8, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 0.4rem;
+    min-width: 170px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  .pill-nav__dropdown-menu.is-open {
+    display: block;
+  }
+
+  .pill-nav__dropdown-menu a {
+    display: block;
+    padding: 0.45rem 0.75rem;
+    font-family: 'Inter', var(--font-mono, monospace);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.48);
+    letter-spacing: 0.04em;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+
+  .pill-nav__dropdown-menu a:hover {
+    background: rgba(255,255,255,0.06);
+    color: var(--accent, #f5f4ef);
+  }
+
+  /* Count badge */
+  .pill-nav__count {
+    font-family: 'Inter', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: rgb(134, 239, 172);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    margin-left: 0.35rem;
+    border-radius: 100px;
+    background: rgba(134, 239, 172, 0.08);
+    transition: background 0.15s;
+  }
+
+  .pill-nav__count:hover {
+    background: rgba(134, 239, 172, 0.14);
+  }
+
+  /* Adjust body top padding — pill is fixed, not in flow */
+  .loop-badge { margin-top: 0; }
+
+  /* Mobile: full-width pill, hide middle links */
+  @media (max-width: 640px) {
+    .pill-nav {
+      top: 0.75rem;
+      left: 0.75rem;
+      right: 0.75rem;
+      transform: none;
+      width: calc(100% - 1.5rem);
+      justify-content: space-between;
+      border-radius: 14px;
+      padding: 0.45rem 0.75rem;
+    }
+    .pill-nav__items > a:not(.pill-nav__logo) { display: none; }
+    .pill-nav__dropdown { display: block; }
+  }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="index.html" class="nav__logo">ISAGAWA</a>
-      <div class="nav__actions">
-        <a href="feed.html" class="attested-counter"><span class="counter-number" id="nav-count">--</span> ✓</a>
-        <button class="nav__hamburger" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
-          <span class="nav__hamburger-line"></span>
-          <span class="nav__hamburger-line"></span>
-          <span class="nav__hamburger-line"></span>
+  <header class="site-header" aria-hidden="true"></header>
+
+  <nav class="pill-nav" aria-label="Site navigation">
+    <a href="index.html" class="pill-nav__logo">ISAGAWA</a>
+    <div class="pill-nav__items">
+      <a href="index.html">Home</a>
+      <a href="feed.html">Feed</a>
+      <div class="pill-nav__dropdown">
+        <button class="pill-nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+          Products <span class="pill-nav__chevron" aria-hidden="true">▾</span>
         </button>
+        <div class="pill-nav__dropdown-menu" role="menu">
+          <a href="attestation.html" role="menuitem">Attestation</a>
+          <a href="qa-platforms.html" role="menuitem">QA Platforms</a>
+          <a href="ssh-compliance.html" role="menuitem">SSH Compliance</a>
+          <a href="vibe-coder.html" role="menuitem">Vibe Coder</a>
+        </div>
       </div>
-      <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="feed.html">Feed</a></li>
-        <li class="nav__section">
-          <button class="nav__section-toggle" aria-expanded="false">Products <span class="nav__chevron" aria-hidden="true">▾</span></button>
-          <ul class="nav__section-items">
-            <li><a href="attestation.html">Attestation</a></li>
-            <li><a href="qa-platforms.html">QA Platforms</a></li>
-            <li><a href="ssh-compliance.html">SSH Compliance</a></li>
-            <li><a href="vibe-coder.html">Vibe Coder</a></li>
-          </ul>
-        </li>
-        <li><a href="story.html">The Story</a></li>
-      </ul>
-    </nav>
-  </header>
+      <a href="story.html">The Story</a>
+    </div>
+    <a href="feed.html" class="pill-nav__count"><span id="nav-count">--</span> ✓</a>
+  </nav>
   <div class="factory-origin"><a href="index.html">&larr; Built by the factory</a></div>
 
   <div class="loop-badge">
@@ -361,5 +517,37 @@
 
   <script src="ssh-compliance.js"></script>
   <script src="nav.js"></script>
+  <script>
+  // Pill nav: Products dropdown + outside-click close + counter
+  (function () {
+    var trigger = document.querySelector('.pill-nav__dropdown-trigger');
+    var menu = document.querySelector('.pill-nav__dropdown-menu');
+    if (trigger && menu) {
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = menu.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', function () {
+        menu.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          menu.classList.remove('is-open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+    // Counter
+    fetch('feed-count.txt')
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        var n = parseInt(t.trim(), 10);
+        var el = document.getElementById('nav-count');
+        if (!isNaN(n) && el) el.textContent = n;
+      }).catch(function () {});
+  })();
+  </script>
 </body>
 </html>
