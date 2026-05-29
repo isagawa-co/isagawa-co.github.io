@@ -79,6 +79,27 @@
   --badge-operate-text: rgb(253, 224, 71);
 }
 
+/* Factory origin strip — product pages only */
+.factory-origin {
+  display: block;
+  width: 100%;
+  padding: 0.4rem 2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+  text-align: left;
+}
+.factory-origin a {
+  color: inherit;
+  text-decoration: none;
+}
+.factory-origin a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 /* Smooth Scroll */
 html {
   scroll-behavior: smooth;
