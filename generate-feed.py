@@ -172,6 +172,31 @@ def inject_static_feed(entries, output_dir):
     sys.stdout.write(f"Injected {len(entries)} entries into feed.html\n")
 
 
+def inject_story_feed(entries, output_dir):
+    """Inject latest 10 entries into story.html, replacing FEED_STATIC marker."""
+    story_path = os.path.join(output_dir, "story.html")
+    try:
+        with open(story_path, "r", encoding="utf-8") as f:
+            html = f.read()
+    except FileNotFoundError:
+        sys.stderr.write(f"Warning: {story_path} not found, skipping story feed inject\n")
+        return
+
+    marker = "<!-- FEED_STATIC -->"
+    if marker not in html:
+        sys.stderr.write(f"Warning: {marker} not found in {story_path}\n")
+        return
+
+    latest = entries[:10]
+    groups = group_entries(latest)
+    rendered = "".join(render_group_html(g) for g in groups)
+    html = html.replace(marker, rendered)
+
+    with open(story_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    sys.stdout.write(f"Injected {len(latest)} entries into story.html\n")
+
+
 def main():
     bundles = []
     for att_dir in ATTESTATION_DIRS:
@@ -198,6 +223,7 @@ def main():
     sys.stdout.write(f"Generated feed-data.json with {count} entries\n")
 
     inject_static_feed(entries, OUTPUT_DIR)
+    inject_story_feed(entries, OUTPUT_DIR)
 
 
 if __name__ == "__main__":
