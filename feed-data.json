@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Build Govcon Ai App",
+    "category": "market",
+    "timestamp": "2026-05-29T16:59:35.964281+00:00",
+    "task_count": 7,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1671820435"
+  },
+  {
     "title": "Fix Execute Pipeline Autonomous Cycling",
     "category": "kernel",
     "timestamp": "2026-05-27T10:33:23.240013+00:00",
