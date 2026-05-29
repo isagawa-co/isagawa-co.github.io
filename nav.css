@@ -3,6 +3,14 @@
    Loaded after page CSS — overrides per-page nav
    ============================================= */
 
+/* Nav wrapper — flex row, fills site-header on all pages */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 /* Hamburger always visible */
 .nav__hamburger {
   display: flex;
