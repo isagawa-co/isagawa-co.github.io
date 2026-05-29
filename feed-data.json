@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Platform Ssh Ciq Ready",
+    "category": "market",
+    "timestamp": "2026-05-29T17:00:40.758215+00:00",
+    "task_count": 7,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1671823582"
+  },
+  {
     "title": "Research Geo Services Professional Firms",
     "category": "market",
     "timestamp": "2026-05-29T17:00:27.265940+00:00",
