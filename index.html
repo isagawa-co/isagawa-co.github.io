@@ -5,24 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isagawa | Conversational Agent Factory</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="nav.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="nav">
-      <span class="nav__logo">ISAGAWA</span>
+      <a href="index.html" class="nav__logo">ISAGAWA</a>
+      <div class="nav__actions">
+        <a href="feed.html" class="attested-counter"><span class="counter-number" id="nav-count">--</span> ✓</a>
+        <button class="nav__hamburger" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+        </button>
+      </div>
       <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
         <li><a href="feed.html">Feed</a></li>
-        <li><a href="attestation.html">Attestation</a></li>
-        <li><a href="qa-platforms.html">QA Platforms</a></li>
-        <li><a href="ssh-compliance.html">SSH Compliance</a></li>
-        <li><a href="vibe-coder.html">Vibe Coder</a></li>
-        <li class="attested-counter"><a href="feed.html"><span class="counter-number" id="nav-count">--</span> ✓</a></li>
+        <li class="nav__section">
+          <button class="nav__section-toggle" aria-expanded="false">Products <span class="nav__chevron" aria-hidden="true">▾</span></button>
+          <ul class="nav__section-items">
+            <li><a href="attestation.html">Attestation</a></li>
+            <li><a href="qa-platforms.html">QA Platforms</a></li>
+            <li><a href="ssh-compliance.html">SSH Compliance</a></li>
+            <li><a href="vibe-coder.html">Vibe Coder</a></li>
+          </ul>
+        </li>
+        <li><a href="story.html">The Story</a></li>
       </ul>
-      <button class="nav__hamburger" data-menu-toggle aria-label="Toggle menu">
-        <span class="nav__hamburger-line"></span>
-        <span class="nav__hamburger-line"></span>
-        <span class="nav__hamburger-line"></span>
-      </button>
     </nav>
   </header>
 
@@ -336,32 +346,6 @@
 
   <script>
   (function() {
-    // Mobile nav toggle
-    var hamburger = document.querySelector('[data-menu-toggle]');
-    var navLinks = document.querySelector('.nav__links');
-    if (hamburger && navLinks) {
-      hamburger.addEventListener('click', function() {
-        navLinks.classList.toggle('nav__links--open');
-      });
-      navLinks.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          navLinks.classList.remove('nav__links--open');
-        });
-      });
-    }
-
-    // Dynamic attestation counter
-    fetch('feed-count.txt')
-      .then(function(r) { return r.text(); })
-      .then(function(t) {
-        var n = parseInt(t.trim(), 10);
-        if (!isNaN(n)) {
-          var el = document.getElementById('nav-count');
-          if (el) el.textContent = n;
-        }
-      })
-      .catch(function() {});
-
     // Attestation cards
     const cards = document.querySelectorAll('.attestation-card');
     cards.forEach(function(card) {
@@ -596,5 +580,6 @@
     </div>
   </footer>
 
+  <script src="nav.js"></script>
 </body>
 </html>

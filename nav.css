@@ -1,0 +1,172 @@
+/* =============================================
+   NAV — Hamburger + Accordion (all pages)
+   Loaded after page CSS — overrides per-page nav
+   ============================================= */
+
+/* Hamburger always visible */
+.nav__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 200;
+}
+
+.nav__hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary, #f5f4ef);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+/* X animation when open */
+.nav__hamburger[aria-expanded="true"] .nav__hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__hamburger[aria-expanded="true"] .nav__hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav__hamburger[aria-expanded="true"] .nav__hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Nav actions group (counter + hamburger) */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Attested counter in header */
+.nav .attested-counter,
+.nav .attested-counter a {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: rgb(134, 239, 172);
+  letter-spacing: 0.05em;
+  list-style: none;
+}
+
+/* Hide old inline nav links — replaced by slide panel */
+.nav__links {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 240px;
+  height: 100vh;
+  background: #0a0a0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  flex-direction: column;
+  padding: 3.5rem 1.5rem 2rem;
+  z-index: 150;
+  gap: 0;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+}
+
+.nav__links.nav__links--open {
+  display: flex;
+}
+
+/* Top-level link items */
+.nav__links > li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav__links > li > a {
+  display: block;
+  padding: 0.65rem 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.06em;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.nav__links > li > a:hover {
+  color: var(--accent, #f5f4ef);
+}
+
+/* Accordion section (e.g. Products) */
+.nav__section {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav__section-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.06em;
+  padding: 0.65rem 0;
+  text-align: left;
+}
+
+.nav__section-toggle:hover {
+  color: var(--accent, #f5f4ef);
+}
+
+.nav__chevron {
+  transition: transform 0.2s ease;
+  font-style: normal;
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+.nav__section-toggle[aria-expanded="true"] .nav__chevron {
+  transform: rotate(180deg);
+}
+
+/* Accordion items (hidden by default) */
+.nav__section-items {
+  display: none;
+  list-style: none;
+  padding: 0.25rem 0 0.5rem 0.75rem;
+  margin: 0;
+}
+
+.nav__section-items.nav__section-items--open {
+  display: block;
+}
+
+.nav__section-items li a {
+  display: block;
+  padding: 0.4rem 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.38);
+  letter-spacing: 0.06em;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.nav__section-items li a:hover {
+  color: var(--accent, #f5f4ef);
+}
+
+/* Mobile: full-width panel */
+@media (max-width: 767px) {
+  .nav__links {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    top: 56px;
+    height: calc(100vh - 56px);
+  }
+}
