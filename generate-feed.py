@@ -4,6 +4,7 @@
 import json
 import glob
 import os
+import re
 import sys
 from datetime import datetime, timezone
 
@@ -149,7 +150,7 @@ def render_group_html(group):
 
 
 def inject_static_feed(entries, output_dir):
-    """Inject pre-rendered HTML into feed.html, replacing FEED_STATIC marker."""
+    """Inject pre-rendered HTML into feed.html using FEED_STATIC_START/END markers."""
     feed_path = os.path.join(output_dir, "feed.html")
     try:
         with open(feed_path, "r", encoding="utf-8") as f:
@@ -158,18 +159,50 @@ def inject_static_feed(entries, output_dir):
         sys.stderr.write(f"Warning: {feed_path} not found\n")
         return
 
-    marker = "<!-- FEED_STATIC -->"
-    if marker not in html:
-        sys.stderr.write(f"Warning: {marker} not found in {feed_path}\n")
+    start_marker = "<!-- FEED_STATIC_START -->"
+    end_marker = "<!-- FEED_STATIC_END -->"
+
+    if start_marker not in html or end_marker not in html:
+        # Fallback: try legacy single marker
+        legacy_marker = "<!-- FEED_STATIC -->"
+        if legacy_marker in html:
+            groups = group_entries(entries)
+            rendered = "".join(render_group_html(g) for g in groups)
+            html = html.replace(legacy_marker, rendered)
+            with open(feed_path, "w", encoding="utf-8") as f:
+                f.write(html)
+            sys.stdout.write(f"Injected {len(entries)} entries into feed.html (legacy marker)\n")
+        else:
+            sys.stderr.write(f"Warning: FEED_STATIC markers not found in {feed_path}\n")
         return
 
+    # Replace content between start and end markers (preserving markers)
     groups = group_entries(entries)
     rendered = "".join(render_group_html(g) for g in groups)
-    html = html.replace(marker, rendered)
+    pattern = re.compile(
+        re.escape(start_marker) + r".*?" + re.escape(end_marker),
+        re.DOTALL
+    )
+    html = pattern.sub(start_marker + rendered + end_marker, html)
+
+    # Update static feed-count text: replace content before <!-- FEED_COUNT -->
+    count = len(entries)
+    html = re.sub(
+        r'[^<>]*attested pipeline runs<!-- FEED_COUNT -->',
+        f'{count} attested pipeline runs<!-- FEED_COUNT -->',
+        html
+    )
+
+    # Update static nav-count: replace content before <!-- NAV_COUNT -->
+    html = re.sub(
+        r'[^<>]*<!-- NAV_COUNT -->',
+        f'{count}<!-- NAV_COUNT -->',
+        html
+    )
 
     with open(feed_path, "w", encoding="utf-8") as f:
         f.write(html)
-    sys.stdout.write(f"Injected {len(entries)} entries into feed.html\n")
+    sys.stdout.write(f"Injected {count} entries into feed.html\n")
 
 
 def inject_story_feed(entries, output_dir):

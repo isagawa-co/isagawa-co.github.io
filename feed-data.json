@@ -1,5 +1,15 @@
 [
   {
+    "title": "Fix Attestation Bundle Task Count",
+    "category": "market",
+    "timestamp": "2026-05-29T21:46:21.489984+00:00",
+    "task_count": 5,
+    "completed_count": 4,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1672863220"
+  },
+  {
     "title": "Build Portfolio Site Reframe",
     "category": "market",
     "timestamp": "2026-05-29T18:27:22.396582+00:00",
@@ -133,8 +143,8 @@
     "title": "Fix Execute Pipeline Autonomous Cycling",
     "category": "kernel",
     "timestamp": "2026-05-27T10:33:23.240013+00:00",
-    "task_count": 0,
-    "completed_count": 0,
+    "task_count": 8,
+    "completed_count": 8,
     "skipped_count": 0,
     "intent_revisions": 1,
     "rekor_url": "https://search.sigstore.dev/?logIndex=1642238031"
@@ -143,8 +153,8 @@
     "title": "Build Universal Hook Validator System",
     "category": "domain",
     "timestamp": "2026-05-27T10:33:10.783683+00:00",
-    "task_count": 0,
-    "completed_count": 0,
+    "task_count": 36,
+    "completed_count": 36,
     "skipped_count": 0,
     "intent_revisions": 0,
     "rekor_url": "https://search.sigstore.dev/?logIndex=1642235302"
@@ -153,8 +163,8 @@
     "title": "Build Ssh Compliance Spec Migration",
     "category": "domain",
     "timestamp": "2026-05-27T10:32:58.529005+00:00",
-    "task_count": 0,
-    "completed_count": 0,
+    "task_count": 17,
+    "completed_count": 17,
     "skipped_count": 0,
     "intent_revisions": 1,
     "rekor_url": "https://search.sigstore.dev/?logIndex=1642232521"
@@ -163,8 +173,8 @@
     "title": "Research Multi Model Routing",
     "category": "kernel",
     "timestamp": "2026-05-27T10:32:44.271819+00:00",
-    "task_count": 0,
-    "completed_count": 0,
+    "task_count": 6,
+    "completed_count": 6,
     "skipped_count": 0,
     "intent_revisions": 2,
     "rekor_url": "https://search.sigstore.dev/?logIndex=1642229699"
@@ -173,8 +183,8 @@
     "title": "Build Sync Model Router To Workspaces",
     "category": "kernel",
     "timestamp": "2026-05-27T10:31:56.266979+00:00",
-    "task_count": 0,
-    "completed_count": 0,
+    "task_count": 5,
+    "completed_count": 5,
     "skipped_count": 0,
     "intent_revisions": 1,
     "rekor_url": "https://search.sigstore.dev/?logIndex=1642219875"
