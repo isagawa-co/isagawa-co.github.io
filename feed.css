@@ -210,6 +210,50 @@ a { color: var(--accent); text-decoration: none; }
 
 .rekor-link:hover { border-color: var(--accent); }
 
+.feed-group {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--card-radius);
+  padding: 0;
+  transition: border-color 250ms ease;
+}
+
+.feed-group:hover {
+  border-color: rgba(252, 249, 243, 0.3);
+}
+
+.feed-group__summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  padding: var(--card-padding);
+}
+
+.feed-group__summary::-webkit-details-marker { display: none; }
+
+.feed-group__count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.feed-group__entries {
+  padding: 0 var(--card-padding) var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.feed-group__entries .feed-entry {
+  border-left: 1px solid var(--border-subtle);
+  padding: var(--space-md);
+}
+
 .feed-footer {
   font-family: var(--font-mono);
   font-size: var(--text-xs);

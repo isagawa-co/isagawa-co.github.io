@@ -47,9 +47,42 @@
         '<h3 class="feed-entry__title">' + e.title + '</h3>' +
         '<div class="feed-meta">' +
           '<span>' + formatDate(e.timestamp) + '</span>' +
-          '<span>' + e.task_count + ' tasks</span>' +
+          '<span>' + (e.task_count != null ? e.task_count + ' tasks' : '—') + '</span>' +
           '<span>' + revs + '</span>' +
         '</div>' + rekor + '</div>';
+    }
+
+    function groupEntries(entries) {
+      var groups = [];
+      var i = 0;
+      while (i < entries.length) {
+        var current = { title: entries[i].title, entries: [entries[i]], count: 1 };
+        var j = i + 1;
+        while (j < entries.length && entries[j].title === current.title) {
+          current.entries.push(entries[j]);
+          current.count++;
+          j++;
+        }
+        groups.push(current);
+        i = j;
+      }
+      return groups;
+    }
+
+    function renderGroup(group) {
+      if (group.count === 1) {
+        return renderEntry(group.entries[0]);
+      }
+      var cat = group.entries[0].category;
+      var inner = group.entries.map(renderEntry).join('');
+      return '<details class="feed-group cat-' + cat + '">' +
+        '<summary class="feed-group__summary">' +
+          '<span class="feed-entry__cat">' + cat + '</span>' +
+          '<h3 class="feed-entry__title">' + group.title + '</h3>' +
+          '<span class="feed-group__count">' + group.count + ' runs</span>' +
+        '</summary>' +
+        '<div class="feed-group__entries">' + inner + '</div>' +
+      '</details>';
     }
 
     fetch('feed-data.json')
@@ -58,7 +91,7 @@
         var count = entries.length;
         document.getElementById('nav-count').textContent = count;
         document.getElementById('feed-count').textContent = count + ' attested pipeline runs';
-        document.getElementById('feed-entries').innerHTML = entries.map(renderEntry).join('');
+        document.getElementById('feed-entries').innerHTML = groupEntries(entries).map(renderGroup).join('');
       })
       .catch(function() {
         document.getElementById('feed-count').textContent = 'Failed to load feed data.';
