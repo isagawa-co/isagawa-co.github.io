@@ -42,10 +42,10 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">The Problem</p>
-    <h2>UI tests are brittle. Every engineer writes them differently.</h2>
-    <p class="page-section__narrative">AI-generated tests make it worse. More code, same chaos, no architecture. Selectors break on every deploy. Test suites become unmaintainable. Teams can't share patterns. Every framework is different.</p>
-    <ul class="problem-list">
+    <p class="page-section__label reveal">The Problem</p>
+    <h2 class="reveal">UI tests are brittle. Every engineer writes them differently.</h2>
+    <p class="page-section__narrative reveal">AI-generated tests make it worse. More code, same chaos, no architecture. Selectors break on every deploy. Test suites become unmaintainable. Teams can't share patterns. Every framework is different.</p>
+    <ul class="problem-list reveal">
       <li>How do you keep selector locators in one place?</li>
       <li>How do you ensure every engineer follows the same pattern?</li>
       <li>How do you make AI-generated tests maintainable, not chaotic?</li>
@@ -53,39 +53,39 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">The Architecture</p>
-    <h2>Five layers. One pattern. Five platforms.</h2>
-    <p class="page-section__narrative">Inspired by the <a href="https://serenity-js.org/handbook/design/screenplay-pattern/" target="_blank" rel="noopener">Screenplay Pattern</a> and redesigned for AI-generated code. The strict layer separation is what gives the AI discipline to produce maintainable code every time, not just the first time. Every test follows the same architecture, whether you are testing web UI with Selenium, TypeScript with Playwright, container images, LLM outputs, or SSH configurations. No inheritance. Composition all the way down. State checks in one place. Constants isolated. Tests stay clean.</p>
+    <p class="page-section__label reveal">The Architecture</p>
+    <h2 class="reveal">Five layers. One pattern. Five platforms.</h2>
+    <p class="page-section__narrative reveal">Inspired by the <a href="https://serenity-js.org/handbook/design/screenplay-pattern/" target="_blank" rel="noopener">Screenplay Pattern</a> and redesigned for AI-generated code. The strict layer separation is what gives the AI discipline to produce maintainable code every time, not just the first time. Every test follows the same architecture, whether you are testing web UI with Selenium, TypeScript with Playwright, container images, LLM outputs, or SSH configurations. No inheritance. Composition all the way down. State checks in one place. Constants isolated. Tests stay clean.</p>
     <div class="flow-grid">
-      <div class="flow-card">
+      <div class="flow-card reveal">
         <span class="flow-num">1</span>
         <div class="flow-content">
           <h3>Interface</h3>
           <p>Connection management. Browser driver setup, SSH sessions, Docker clients. Retry logic, timeout handling, and connection pooling live here. No business logic. The rest of the stack never touches the transport layer directly.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-1">
         <span class="flow-num">2</span>
         <div class="flow-content">
           <h3>Domain Object</h3>
           <p>One class per domain concept. Page Objects for UI, Validators for SSH, Image Objects for Docker, Metric Objects for LLM eval. Constants and state-check methods live here. Return self for fluent chaining.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-2">
         <span class="flow-num">3</span>
         <div class="flow-content">
           <h3>Task</h3>
           <p>Domain operations. Composes domain objects. One responsibility per method. No constants, no locators. Returns None. Orchestration lives in Roles, not Tasks.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-3">
         <span class="flow-num">4</span>
         <div class="flow-content">
           <h3>Role</h3>
           <p>User workflows. Composes Tasks in sequence. One workflow method per role behavior. No return values. Tests call one role method and assert via domain object state-checks.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal">
         <span class="flow-num">5</span>
         <div class="flow-content">
           <h3>Test</h3>
@@ -96,39 +96,39 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">How It Works</p>
-    <h2>Five steps. From description to passing tests.</h2>
-    <p class="page-section__narrative">You provide a persona, a URL, and a plain-English workflow. The AI agent handles everything else: credential strategy, element discovery, BDD scenario generation, code construction, and test execution. If a test fails, you triage it together.</p>
+    <p class="page-section__label reveal">How It Works</p>
+    <h2 class="reveal">Five steps. From description to passing tests.</h2>
+    <p class="page-section__narrative reveal">You provide a persona, a URL, and a plain-English workflow. The AI agent handles everything else: credential strategy, element discovery, BDD scenario generation, code construction, and test execution. If a test fails, you triage it together.</p>
     <div class="flow-grid">
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-1">
         <span class="flow-num">1</span>
         <div class="flow-content">
           <h3>User Input</h3>
           <p>Provide three things: the persona (who is testing), the target URL, and what to test in plain English. "HR Manager logs in and creates an employee." That is the entire input.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal">
         <span class="flow-num">2</span>
         <div class="flow-content">
           <h3>Pre-flight</h3>
           <p>The agent resolves the credential strategy, validates access to the target application, and confirms the environment is ready. No test code is written until pre-flight passes.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-1">
         <span class="flow-num">3</span>
         <div class="flow-content">
           <h3>AI Processing</h3>
           <p>The agent generates BDD scenarios from your description, defines expected states, then discovers every element on the target pages. Selectors, interactions, and state transitions are mapped automatically.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-2">
         <span class="flow-num">4</span>
         <div class="flow-content">
           <h3>Construction</h3>
           <p>The agent reads the reference implementations and builds all five layers: Domain Objects with locators, Tasks that compose them, Roles that orchestrate workflows, and Tests that assert via state-check methods. Every file follows the pattern.</p>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-3">
         <span class="flow-num">5</span>
         <div class="flow-content">
           <h3>Execution</h3>
@@ -139,9 +139,9 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">See It In Action</p>
-    <h2>One command. Five layers. Passing tests.</h2>
-    <p class="page-section__narrative">Invoke <code>/qa-workflow</code> inside Claude Code. Provide a persona, a URL, and a workflow. The agent handles the rest.</p>
+    <p class="page-section__label reveal">See It In Action</p>
+    <h2 class="reveal">One command. Five layers. Passing tests.</h2>
+    <p class="page-section__narrative reveal">Invoke <code>/qa-workflow</code> inside Claude Code. Provide a persona, a URL, and a workflow. The agent handles the rest.</p>
     <div class="demo-terminal" id="demoTerminal">
       <div class="terminal__bar">
         <span class="terminal__dot terminal__dot--red"></span>
@@ -154,11 +154,11 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">The Platforms</p>
-    <h2>Same architecture. Different stacks.</h2>
-    <p class="page-section__narrative">Whether you test web browsers, APIs, container images, LLM outputs, or SSH configurations, the same 5-layer architecture applies. One pattern. Six platforms.</p>
+    <p class="page-section__label reveal">The Platforms</p>
+    <h2 class="reveal">Same architecture. Different stacks.</h2>
+    <p class="page-section__narrative reveal">Whether you test web browsers, APIs, container images, LLM outputs, or SSH configurations, the same 5-layer architecture applies. One pattern. Six platforms.</p>
     <div class="flow-grid">
-      <div class="flow-card">
+      <div class="flow-card reveal">
         <span class="flow-content">
           <h3>Platform Selenium</h3>
           <p><strong>Stack:</strong> Python, Selenium, pytest</p>
@@ -167,7 +167,7 @@
           <a href="https://github.com/isagawa-qa/platform-selenium" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-1">
         <span class="flow-content">
           <h3>Platform Playwright</h3>
           <p><strong>Stack:</strong> TypeScript, Playwright Test</p>
@@ -176,7 +176,7 @@
           <a href="https://github.com/isagawa-qa/platform-playwright" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal">
         <span class="flow-content">
           <h3>Platform API</h3>
           <p><strong>Stack:</strong> TypeScript, Playwright APIRequestContext</p>
@@ -185,7 +185,7 @@
           <a href="https://github.com/isagawa-qa/platform-playwright" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-1">
         <span class="flow-content">
           <h3>Platform Docker</h3>
           <p><strong>Stack:</strong> Docker, pytest, Python</p>
@@ -194,7 +194,7 @@
           <a href="https://github.com/isagawa-qa/platform-docker" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-2">
         <span class="flow-content">
           <h3>Platform DeepEval</h3>
           <p><strong>Stack:</strong> Python, DeepEval, LLM eval</p>
@@ -203,7 +203,7 @@
           <a href="mailto:alain@isagawa.co">Contact for access ↗</a>
         </div>
       </div>
-      <div class="flow-card">
+      <div class="flow-card reveal reveal-delay-3">
         <span class="flow-content">
           <h3>Platform SSH</h3>
           <p><strong>Stack:</strong> Python, SSH, compliance frameworks</p>
@@ -216,8 +216,8 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">Tech Stack</p>
-    <div class="badges">
+    <p class="page-section__label reveal">Tech Stack</p>
+    <div class="badges reveal">
       <span class="badge">Python</span>
       <span class="badge">TypeScript</span>
       <span class="badge">Selenium</span>
@@ -229,8 +229,8 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">Results</p>
-    <div class="results-grid">
+    <p class="page-section__label reveal">Results</p>
+    <div class="results-grid reveal">
       <div class="result-card">
         <span class="result-stat">6</span>
         <span class="result-label">Complete platforms</span>
@@ -248,19 +248,19 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label">Who This Is For</p>
+    <p class="page-section__label reveal">Who This Is For</p>
     <div class="evidence-grid">
-      <div class="evidence-card">
+      <div class="evidence-card reveal">
         <p class="card-tags">QA LEAD / CONSISTENCY</p>
         <h3>QA leads</h3>
         <p>Evaluating test automation frameworks. Need a pattern every engineer follows. Consistent locator management. Maintainable AI-generated tests.</p>
       </div>
-      <div class="evidence-card">
+      <div class="evidence-card reveal reveal-delay-1">
         <p class="card-tags">ENGINEERING MANAGER / PATTERNS</p>
         <h3>Engineering managers</h3>
         <p>Wanting consistent test patterns across teams. Reduce maintenance overhead. No more "everyone writes tests differently" chaos.</p>
       </div>
-      <div class="evidence-card">
+      <div class="evidence-card reveal reveal-delay-2">
         <p class="card-tags">TEAM / AI ADOPTION</p>
         <h3>Teams adopting AI testing</h3>
         <p>Using AI agents to generate tests. Need guardrails, not chaos. A strict architecture that keeps AI-generated code clean and maintainable.</p>
@@ -269,7 +269,7 @@
   </section>
 
   <section class="cta">
-    <a href="https://github.com/orgs/isagawa-qa/repositories" class="cta-button" target="_blank" rel="noopener">Explore All Platforms ↗</a>
+    <a href="https://github.com/orgs/isagawa-qa/repositories" class="cta-button reveal" target="_blank" rel="noopener">Explore All Platforms ↗</a>
   </section>
 
   <footer>
