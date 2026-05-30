@@ -77,6 +77,11 @@ a:hover { color: var(--accent-hover); }
 .result-stat { font-family: var(--font-mono); font-size: var(--text-3xl); font-weight: 700; color: var(--accent); display: block; margin-bottom: var(--space-xs); }
 .result-label { font-size: var(--text-sm); color: var(--text-secondary); }
 .results-link { text-align: center; margin-top: var(--space-md); font-size: var(--text-sm); color: var(--text-secondary); }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 120ms; }
+.reveal-delay-2 { transition-delay: 240ms; }
+.reveal-delay-3 { transition-delay: 360ms; }
 .cta { text-align: center; padding: clamp(4rem, 10vh, 8rem) var(--space-md); }
 .cta-button { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--bg-primary); padding: 0.875rem 1.75rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: background 0.2s ease; }
 .cta-button:hover { background: var(--accent-hover); color: var(--bg-primary); text-decoration: none; }
