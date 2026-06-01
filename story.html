@@ -14,6 +14,14 @@
       flex-direction: column;
       justify-content: center;
     }
+    /* Static terminal — no float animation, scrollable body */
+    #provenance-story .terminal {
+      animation: none;
+      transform: none;
+    }
+    #provenance-story .terminal__body {
+      overflow-y: auto;
+    }
   </style>
 </head>
 <body>
@@ -168,9 +176,15 @@
 
   <script>
   (function() {
-    var body = document.getElementById('terminal-body');
+    'use strict';
+    const body = document.getElementById('terminal-body');
     if (!body) return;
-    var lines = [
+
+    const CHAR_DELAY = 35;
+    const LINE_DELAY = 400;
+    const LOOP_DELAY = 3500;
+
+    const lines = [
       { text: '# how this page was built', cls: 'terminal__line--comment' },
       { text: '', cls: '' },
       { text: 'user: "what do you think about this new theme?"', cls: 'terminal__line--user' },
@@ -195,29 +209,44 @@
       { text: '', cls: '' },
       { text: '  this page is the output.', cls: 'terminal__line--emphasis' },
     ];
-    var charDelay = 35, lineDelay = 500, restartDelay = 3500;
-    function run() {
+
+    function typewriteLine(el, text) {
+      return new Promise(resolve => {
+        let i = 0;
+        el.textContent = '';
+        function type() {
+          if (i < text.length) {
+            el.textContent += text[i++];
+            setTimeout(type, CHAR_DELAY);
+          } else {
+            resolve();
+          }
+        }
+        type();
+      });
+    }
+
+    async function animate() {
       body.innerHTML = '';
-      var cursor = document.createElement('span');
-      cursor.className = 'terminal__cursor';
-      typeLine(0, cursor);
-    }
-    function typeLine(lineIdx, cursor) {
-      if (lineIdx >= lines.length) { if (cursor.parentNode) cursor.parentNode.removeChild(cursor); setTimeout(run, restartDelay); return; }
-      var line = lines[lineIdx];
-      var el = document.createElement('div');
-      el.className = 'terminal__line ' + (line.cls || '');
-      body.appendChild(el);
-      if (!line.text) { el.innerHTML = '&nbsp;'; setTimeout(function() { typeLine(lineIdx + 1, cursor); }, lineDelay / 2); return; }
-      var i = 0;
-      el.appendChild(cursor);
-      function typeChar() {
-        if (i < line.text.length) { el.insertBefore(document.createTextNode(line.text[i]), cursor); i++; setTimeout(typeChar, charDelay); }
-        else { setTimeout(function() { typeLine(lineIdx + 1, cursor); }, lineDelay); }
+      for (const line of lines) {
+        const el = document.createElement('div');
+        el.className = 'terminal__line ' + (line.cls || '');
+        body.appendChild(el);
+        body.scrollTop = body.scrollHeight;
+        if (!line.text) {
+          el.innerHTML = '&nbsp;';
+          await new Promise(r => setTimeout(r, LINE_DELAY / 2));
+        } else {
+          await typewriteLine(el, line.text);
+          body.scrollTop = body.scrollHeight;
+          await new Promise(r => setTimeout(r, LINE_DELAY));
+        }
       }
-      typeChar();
+      await new Promise(r => setTimeout(r, LOOP_DELAY));
+      animate();
     }
-    run();
+
+    animate();
   })();
   </script>
 
