@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isagawa | Job Application Agent</title>
+  <link rel="stylesheet" href="job-application.css">
+  <link rel="stylesheet" href="pill-nav.css">
+</head>
+<body>
+  <header class="site-header" aria-hidden="true"></header>
+
+  <nav class="pill-nav" aria-label="Site navigation">
+    <a href="index.html" class="pill-nav__logo">ISAGAWA</a>
+    <div class="pill-nav__items">
+      <a href="index.html">Home</a>
+      <a href="feed.html">Feed</a>
+      <div class="pill-nav__dropdown">
+        <button class="pill-nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+          Products <span class="pill-nav__chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="pill-nav__dropdown-menu" role="menu">
+          <a href="attestation.html" role="menuitem">Attestation</a>
+          <a href="job-application.html" role="menuitem">Job Application</a>
+          <a href="qa-platforms.html" role="menuitem">QA Platforms</a>
+          <a href="ssh-compliance.html" role="menuitem">SSH Compliance</a>
+          <a href="vibe-coder.html" role="menuitem">Vibe Coder</a>
+        </div>
+      </div>
+      <a href="story.html">The Story</a>
+    </div>
+    <a href="feed.html" class="pill-nav__count"><span id="nav-count">--</span> ✓</a>
+  </nav>
+  <div class="factory-origin"><a href="index.html">&larr; Built by the factory</a></div>
+
+  <div class="loop-badge">
+    This product was produced from an agent by the same system described on the <a href="index.html#self-extension">homepage</a>.
+  </div>
+
+  <section class="hero">
+    <h1>Apply smarter. Every form, every time.</h1>
+    <p class="hero__sub">AI reads job applications automatically. Fills every field from your profile. You review before it submits. No missed fields, no typos, no wasted hours.</p>
+    <p class="hero__platform">Currently available for Claude Code</p>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">The Problem</p>
+    <h2>50 applications. 50 unique forms. One exhausted human.</h2>
+    <p class="page-section__narrative">Every job has a different application form. Copy your resume into 15 text boxes. Re-type your address. Upload the same PDF again. Miss one required field and start over. You spend more time filling forms than finding jobs.</p>
+    <ul class="problem-list">
+      <li>How do you apply to 50 jobs without burning out on repetitive forms?</li>
+      <li>How do you avoid typos and missed fields that cost you interviews?</li>
+      <li>How do you keep every application consistent and complete?</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label">How It Works</p>
+    <h2>Four steps. From job posting to submitted application.</h2>
+    <p class="page-section__narrative">Point the agent at a job application. It reads every field, matches your profile data, fills the form, and waits for your review. You approve, it submits. Every field accounted for.</p>
+    <div class="flow-grid">
+      <div class="flow-card">
+        <span class="flow-num">1</span>
+        <div class="flow-content">
+          <h3>Discover Form</h3>
+          <p>The agent navigates to the job application page. It reads every field — text inputs, dropdowns, file uploads, checkboxes. It maps the entire form structure before touching anything.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-1">
+        <span class="flow-num">2</span>
+        <div class="flow-content">
+          <h3>Match Profile</h3>
+          <p>Your profile contains your resume, work history, education, skills, and common answers. The agent matches each form field to the right piece of your profile. No guessing, no hallucinating.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-2">
+        <span class="flow-num">3</span>
+        <div class="flow-content">
+          <h3>Fill &amp; Review</h3>
+          <p>The agent fills every field. You see exactly what it wrote before anything is submitted. Change a word, swap an answer, add a custom note. You stay in control of every application.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-3">
+        <span class="flow-num">4</span>
+        <div class="flow-content">
+          <h3>Submit</h3>
+          <p>One click to submit. The agent handles file uploads, confirmation checkboxes, and multi-page forms. Every submission is logged so you can track what you sent and where.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Who This Is For</p>
+    <div class="evidence-grid">
+      <div class="evidence-card reveal">
+        <p class="card-tags">ACTIVE / HIGH VOLUME</p>
+        <h3>Active job seekers</h3>
+        <p>You're applying to dozens of jobs per week. Each form takes 20-30 minutes. The agent cuts that to 2 minutes per application. Spend your time on interviews, not forms.</p>
+      </div>
+      <div class="evidence-card reveal reveal-delay-1">
+        <p class="card-tags">TRANSITION / NEW FIELD</p>
+        <h3>Career changers</h3>
+        <p>Switching industries means more applications, more rejections, more forms. The agent keeps your applications consistent while you tailor cover letters to each role.</p>
+      </div>
+      <div class="evidence-card reveal reveal-delay-2">
+        <p class="card-tags">NEW GRAD / FIRST JOB</p>
+        <h3>Recent graduates</h3>
+        <p>Your first job search is overwhelming. Hundreds of applications, no system. The agent gives you a system from day one. Every application complete, every field filled correctly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Tech Stack</p>
+    <div class="badges reveal">
+      <span class="badge">Isagawa Kernel</span>
+      <span class="badge">Claude Code</span>
+      <span class="badge">Playwright</span>
+      <span class="badge">Python</span>
+      <span class="badge">TypeScript</span>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Results</p>
+    <div class="results-grid reveal">
+      <div class="result-card">
+        <span class="result-stat">1</span>
+        <span class="result-label">Agent</span>
+      </div>
+      <div class="result-card">
+        <span class="result-stat">Any</span>
+        <span class="result-label">Form</span>
+      </div>
+      <div class="result-card">
+        <span class="result-stat">4</span>
+        <span class="result-label">Steps</span>
+      </div>
+      <div class="result-card">
+        <span class="result-stat">0</span>
+        <span class="result-label">Typos</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta reveal">
+    <a href="https://github.com/isagawa-co/job-application-spec" class="cta-button" target="_blank" rel="noopener">Get Started ↗</a>
+  </section>
+
+  <footer>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <p class="footer__col-header">Isagawa</p>
+        <p>Built by the system it describes.</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-header">Get in touch</p>
+        <a href="mailto:alain@isagawa.co">alain@isagawa.co</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-header">More products</p>
+        <a href="qa-platforms.html">QA Platforms</a>
+        <a href="vibe-coder.html">Vibe Coder</a>
+        <a href="ssh-compliance.html">SSH Compliance</a>
+        <a href="attestation.html">Attestation Pipeline</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="job-application.js"></script>
+  <script src="pill-nav.js"></script>
+</body>
+</html>
