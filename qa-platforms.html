@@ -39,7 +39,7 @@
 
   <section class="hero">
     <h1>Describe what to test. Get production-grade test code.</h1>
-    <p class="hero__sub">Five test automation platforms, one architecture. Selenium, Playwright, Docker, DeepEval, SSH. Every platform follows the same 5-layer pattern. Every engineer writes the same way. Every test is maintainable.</p>
+    <p class="hero__sub">Seven test automation platforms, one architecture. Selenium, Playwright, API, Docker, DeepEval, SSH, Database. Every platform follows the same 5-layer pattern. Every engineer writes the same way. Every test is maintainable.</p>
   </section>
 
   <section class="page-section">
@@ -62,14 +62,14 @@
         <span class="flow-num">1</span>
         <div class="flow-content">
           <h3>Interface</h3>
-          <p>Connection management. Browser driver setup, SSH sessions, Docker clients. Retry logic, timeout handling, and connection pooling live here. No business logic. The rest of the stack never touches the transport layer directly.</p>
+          <p>Connection management. Browser driver setup, SSH sessions, Docker clients, database connection pools. Retry logic, timeout handling, and connection pooling live here. No business logic. The rest of the stack never touches the transport layer directly.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-1">
         <span class="flow-num">2</span>
         <div class="flow-content">
           <h3>Domain Object</h3>
-          <p>One class per domain concept. Page Objects for UI, Validators for SSH, Image Objects for Docker, Metric Objects for LLM eval. Constants and state-check methods live here. Return self for fluent chaining.</p>
+          <p>One class per domain concept. Page Objects for UI, Validators for SSH, Image Objects for Docker, Metric Objects for LLM eval, Table Objects for database. Constants and state-check methods live here. Return self for fluent chaining.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-2">
@@ -157,7 +157,7 @@
   <section class="page-section">
     <p class="page-section__label reveal">The Platforms</p>
     <h2 class="reveal">Same architecture. Different stacks.</h2>
-    <p class="page-section__narrative reveal">Whether you test web browsers, APIs, container images, LLM outputs, or SSH configurations, the same 5-layer architecture applies. One pattern. Six platforms.</p>
+    <p class="page-section__narrative reveal">Whether you test web browsers, APIs, databases, container images, LLM outputs, or SSH configurations, the same 5-layer architecture applies. One pattern. Seven platforms.</p>
     <div class="flow-grid">
       <div class="flow-card reveal">
         <span class="flow-content">
@@ -213,6 +213,15 @@
           <a href="https://github.com/isagawa-qa/platform-ssh" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </div>
+      <div class="flow-card reveal">
+        <span class="flow-content">
+          <h3>Platform Database</h3>
+          <p><strong>Stack:</strong> Python, SQLAlchemy, pytest</p>
+          <p><strong>Tests:</strong> Query correctness, schema integrity, data migrations</p>
+          <p><strong>Use when:</strong> You need to validate database state, stored procedures, or migration correctness</p>
+          <a href="mailto:alain@isagawa.co">Contact for access ↗</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -225,6 +234,7 @@
       <span class="badge">Playwright</span>
       <span class="badge">pytest</span>
       <span class="badge">Docker</span>
+      <span class="badge">SQLAlchemy</span>
       <span class="badge">MCP</span>
     </div>
   </section>
@@ -233,7 +243,7 @@
     <p class="page-section__label reveal">Results</p>
     <div class="results-grid reveal">
       <div class="result-card">
-        <span class="result-stat">6</span>
+        <span class="result-stat">7</span>
         <span class="result-label">Complete platforms</span>
       </div>
       <div class="result-card">
