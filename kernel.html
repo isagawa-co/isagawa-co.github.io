@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons mechanically enforced.">
+  <meta name="description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons recorded and enforced where they can be.">
   <meta property="og:title" content="Isagawa | Kernel">
-  <meta property="og:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons mechanically enforced.">
+  <meta property="og:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons recorded and enforced where they can be.">
   <meta property="og:url" content="https://isagawa.co/kernel.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Isagawa | Kernel">
-  <meta name="twitter:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons mechanically enforced.">
+  <meta name="twitter:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons recorded and enforced where they can be.">
   <title>Isagawa | Kernel</title>
   <link rel="stylesheet" href="qa-platforms.css">
   <link rel="stylesheet" href="pill-nav.css">
@@ -59,7 +59,7 @@
 
   <section class="hero">
     <h1>A self-building agent harness with hook-enforced governance.</h1>
-    <p class="hero__sub">Hooks at the tool-call boundary. Anchors that force re-grounding every N actions. Learn cycles that turn each failure into a mechanical rule update.</p>
+    <p class="hero__sub">Hooks at the tool-call boundary. Anchors that force re-grounding every N actions. Learn cycles that record each failure as a rule the system enforces mechanically where it can, and re-reads at every anchor where it can't.</p>
   </section>
 
   <section class="page-section">
@@ -68,7 +68,7 @@
     <p class="page-section__narrative reveal">Mid-task they forget what they were doing. They skip steps they read minutes ago. They rationalize shortcuts as "more efficient." The model has already proven it will read the instruction, agree, and then violate it. Telling it harder doesn't work. Asking nicely doesn't work. The fix has to be structural.</p>
     <ul class="problem-list reveal">
       <li>How do you stop an agent from skipping a checkpoint it just read about?</li>
-      <li>How do you make the same failure literally impossible after it happens once?</li>
+      <li>How do you make the system catch its own failures, even when the agent thinks it didn't fail?</li>
       <li>How do you keep behavior consistent across hour-long sessions and context compression?</li>
     </ul>
   </section>
@@ -76,7 +76,7 @@
   <section class="page-section">
     <p class="page-section__label reveal">The Loop</p>
     <h2 class="reveal">Every session runs the same loop. No step can be skipped.</h2>
-    <p class="page-section__narrative reveal">session-start, anchor, work, complete. The same cycle, every session. Anchors fire every N actions. Failures trigger a mandatory learn step. State survives restarts. Context survives compression. The agent cannot bypass any step: hooks block writes until each gate passes.</p>
+    <p class="page-section__narrative reveal">session-start, anchor, work, complete. The same cycle, every session. Anchors fire every N actions. Failures trigger a mandatory learn step. State survives restarts. Context survives compression. The loop itself is hook-enforced. Specific rules within it land in one of two tiers: hooks where they can, protocol re-read at every anchor where they can't.</p>
     <pre class="loop-diagram reveal"><code>session-start -&gt; anchor -&gt; WORK -----------------&gt; complete
                    ^         |                       ^
                    `-- every 10 actions &lt;-----------'
@@ -87,13 +87,13 @@
   <section class="page-section">
     <p class="page-section__label reveal">The Architecture</p>
     <h2 class="reveal">Four moving parts. One harness.</h2>
-    <p class="page-section__narrative reveal">Each part solves a specific failure mode. None of them depend on the agent following instructions. They work because they intercept actions at the tool-call boundary and check state before allowing the action to proceed.</p>
+    <p class="page-section__narrative reveal">Each part solves a specific failure mode. Together they reduce the surface area where the agent has to be trusted to follow text it has already proven it will violate.</p>
     <div class="flow-grid">
       <div class="flow-card reveal">
         <span class="flow-num">1</span>
         <div class="flow-content">
           <h3>Hooks</h3>
-          <p>Fire at the tool-call boundary. Block writes when state preconditions fail. Append every action to an audit log. The hook isn't reading instructions: it's reading bytes. The agent can't talk past it.</p>
+          <p>Fire at the tool-call boundary. Block writes when state preconditions fail. Append every action to an audit log. For rules wired to a hook, the hook isn't reading instructions: it's reading bytes. Rules that can't be reduced to a check live in the protocol tier instead.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-1">
@@ -150,7 +150,7 @@
       </div>
       <div class="result-card">
         <span class="result-stat">29</span>
-        <span class="result-label">Lessons mechanically enforced</span>
+        <span class="result-label">Lessons recorded</span>
       </div>
       <div class="result-card">
         <span class="result-stat">122</span>
@@ -223,7 +223,7 @@
   <section class="page-section">
     <p class="page-section__label reveal">Receipts</p>
     <h2 class="reveal">The system writes down its own failures.</h2>
-    <p class="page-section__narrative reveal">An anchor catches a self-detected violation. The intent chain hashes the user's words. A recorded lesson escalates to mechanical enforcement on recurrence. All three are append-only artifacts from this workspace.</p>
+    <p class="page-section__narrative reveal">An anchor catches a self-detected violation. The intent chain hashes the user's words. A recorded lesson flags a candidate for mechanical enforcement after recurrence, if the rule can be hooked at all. All three are append-only artifacts from this workspace.</p>
     <div class="flow-grid">
       <div class="flow-card reveal">
         <div class="flow-content">
@@ -258,7 +258,7 @@
       <div class="evidence-card reveal reveal-delay-1">
         <p class="card-tags">FDE / FORWARD-DEPLOYED ENGINEER</p>
         <h3>FDEs deploying lab-built agents</h3>
-        <p>You deploy agents into customer environments. You need the runtime layer to be inspectable, governable, and mechanically enforced. This is that layer.</p>
+        <p>You deploy agents into customer environments. You need the runtime layer to be inspectable, governable, and auditable. This is that layer.</p>
       </div>
       <div class="evidence-card reveal reveal-delay-2">
         <p class="card-tags">RESEARCHER / HARNESS DESIGN</p>
