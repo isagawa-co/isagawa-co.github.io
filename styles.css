@@ -486,6 +486,16 @@ footer {
   margin-bottom: var(--space-xs);
 }
 
+.capability-card-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0;
+  margin-top: var(--space-sm);
+}
+
 .capability-card-list {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
