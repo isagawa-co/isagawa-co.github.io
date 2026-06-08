@@ -28,6 +28,12 @@
       line-height: 1.5;
     }
     .loop-diagram code { color: var(--text-primary); }
+    .receipts-grid { display: flex; flex-direction: column; gap: var(--space-lg); margin-top: var(--space-lg); }
+    .receipt-card .demo-terminal { margin-top: 0; }
+    .receipt-card .terminal__body { height: auto; min-height: 140px; padding: 14px; }
+    .receipt-card .terminal__body pre { margin: 0; }
+    .receipt-card .terminal__body code { font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.6; color: var(--text-primary); white-space: pre; display: block; }
+    .receipt-card .receipt-description { margin-top: var(--space-md); color: var(--text-secondary); font-size: var(--text-base); line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -224,24 +230,62 @@
     <p class="page-section__label reveal">Receipts</p>
     <h2 class="reveal">The system writes down its own failures.</h2>
     <p class="page-section__narrative reveal">An anchor catches a self-detected violation. The intent chain hashes the user's words. A recorded lesson flags a candidate for mechanical enforcement after recurrence, if the rule can be hooked at all. All three are append-only artifacts from this workspace.</p>
-    <div class="flow-grid">
-      <div class="flow-card reveal">
-        <div class="flow-content">
-          <h3>Anchor log</h3>
-          <p>Every anchor archives the actions reviewed and any violations found. When backlog 129 was created by bypassing the /kernel/backlog skill, the next anchor flagged it and set needs_learn: true. The agent could not write again until the lesson was recorded.</p>
+    <div class="receipts-grid">
+      <div class="receipt-card reveal">
+        <div class="demo-terminal">
+          <div class="terminal__bar">
+            <span class="terminal__dot terminal__dot--red"></span>
+            <span class="terminal__dot terminal__dot--yellow"></span>
+            <span class="terminal__dot terminal__dot--green"></span>
+            <span class="terminal__title">.claude/state/anchor-logs/2026-06-08/06-45-00Z.json</span>
+          </div>
+          <div class="terminal__body"><pre><code>{
+  "anchor_timestamp": "2026-06-08T06:45:00Z",
+  "actions_count": 48,
+  "violations_found": 1,
+  "violation_details": [
+    "Backlog 129 created via direct intent.py call,
+     bypassing /kernel/backlog skill."
+  ],
+  "needs_learn_set": true
+}</code></pre></div>
         </div>
+        <p class="receipt-description">Every anchor archives the actions reviewed and any violations found. When backlog 129 was created by bypassing the /kernel/backlog skill, the next anchor flagged it and set needs_learn: true. The agent could not write again until the lesson was recorded.</p>
       </div>
-      <div class="flow-card reveal reveal-delay-1">
-        <div class="flow-content">
-          <h3>Intent chain</h3>
-          <p>Every backlog item is hash-signed. raw_input_hash is the SHA-256 of the user's literal words at /kernel/backlog invocation time. backlog_hash_after is the SHA-256 of the resulting file. Both go into an append-only chain a third party can verify.</p>
+      <div class="receipt-card reveal reveal-delay-1">
+        <div class="demo-terminal">
+          <div class="terminal__bar">
+            <span class="terminal__dot terminal__dot--red"></span>
+            <span class="terminal__dot terminal__dot--yellow"></span>
+            <span class="terminal__dot terminal__dot--green"></span>
+            <span class="terminal__title">.claude/state/intents/131-intent-chain.jsonl</span>
+          </div>
+          <div class="terminal__body"><pre><code>{
+  "rev": 1,
+  "timestamp": "2026-06-08T07:24:57+00:00",
+  "raw_input_hash":     "0c43483511fb6ee241b34fc58c294751...",
+  "backlog_hash_after": "6f9ebac571cb3369ee518f1d04432458..."
+}</code></pre></div>
         </div>
+        <p class="receipt-description">Every backlog item is hash-signed. raw_input_hash is the SHA-256 of the user's literal words at /kernel/backlog invocation time. backlog_hash_after is the SHA-256 of the resulting file. Both go into an append-only chain a third party can verify.</p>
       </div>
-      <div class="flow-card reveal reveal-delay-2">
-        <div class="flow-content">
-          <h3>Recorded lesson</h3>
-          <p>When the /kernel/backlog bypass happened a second time (April 25 then June 8), the lesson was updated with a recurrence count and an escalation note: mechanical enforcement via PreToolUse hook is now overdue. Two failures of the same rule means human discipline lost.</p>
+      <div class="receipt-card reveal reveal-delay-2">
+        <div class="demo-terminal">
+          <div class="terminal__bar">
+            <span class="terminal__dot terminal__dot--red"></span>
+            <span class="terminal__dot terminal__dot--yellow"></span>
+            <span class="terminal__dot terminal__dot--green"></span>
+            <span class="terminal__title">.claude/lessons/kernel-compliance.md</span>
+          </div>
+          <div class="terminal__body"><pre><code>## 2026-06-08 Bypassed /kernel/backlog
+- Root cause: batched "yes" trigger, agent
+  optimized middle item for speed
+- Recurrence: 2nd time recorded
+  (first: 2026-04-25 with backlog 047)
+- Escalation: mechanical enforcement via
+  PreToolUse hook now overdue</code></pre></div>
         </div>
+        <p class="receipt-description">When the /kernel/backlog bypass happened a second time, the lesson was updated with a recurrence count and an escalation note: mechanical enforcement via PreToolUse hook is now overdue. Two failures of the same rule means human discipline lost.</p>
       </div>
     </div>
     <p class="results-link">Full attestation chain at <a href="attestation.html">/attestation.html</a>.</p>
