@@ -63,17 +63,6 @@
   </section>
 
   <section class="page-section">
-    <p class="page-section__label reveal">The Loop</p>
-    <h2 class="reveal">Every session runs the same loop. No step can be skipped.</h2>
-    <p class="page-section__narrative reveal">session-start, anchor, work, complete. The same cycle, every session. Anchors fire every N actions. Failures trigger a mandatory learn step. State survives restarts. Context survives compression. The agent cannot bypass any step: hooks block writes until each gate passes.</p>
-    <pre class="loop-diagram reveal"><code>session-start -&gt; anchor -&gt; WORK -----------------&gt; complete
-                   ^         |                       ^
-                   `-- every 10 actions &lt;-----------'
-                             |
-                   failure? -&gt; fix -&gt; learn (MANDATORY)</code></pre>
-  </section>
-
-  <section class="page-section">
     <p class="page-section__label reveal">The Problem</p>
     <h2 class="reveal">Agents drift. Forget. Skip steps. Prompts don't fix it.</h2>
     <p class="page-section__narrative reveal">Mid-task they forget what they were doing. They skip steps they read minutes ago. They rationalize shortcuts as "more efficient." The model has already proven it will read the instruction, agree, and then violate it. Telling it harder doesn't work. Asking nicely doesn't work. The fix has to be structural.</p>
@@ -82,6 +71,17 @@
       <li>How do you make the same failure literally impossible after it happens once?</li>
       <li>How do you keep behavior consistent across hour-long sessions and context compression?</li>
     </ul>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">The Loop</p>
+    <h2 class="reveal">Every session runs the same loop. No step can be skipped.</h2>
+    <p class="page-section__narrative reveal">session-start, anchor, work, complete. The same cycle, every session. Anchors fire every N actions. Failures trigger a mandatory learn step. State survives restarts. Context survives compression. The agent cannot bypass any step: hooks block writes until each gate passes.</p>
+    <pre class="loop-diagram reveal"><code>session-start -&gt; anchor -&gt; WORK -----------------&gt; complete
+                   ^         |                       ^
+                   `-- every 10 actions &lt;-----------'
+                             |
+                   failure? -&gt; fix -&gt; learn (MANDATORY)</code></pre>
   </section>
 
   <section class="page-section">
