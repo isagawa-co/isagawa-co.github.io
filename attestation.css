@@ -28,7 +28,7 @@ h1, h2, h3 { font-family: var(--font-heading); }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-hover); }
 
-/* Nav — fixed, blurred, matches main site */
+/* Nav - fixed, blurred, matches main site */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-subtle); }
 .nav { display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm) var(--space-md); max-width: 1920px; margin: 0 auto; }
 .nav__logo { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: 0.2em; }
@@ -39,7 +39,7 @@ a:hover { color: var(--accent-hover); }
 .attested-counter a:hover { color: rgb(134, 239, 172); }
 .counter-number { font-weight: 700; }
 
-/* Sections — generous padding like main site */
+/* Sections - generous padding like main site */
 .page-section { padding: clamp(8rem, 18vh, 18rem) var(--space-md); max-width: 1000px; margin: 0 auto; }
 .page-section__label { font-family: var(--font-mono); font-size: var(--text-xs); font-variant: all-small-caps; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
 .page-section h2 { font-size: clamp(2.75rem, 5.5vw, 5rem); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: var(--text-primary); margin-bottom: var(--space-lg); }
@@ -55,12 +55,12 @@ a:hover { color: var(--accent-hover); }
 .hero h1 { font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; background: linear-gradient(180deg, #fcf9f3 0%, #dcdce8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; max-width: 16ch; margin-bottom: var(--space-md); }
 .hero__sub { font-size: clamp(1rem, 1.5vw, var(--text-lg)); color: var(--text-secondary); max-width: 50ch; }
 
-/* Problem — em-dash list */
+/* Problem - em-dash list */
 .problem-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md); }
 .problem-list li { padding-left: var(--space-lg); position: relative; color: var(--text-secondary); font-size: var(--text-lg); line-height: 1.6; }
 .problem-list li::before { content: none; }
 
-/* Evidence cards — matching main site */
+/* Evidence cards - matching main site */
 .evidence-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--grid-gap); margin-top: var(--space-lg); }
 .evidence-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--card-radius); padding: var(--card-padding); transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease; }
 .evidence-card:hover { transform: translateY(-2px); border-color: rgba(252, 249, 243, 0.3); box-shadow: 0 4px 24px rgba(252, 249, 243, 0.06); }
@@ -69,7 +69,7 @@ a:hover { color: var(--accent-hover); }
 .evidence-card p { font-size: var(--text-base); color: var(--text-secondary); line-height: 1.6; }
 .evidence-stat { display: inline-block; font-family: var(--font-mono); font-size: var(--text-2xl); font-weight: 700; color: var(--accent); margin-bottom: var(--space-xs); }
 
-/* Flow steps — card-based */
+/* Flow steps - card-based */
 .flow-grid { display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-lg); }
 .flow-card { display: flex; align-items: flex-start; gap: var(--space-md); background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--card-radius); padding: var(--space-lg); transition: border-color 250ms ease; }
 .flow-card:hover { border-color: rgba(252, 249, 243, 0.2); }
@@ -94,7 +94,7 @@ a:hover { color: var(--accent-hover); }
 .badges { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-md); }
 .badge { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-secondary); border: 1px solid var(--border-strong); border-radius: var(--card-radius); padding: 0.35em 0.85em; letter-spacing: 0.02em; }
 
-/* Results — stat cards */
+/* Results - stat cards */
 .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); margin-top: var(--space-lg); }
 .result-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--card-radius); padding: var(--card-padding); text-align: center; transition: border-color 250ms ease; }
 .result-card:hover { border-color: rgba(252, 249, 243, 0.2); }

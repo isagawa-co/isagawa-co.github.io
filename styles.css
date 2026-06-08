@@ -1,36 +1,36 @@
 :root {
-  /* Backgrounds — derived from shader-colors.json body.backgroundColor: rgb(0, 0, 0)
+  /* Backgrounds - derived from shader-colors.json body.backgroundColor: rgb(0, 0, 0)
      Shader uses a flat single-surface dark theme with no card elevations,
      so surface/elevated are subtle increments from pure black */
   --bg-primary: rgb(0, 0, 0);
   --bg-surface: rgb(12, 12, 12);
   --bg-elevated: rgb(24, 24, 24);
 
-  /* Text — derived from shader-colors.json body.color: rgb(252, 249, 243)
+  /* Text - derived from shader-colors.json body.color: rgb(252, 249, 243)
      Warm off-white primary; secondary is reduced opacity for muted hierarchy */
   --text-primary: rgb(252, 249, 243);
   --text-secondary: rgba(252, 249, 243, 0.6);
   --text-accent: rgb(252, 249, 243);
 
-  /* Accent — derived from shader-colors.json customProperties --foreground: #fcf9f3
+  /* Accent - derived from shader-colors.json customProperties --foreground: #fcf9f3
      Shader's accent IS the warm off-white foreground against pure black */
   --accent: #fcf9f3;
   --accent-hover: rgb(255, 255, 255);
   --accent-glow: rgba(252, 249, 243, 0.15);
 
-  /* Borders — derived from shader-surfaces.json (no visible borders in source,
+  /* Borders - derived from shader-surfaces.json (no visible borders in source,
      so derived as opacity variants of the text color for subtle/strong hierarchy) */
   --border-subtle: rgba(252, 249, 243, 0.08);
   --border-strong: rgba(252, 249, 243, 0.2);
 
-  /* Font families — derived from shader-typography.json
+  /* Font families - derived from shader-typography.json
      Shader uses "STIX Two Text" exclusively (serif) with Times New Roman fallback.
      Body and heading share the same stack; mono added for code/terminal elements. */
   --font-heading: "STIX Two Text", "STIX Two Text Fallback", serif;
   --font-body: "STIX Two Text", "STIX Two Text Fallback", serif;
   --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
 
-  /* Type scale — derived from shader-typography.json base fontSize: 16px (1rem)
+  /* Type scale - derived from shader-typography.json base fontSize: 16px (1rem)
      Shader renders all elements at 16px; scale built around that base
      using a ~1.25 ratio for heading progression */
   --text-xs: 0.75rem;
@@ -42,7 +42,7 @@
   --text-3xl: 2rem;
   --text-hero: 3rem;
 
-  /* Spacing scale — derived from suero-spacing.json
+  /* Spacing scale - derived from suero-spacing.json
      Base unit: 16px (grid gap), section padding: 64px, container margin: ~20.64px.
      Scale built from grid gap as anchor with 2x progression */
   --space-xs: 0.25rem;
@@ -52,24 +52,24 @@
   --space-xl: 4rem;
   --space-section: 4rem;
 
-  /* Layout — derived from suero-spacing.json
+  /* Layout - derived from suero-spacing.json
      maxWidth: 1920px (container[0-19]), grid gap: 16px (all grids) */
   --max-width: 1920px;
   --grid-gap: 1rem;
 
-  /* Button component tokens — derived from accent + spacing primitives */
+  /* Button component tokens - derived from accent + spacing primitives */
   --btn-bg: var(--accent);
   --btn-text: var(--bg-primary);
   --btn-radius: 0.25rem;
   --btn-padding: var(--space-sm) var(--space-md);
 
-  /* Card component tokens — derived from surface + border + spacing primitives */
+  /* Card component tokens - derived from surface + border + spacing primitives */
   --card-bg: var(--bg-surface);
   --card-border: var(--border-subtle);
   --card-radius: 0.5rem;
   --card-padding: var(--space-lg);
 
-  /* Badge tokens — spec type variants derived from accent palette
+  /* Badge tokens - spec type variants derived from accent palette
      Three distinct hues against the dark theme: blue (BUILD), green (WORKSPACE), amber (OPERATE) */
   --badge-build-bg: rgba(96, 165, 250, 0.15);
   --badge-build-text: rgb(147, 197, 253);
@@ -79,7 +79,7 @@
   --badge-operate-text: rgb(253, 224, 71);
 }
 
-/* Factory origin strip — product pages only */
+/* Factory origin strip - product pages only */
 .factory-origin {
   display: block;
   width: 100%;
@@ -511,7 +511,7 @@ footer {
   font-style: italic;
 }
 
-/* This Page — reveal section */
+/* This Page - reveal section */
 #this-page {
   text-align: center;
 }
@@ -715,7 +715,7 @@ footer {
 }
 
 /* ==========================================
-   V2 — Terminal, Scroll Reveals, Parallax
+   V2 - Terminal, Scroll Reveals, Parallax
    ========================================== */
 
 /* Floating Terminal */

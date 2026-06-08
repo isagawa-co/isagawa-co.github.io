@@ -1,5 +1,5 @@
 /* =============================================
-   PILL NAV — Floating centered nav (all pages)
+   PILL NAV - Floating centered nav (all pages)
    ============================================= */
 
 /* Hide old hamburger header */
@@ -146,7 +146,7 @@
   background: rgba(134, 239, 172, 0.14);
 }
 
-/* Content spacing — push first elements below pill */
+/* Content spacing - push first elements below pill */
 .factory-origin { margin-top: 5rem; }
 .loop-badge     { margin-top: 0.5rem; }
 

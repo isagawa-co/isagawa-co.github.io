@@ -1,9 +1,9 @@
 /* =============================================
-   NAV — Hamburger + Accordion (all pages)
-   Loaded after page CSS — overrides per-page nav
+   NAV - Hamburger + Accordion (all pages)
+   Loaded after page CSS - overrides per-page nav
    ============================================= */
 
-/* Nav wrapper — flex row, fills site-header on all pages */
+/* Nav wrapper - flex row, fills site-header on all pages */
 .nav {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@
   list-style: none;
 }
 
-/* Hide old inline nav links — replaced by slide panel */
+/* Hide old inline nav links - replaced by slide panel */
 .nav__links {
   display: none;
   position: fixed;
