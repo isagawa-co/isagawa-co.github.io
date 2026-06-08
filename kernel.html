@@ -88,6 +88,8 @@
                    `-- every 10 actions &lt;-----------'
                              |
                    failure? -&gt; fix -&gt; learn (MANDATORY)</code></pre>
+    <p class="page-section__narrative reveal"><strong>run-task.sh</strong> is the cycling driver. It spawns a fresh <code>claude -p</code> process per task. Each one reads CLAUDE.md, runs session-start and anchor, picks the next incomplete task, executes it, marks complete, exits. State on disk provides continuity between runs. <code>/kernel/autonomous-cycle</code> kicks off the loop; <code>/kernel/execute-pipeline</code> wraps the full flow from backlog item to final commit. The user shorthand for this whole pattern is just "the loop."</p>
+    <p class="page-section__narrative reveal"><strong>Smart gates.</strong> When a hook blocks an action, the error message names the exact command that fixes it. "Blocked: 30 actions since last anchor. Token: 3e65b1c5. Invoke /kernel/anchor to re-center, then retry." The agent doesn't need to figure out how to comply: the hook tells it, and the same hook verifies the fix landed.</p>
   </section>
 
   <section class="page-section">
@@ -98,29 +100,67 @@
       <div class="flow-card reveal">
         <span class="flow-num">1</span>
         <div class="flow-content">
-          <h3>Hooks</h3>
-          <p>Fire at the tool-call boundary. Block writes when state preconditions fail. Append every action to an audit log. For rules wired to a hook, the hook isn't reading instructions: it's reading bytes. Rules that can't be reduced to a check live in the protocol tier instead.</p>
+          <h3>Hooks (6)</h3>
+          <p>Fire at the tool-call boundary. Block writes when state preconditions fail. Auto-increment the anchor counter on every Write/Edit/Bash. Append every action to an audit log. Detect non-zero test exits and set needs_learn. Block inline task execution to force run-task.sh isolation. For rules wired to a hook, the hook isn't reading instructions: it's reading bytes.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-1">
         <span class="flow-num">2</span>
         <div class="flow-content">
-          <h3>Commands</h3>
-          <p>Kernel operations the agent must invoke: anchor, learn, complete, backlog. Skill-based, so the agent calls them through a Skill interface, never directly. Each command enforces template structure and consistency.</p>
+          <h3>Commands (15)</h3>
+          <p>The kernel's verbs. session-start, anchor, learn, complete, backlog, fix, task-builder, execute-pipeline, autonomous-cycle, audit-workflow, prod-test, attest, domain-setup, reset. The agent invokes each via the Skill interface, never directly: each command enforces template structure and intent-chain attestation. <code>/kernel/execute-pipeline</code> is the user-facing entry into the autonomous loop.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-2">
         <span class="flow-num">3</span>
         <div class="flow-content">
-          <h3>Skills</h3>
-          <p>Multi-step capabilities. Autonomous cycling. Task building. Production testing. Audit workflow. Each skill is an indexed file structure: entry point plus step-by-step references the agent reads at execution time.</p>
+          <h3>Skills (7)</h3>
+          <p>Multi-step capabilities. autonomous-cycling, task-builder, execute-pipeline, prod-test, audit-workflow, kernel-domain-setup, website-cloner. Each skill is an indexed file structure: entry point plus step-by-step reference files the agent reads at execution time. Steps are atomic: one step writes one file.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-3">
         <span class="flow-num">4</span>
         <div class="flow-content">
           <h3>State</h3>
-          <p>Workflow JSON, intent chain, anchor logs. Append-only where it matters (audit trail). Mutable where it doesn't (session counters). Hash-signed for cross-machine verifiability.</p>
+          <p>workflow.json, session_state.json, actions.jsonl, anchor-logs/, intents/, attestations/. Append-only where it matters (audit trail, intent chain, anchor logs, Sigstore/Rekor bundles). Mutable where it doesn't (session counter, current task). Hash-signed for cross-machine verifiability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Design Patterns</p>
+    <h2 class="reveal">The patterns the rest of the kernel rests on.</h2>
+    <p class="page-section__narrative reveal">Five conventions that show up across commands, skills, hooks, and lessons. Each one is a recorded rule, not a vibe.</p>
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <div class="flow-content">
+          <h3>Wikilink tiered indexing</h3>
+          <p>Parent files are indexes. When any subtopic crosses ~50 lines of detail, it extracts to its own reference file and the parent links to it as <code>&rarr; [[references/file.md]]</code>. SKILL.md, workflow.md, step files, protocol, lessons all follow this. Files stay scannable. Detail is one link away, never inlined.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-1">
+        <div class="flow-content">
+          <h3>Atomicity</h3>
+          <p>One task equals one action. Copy 11 files is 11 tasks. Setup plus run plus verify is 3 tasks. "Merge if small" was a rule the kernel had, and it became a lesson: bundling produces violations every single time. Small tasks are correct tasks.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-2">
+        <div class="flow-content">
+          <h3>L1/L2/L3 testing</h3>
+          <p>Every deliverable plans three test tiers during atomization, not at execute time. L1 (does it exist? grep, file_exists). L2 (does it run? exit code). L3 (does it produce correct results in a real scenario? spawn the kernel loop and verify output). "Simulated" is never L3.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-3">
+        <div class="flow-content">
+          <h3>Multi-domain</h3>
+          <p><code>/kernel/domain-setup</code> builds a fresh protocol plus per-domain hooks for any project. One project equals one domain equals one protocol. Extend via <code>/kernel/learn</code>, never recreate. The kernel is portable: drop it in a new repo and it builds its own enforcement layer for that repo's verticals.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal">
+        <div class="flow-content">
+          <h3>Self-audit</h3>
+          <p><code>/kernel/audit-workflow</code> scans the kernel's own infrastructure for gaps: missing commands, broken skill references, hooks not wired in settings, protocol drift, stale state, incomplete L1/L2/L3 coverage, task atomicity violations. Findings generate fix tasks. Tasks auto-execute. The kernel keeps itself current.</p>
         </div>
       </div>
     </div>
