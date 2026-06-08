@@ -136,7 +136,7 @@
       <div class="flow-card reveal">
         <div class="flow-content">
           <h3>Wikilink tiered indexing</h3>
-          <p>Every file that exceeds ~50 lines of detail on a subtopic MUST extract that subtopic into its own reference file and link to it with <code>&rarr; [[references/file.md]]</code>. Parent files are indexes: they have step tables and pointers, never inline implementation. Applies to SKILL.md, workflow.md, step files, commands, protocol. Core design pattern of the kernel, not optional.</p>
+          <p>Every file is either an index or a payload. Indexes have step tables and pointers, never inline implementation. Payloads hold the detail. When a parent file's section grows past ~50 lines, the section extracts to its own payload file and the parent links to it as <code>&rarr; [[references/file.md]]</code>. Applies to SKILL.md, workflow.md, step files, commands, protocol. Core design pattern of the kernel, not optional.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-1">
