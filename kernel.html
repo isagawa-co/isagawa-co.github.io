@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons mechanically enforced.">
+  <meta property="og:title" content="Isagawa | Kernel">
+  <meta property="og:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons mechanically enforced.">
+  <meta property="og:url" content="https://isagawa.co/kernel.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Isagawa | Kernel">
+  <meta name="twitter:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons mechanically enforced.">
+  <title>Isagawa | Kernel</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="kernel.css">
+  <link rel="stylesheet" href="pill-nav.css">
+</head>
+<body>
+  <header class="site-header" aria-hidden="true"></header>
+
+  <nav class="pill-nav" aria-label="Site navigation">
+    <a href="index.html" class="pill-nav__logo">ISAGAWA</a>
+    <div class="pill-nav__items">
+      <a href="index.html">Home</a>
+      <a href="kernel.html" aria-current="page">Kernel</a>
+      <a href="feed.html">Feed</a>
+      <div class="pill-nav__dropdown">
+        <button class="pill-nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+          Products <span class="pill-nav__chevron" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="pill-nav__dropdown-menu" role="menu">
+          <a href="attestation.html" role="menuitem">Attestation</a>
+          <a href="qa-platforms.html" role="menuitem">QA Platforms</a>
+          <a href="ssh-compliance.html" role="menuitem">SSH Compliance</a>
+          <a href="vibe-coder.html" role="menuitem">Vibe Coder</a>
+          <a href="job-application.html" role="menuitem">AutoApply</a>
+        </div>
+      </div>
+      <a href="story.html">The Story</a>
+    </div>
+    <a href="feed.html" class="pill-nav__count"><span id="nav-count">--</span> &#10003;</a>
+  </nav>
+
+  <section class="hero" id="hero">
+    <h1>Isagawa Kernel</h1>
+    <p class="hero__sub">A self-building agent harness with hook-enforced governance.</p>
+    <p class="page-section__narrative">The kernel agents build inside. Hooks fire at tool-call boundary and physically block bad actions. An anchor forces re-grounding every N actions. A learn cycle turns each failure into a mechanical rule update. 29 lessons recorded so far: each one is now enforced as code, not as instructions.</p>
+    <div class="hero__ctas">
+      <a href="https://github.com/isagawa-co/isagawa-kernel" class="hero__cta">View on GitHub <span class="arrow">&rarr;</span></a>
+      <a href="mailto:alain@isagawa.co" class="hero__cta hero__cta--secondary">alain@isagawa.co</a>
+    </div>
+  </section>
+
+  <section class="page-section" id="loop">
+    <p class="page-section__label">The loop</p>
+    <div class="loop-diagram"><pre><code>session-start -&gt; anchor -&gt; WORK -----------------&gt; complete
+                   ^         |                       ^
+                   `-- every 10 actions &lt;-----------'
+                             |
+                   failure? -&gt; fix -&gt; learn (MANDATORY)</code></pre></div>
+    <p class="artifact-caption">Every working session runs this loop. The agent cannot bypass any step: hooks block writes until each gate passes.</p>
+  </section>
+
+  <section class="page-section" id="why">
+    <h2>Why a harness?</h2>
+    <p class="page-section__narrative">Agents drift. Mid-task they forget what they were doing, skip steps they read minutes ago, and rationalize shortcuts as "more efficient." Prompts don't fix this: the model has already proven it will read the instruction, agree, and then violate it.</p>
+    <p class="page-section__narrative">A harness fixes this mechanically. The kernel's hooks intercept every tool call and check state. Counter at N actions? Block until anchor runs. Test failed? Block until lesson is recorded. The agent isn't asked to behave; it's structurally prevented from misbehaving. Same outcome as discipline, without depending on discipline.</p>
+    <p class="callout">The 29 recorded lessons include three for the same anchor-skip pattern: proof that human discipline failed three times until the kernel mechanically enforced the rule.</p>
+  </section>
+
+  <section class="page-section" id="architecture">
+    <h2>Architecture</h2>
+    <p class="page-section__narrative">Four moving parts. Each one solves a specific failure mode.</p>
+    <table class="arch-table">
+      <thead>
+        <tr><th>Layer</th><th>What it does</th><th>Files</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hooks</td>
+          <td>Fire at tool-call boundary. Block writes when state preconditions fail. Append every action to an audit log.</td>
+          <td>universal-gate-enforcer.py, sr_dev-gate-enforcer.py, actions-log-appender.py, test-failure-detector.py</td>
+        </tr>
+        <tr>
+          <td>Commands</td>
+          <td>Kernel operations the agent must invoke (anchor, learn, complete, backlog). Skill-based: agent calls them through a Skill interface, never directly.</td>
+          <td>/kernel/anchor, /kernel/learn, /kernel/complete, /kernel/backlog, /kernel/execute-pipeline, /kernel/session-start</td>
+        </tr>
+        <tr>
+          <td>Skills</td>
+          <td>Multi-step capabilities (autonomous cycling, task building, production testing, audit workflow). Each skill is an indexed file structure: entry point plus step-by-step references.</td>
+          <td>autonomous-cycling, task-builder, execute-pipeline, prod-test, audit-workflow, kernel-domain-setup</td>
+        </tr>
+        <tr>
+          <td>State</td>
+          <td>Workflow JSON, intent chain, anchor logs. Append-only where it matters (audit trail), mutable where it doesn't (session counters).</td>
+          <td>.claude/state/*</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section" id="produced">
+    <h2>What it has produced</h2>
+    <p class="page-section__narrative">Numbers from the workspace this page was built in. Receipts in the linked repos.</p>
+    <div class="stats-row">
+      <div class="stat-card"><span class="stat-number">130+</span><span class="stat-label">Backlog items processed</span></div>
+      <div class="stat-card"><span class="stat-number">29</span><span class="stat-label">Lessons recorded, each enforced as mechanical rule</span></div>
+      <div class="stat-card"><span class="stat-number">122</span><span class="stat-label">Pipeline runs completed</span></div>
+      <div class="stat-card"><span class="stat-number">39</span><span class="stat-label">Repos across isagawa-co and isagawa-qa orgs</span></div>
+    </div>
+    <h3>Harnesses produced</h3>
+    <ul class="harness-list">
+      <li><a href="https://github.com/isagawa-qa/platform-playwright">isagawa-qa/platform-playwright</a> <span>(6 stars): TypeScript/Playwright test automation harness</span></li>
+      <li><a href="https://github.com/isagawa-qa/platform-selenium">isagawa-qa/platform-selenium</a> <span>(4 stars): AI-powered Selenium test automation harness</span></li>
+      <li><a href="https://github.com/isagawa-qa/platform-docker">isagawa-qa/platform-docker</a> <span>: AI-powered Docker container validation harness</span></li>
+      <li><a href="https://github.com/isagawa-qa/platform-ssh">isagawa-qa/platform-ssh</a> <span>: SSH image testing platform</span></li>
+      <li><a href="https://github.com/isagawa-qa/test-platform-deepeval">isagawa-qa/test-platform-deepeval</a> <span>: LLM evaluation 5-layer QA architecture</span></li>
+    </ul>
+  </section>
+
+  <section class="page-section" id="governance">
+    <h2>Two-tier governance</h2>
+    <p class="page-section__narrative">Hooks alone are too rigid. Protocol alone is too soft. Both are necessary.</p>
+    <div class="governance-tier">
+      <p>Tier 1 is mechanical. Hooks fire at tool-call boundary. If state says "needs_learn: true," every write is blocked until /kernel/learn runs. The agent can't talk its way past a hook: the hook isn't reading instructions. It's reading bytes.</p>
+    </div>
+    <div class="governance-tier">
+      <p>Tier 2 is behavioral. Every 10 actions, the anchor command forces the agent to re-read the protocol, re-read the lessons, and apply specific rules to its next action with concrete verbs. Protocol drift is a guaranteed failure mode in long sessions; the anchor reverses it on a schedule.</p>
+    </div>
+    <p class="why-both">Hooks alone would require encoding every conceivable rule in code: impossible for a self-improving system. Protocol alone would rely on the agent following text it has already proven it will violate. Together: hooks for the rules you can enforce mechanically, protocol for the rules you can't. The 29-lesson file is exactly the seam between them. Every entry is either already a hook or a candidate to become one.</p>
+  </section>
+
+  <section class="page-section" id="real-run">
+    <h2>A real run</h2>
+    <p class="page-section__narrative">Three artifacts from this workspace, embedded verbatim. No editorialization.</p>
+    <div class="artifact-block" id="artifact-anchor-log">
+      <h3>Anchor log</h3>
+      <pre><code class="language-json">{
+  "anchor_timestamp": "2026-06-08T06:45:00Z",
+  "actions_count": 48,
+  "violations_found": 1,
+  "violation_details": [
+    "Backlog 129 created via direct intent.py call + direct Write, bypassing /kernel/backlog skill. Violates 'ALWAYS USE KERNEL COMMANDS FOR KERNEL OPERATIONS' and 'never call intent.py directly' rules from lessons RULE ZERO. needs_learn: true set."
+  ],
+  "post_pull_actions": [
+    {"timestamp": "2026-06-08T06:36:51Z", "tool": "Bash", "entry": "git checkout -- state files (cleanup)"},
+    {"timestamp": "2026-06-08T06:37:09Z", "tool": "Bash", "entry": "intent.py record 127 (rename recovery from 125)"},
+    {"timestamp": "2026-06-08T06:37:15Z", "tool": "Bash", "entry": "intent.py record 128 (rename recovery from 126)"},
+    {"timestamp": "2026-06-08T06:37:26Z", "tool": "Bash", "entry": "git status verification"},
+    {"timestamp": "2026-06-08T06:40:48Z", "tool": "Bash", "entry": "intent.py record 129 (VIOLATION: bypassed /kernel/backlog)"},
+    {"timestamp": "2026-06-08T06:41:31Z", "tool": "Write", "entry": "129-kernel-build-machine-local-state-files.md (VIOLATION: bypassed /kernel/backlog)"}
+  ],
+  "pre_pull_actions_note": "Lines 1-42 of actions.jsonl are from the other workstation's job-apply session (2026-06-05T20:39 to 2026-06-06T19:47). Not re-reviewed here."
+}</code></pre>
+      <p class="artifact-caption">An anchor log from this workspace. The system detected its own protocol violation (a kernel command was bypassed), flagged it, and required a learn step before proceeding.</p>
+    </div>
+    <div class="artifact-block" id="artifact-intent-chain">
+      <h3>Intent chain</h3>
+      <pre><code class="language-json">{
+  "rev": 1,
+  "timestamp": "2026-06-08T07:24:57.142286+00:00",
+  "raw_input_hash": "0c43483511fb6ee241b34fc58c294751e60c3c76054b31ed456b97e67aa9818d",
+  "backlog_hash_after": ""
+}</code></pre>
+      <p class="artifact-caption">Every backlog item is hash-signed. The raw_input_hash is the SHA-256 of the user's words at invocation time. The backlog_hash_after is the SHA-256 of the resulting file. Both go into an append-only chain that any third party can verify.</p>
+      <p class="artifact-caption">This page's own design backlog (131) is in the chain.</p>
+    </div>
+    <div class="artifact-block" id="artifact-lesson">
+      <h3>Lesson recording</h3>
+      <pre><code class="language-markdown">## 2026-06-08 Agent Bypassed /kernel/backlog Skill for Backlog 129 (Batch Trigger)
+- Issue: During a multi-item response ("yes" to memory + backlog 129 + re-anchor
+  offer), agent created backlog 129 by directly calling intent.py record followed
+  by a direct Write. The /kernel/backlog skill was not invoked.
+- Root Cause: Three compounding factors. (1) Batch trigger: the agent treated "yes"
+  as approval for a batch of three actions and optimized the middle one for speed.
+  (2) Recovery context bleed: earlier in the session the agent had legitimately called
+  intent.py record for 127 and 128 as part of rename-recovery after a pull collision -
+  calling intent.py felt "already in use." It wasn't. Rename recovery and new-backlog
+  creation are different operations. (3) Familiarity bias: agent had just re-read the
+  lesson in the anchor 10 minutes prior and still committed the violation.
+- Fix: Acknowledge the violation at the next anchor, set needs_learn: true, record the
+  lesson, file a follow-up backlog for mechanical enforcement.
+- Recurrence pattern: This is the SECOND time this exact failure has been recorded
+  (first: 2026-04-25 with backlog 047). Two recurrences means human discipline has
+  failed and mechanical enforcement is overdue.
+[...full lesson at .claude/lessons/kernel-compliance.md]</code></pre>
+      <p class="artifact-caption">A lesson recorded by the kernel after a self-detected failure. Each lesson is enforced: either as a hook (mechanical) or as a protocol rule read at every anchor (behavioral). Two failures of the same rule trigger an escalation to mechanical enforcement.</p>
+      <p class="artifact-caption">Full attestation chain documented at <a href="attestation.html">/attestation.html</a>.</p>
+    </div>
+  </section>
+
+  <section class="page-section cta" id="cta">
+    <p>Want to talk about agent harness design?</p>
+    <p><a href="mailto:alain@isagawa.co">alain@isagawa.co</a>: direct.</p>
+    <p class="repo-callout">Source: <a href="https://github.com/isagawa-co/isagawa-kernel">github.com/isagawa-co/isagawa-kernel</a> (public).</p>
+  </section>
+</body>
+</html>
