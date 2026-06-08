@@ -14,6 +14,21 @@
   <title>Isagawa | Kernel</title>
   <link rel="stylesheet" href="qa-platforms.css">
   <link rel="stylesheet" href="pill-nav.css">
+  <style>
+    .loop-diagram {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--card-radius);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .loop-diagram code { color: var(--text-primary); }
+  </style>
 </head>
 <body>
   <header class="site-header" aria-hidden="true"></header>
@@ -40,11 +55,7 @@
     </div>
     <a href="feed.html" class="pill-nav__count"><span id="nav-count">--</span> &#10003;</a>
   </nav>
-  <div class="factory-origin"><a href="index.html">&larr; The harness behind the factory</a></div>
-
-  <div class="loop-badge">
-    The kernel agents build inside. Every harness on this site runs on it.
-  </div>
+  <div class="factory-origin"><a href="index.html">&larr; Home</a></div>
 
   <section class="hero">
     <h1>A self-building agent harness with hook-enforced governance.</h1>
@@ -58,19 +69,11 @@
     <p class="page-section__label reveal">The Loop</p>
     <h2 class="reveal">Every session runs the same loop. No step can be skipped.</h2>
     <p class="page-section__narrative reveal">session-start, anchor, work, complete. The same cycle, every session. Anchors fire every N actions. Failures trigger a mandatory learn step. State survives restarts. Context survives compression. The agent cannot bypass any step: hooks block writes until each gate passes.</p>
-    <div class="demo-terminal">
-      <div class="terminal__bar">
-        <span class="terminal__dot terminal__dot--red"></span>
-        <span class="terminal__dot terminal__dot--yellow"></span>
-        <span class="terminal__dot terminal__dot--green"></span>
-        <span class="terminal__title">the loop</span>
-      </div>
-      <div class="terminal__body"><pre><code>session-start -&gt; anchor -&gt; WORK -----------------&gt; complete
+    <pre class="loop-diagram reveal"><code>session-start -&gt; anchor -&gt; WORK -----------------&gt; complete
                    ^         |                       ^
                    `-- every 10 actions &lt;-----------'
                              |
-                   failure? -&gt; fix -&gt; learn (MANDATORY)</code></pre></div>
-    </div>
+                   failure? -&gt; fix -&gt; learn (MANDATORY)</code></pre>
   </section>
 
   <section class="page-section">
@@ -222,43 +225,26 @@
 
   <section class="page-section">
     <p class="page-section__label reveal">Receipts</p>
-    <h2 class="reveal">Three artifacts. Unedited. From this workspace.</h2>
-    <p class="page-section__narrative reveal">An anchor log, an intent chain entry, and a recorded lesson. Embedded verbatim. The system catches its own failures, hashes the user's words, and rewrites its own rules.</p>
-    <div class="evidence-grid">
-      <div class="evidence-card reveal">
-        <p class="card-tags">ANCHOR / SELF-DETECTED VIOLATION</p>
-        <h3>Anchor log</h3>
-        <pre><code class="language-json">{
-  "anchor_timestamp": "2026-06-08T06:45:00Z",
-  "actions_count": 48,
-  "violations_found": 1,
-  "violation_details": [
-    "Backlog 129 created via direct intent.py call + direct Write, bypassing /kernel/backlog skill."
-  ]
-}</code></pre>
-        <p>The system detected its own protocol violation, flagged it, and required a learn step before proceeding.</p>
+    <h2 class="reveal">The system writes down its own failures.</h2>
+    <p class="page-section__narrative reveal">An anchor catches a self-detected violation. The intent chain hashes the user's words. A recorded lesson escalates to mechanical enforcement on recurrence. All three are append-only artifacts from this workspace.</p>
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <div class="flow-content">
+          <h3>Anchor log</h3>
+          <p>Every anchor archives the actions reviewed and any violations found. When backlog 129 was created by bypassing the /kernel/backlog skill, the next anchor flagged it and set needs_learn: true. The agent could not write again until the lesson was recorded.</p>
+        </div>
       </div>
-      <div class="evidence-card reveal reveal-delay-1">
-        <p class="card-tags">INTENT CHAIN / HASH-SIGNED</p>
-        <h3>Intent chain entry</h3>
-        <pre><code class="language-json">{
-  "rev": 1,
-  "timestamp": "2026-06-08T07:24:57+00:00",
-  "raw_input_hash": "0c43483511fb6ee241b34fc58c294751e60c3c76054b31ed456b97e67aa9818d",
-  "backlog_hash_after": ""
-}</code></pre>
-        <p>Every backlog item is hash-signed. raw_input_hash is the SHA-256 of the user's words. Both go into an append-only chain.</p>
+      <div class="flow-card reveal reveal-delay-1">
+        <div class="flow-content">
+          <h3>Intent chain</h3>
+          <p>Every backlog item is hash-signed. raw_input_hash is the SHA-256 of the user's literal words at /kernel/backlog invocation time. backlog_hash_after is the SHA-256 of the resulting file. Both go into an append-only chain a third party can verify.</p>
+        </div>
       </div>
-      <div class="evidence-card reveal reveal-delay-2">
-        <p class="card-tags">LESSON / RECURRENCE / ENFORCEMENT</p>
-        <h3>Recorded lesson</h3>
-        <pre><code class="language-markdown">## 2026-06-08 Bypassed /kernel/backlog (Batch Trigger)
-- Root cause: agent treated batched "yes" as approval, optimized
-  middle item for speed. Familiarity bias: just re-read the
-  rule 10 minutes prior.
-- Recurrence: 2nd time this exact failure recorded.
-- Escalation: mechanical enforcement now overdue.</code></pre>
-        <p>Each lesson is enforced: either as a hook (mechanical) or as a protocol rule re-read every anchor (behavioral). Two failures of the same rule trigger an escalation to mechanical enforcement.</p>
+      <div class="flow-card reveal reveal-delay-2">
+        <div class="flow-content">
+          <h3>Recorded lesson</h3>
+          <p>When the /kernel/backlog bypass happened a second time (April 25 then June 8), the lesson was updated with a recurrence count and an escalation note: mechanical enforcement via PreToolUse hook is now overdue. Two failures of the same rule means human discipline lost.</p>
+        </div>
       </div>
     </div>
     <p class="results-link">Full attestation chain at <a href="attestation.html">/attestation.html</a>.</p>
