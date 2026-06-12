@@ -122,3 +122,5 @@ footer { padding: clamp(4rem, 8vh, 6rem) var(--space-md); border-top: 1px solid 
   .page-section { padding: clamp(4rem, 10vh, 8rem) var(--space-md); }
   .footer__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
 }
+.hero__highlight { font-size: var(--text-base); color: var(--text-secondary); max-width: 60ch; margin: var(--space-md) auto 0; line-height: 1.8; padding: var(--space-md); border-left: 3px solid var(--accent); background: rgba(252, 249, 243, 0.05); }
+.hero__highlight a { color: var(--accent); }
