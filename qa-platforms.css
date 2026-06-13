@@ -122,5 +122,20 @@ footer { padding: clamp(4rem, 8vh, 6rem) var(--space-md); border-top: 1px solid 
   .page-section { padding: clamp(4rem, 10vh, 8rem) var(--space-md); }
   .footer__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
 }
-.hero__highlight { font-size: var(--text-base); color: var(--text-secondary); max-width: 60ch; margin: var(--space-md) auto 0; line-height: 1.8; padding: var(--space-md); border-left: 3px solid var(--accent); background: rgba(252, 249, 243, 0.05); }
-.hero__highlight a { color: var(--accent); }
+
+/* Terminal - specific to qa-platforms */
+.demo-terminal { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--card-radius); overflow: hidden; margin-top: var(--space-md); }
+.terminal__bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #1a1a1a; border-bottom: 1px solid #333; }
+.terminal__dot { width: 10px; height: 10px; border-radius: 50%; }
+.terminal__dot--red { background: #ff5f57; }
+.terminal__dot--yellow { background: #febc2e; }
+.terminal__dot--green { background: #28c840; }
+.terminal__title { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px; color: #666; margin-left: auto; }
+.terminal__body { padding: 14px; height: clamp(280px, 22vw, 400px); overflow-y: auto; scrollbar-width: none; background: #0a0a0a; }
+.terminal__body::-webkit-scrollbar { display: none; }
+.terminal__line { font-family: 'SF Mono', 'Fira Code', monospace; font-size: clamp(11px, 0.9vw, 13px); line-height: 1.6; white-space: pre; color: #888; }
+.terminal__line--cmd { color: #28c840; }
+.terminal__line--out { color: #888; }
+.terminal__line--head { color: var(--accent); font-weight: 700; }
+.terminal__line--pass { color: #28c840; font-weight: 700; }
+.terminal__line--fail { color: #ff5f57; font-weight: 700; }
