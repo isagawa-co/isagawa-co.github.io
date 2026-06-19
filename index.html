@@ -60,13 +60,45 @@
     <span class="hero__scroll-caption">OR SCROLL ↓</span>
   </section>
 
-  <section id="verdict" class="anchor-section parallax-section" style="background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
-    <div style="max-width: 900px; margin: 0 auto; padding: 60px 40px;">
-      <h2 class="reveal" style="font-size: 1.4rem; margin-bottom: 30px; font-weight: 400;">The Blunt Verdict</h2>
-      <p class="reveal" style="margin: 20px 0; line-height: 1.8;">The site communicates ambition. But the deepest technical insight is missing:</p>
-      <p class="reveal" style="margin: 30px 0; padding: 20px; border-left: 2px solid rgba(74, 210, 144, 0.5); background: rgba(74, 210, 144, 0.05); font-style: italic; line-height: 1.8;"><strong>This is a spec-driven agent framework for governed execution loops, not just a collection of AI-generated harnesses.</strong></p>
-      <p class="reveal" style="margin: 30px 0; line-height: 1.8;"><strong>Better positioning:</strong></p>
-      <p class="reveal" style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 4px; font-family: monospace; font-size: 0.95rem; line-height: 1.8;">Isagawa is a spec-driven agent framework. A kernel governs execution, a domain-spec factory builds vertical packs, and each harness runs as composable outer/inner loops with contracts, checkpoints, gates, state, and learning.</p>
+  <section id="architecture" class="anchor-section parallax-section" style="background: rgba(0,0,0,0.1);">
+    <div style="max-width: 1000px; margin: 0 auto; padding: 60px 40px;">
+      <h2 class="reveal" style="font-size: 1.4rem; margin-bottom: 40px; font-weight: 400;">Why This Isn't Prompt Engineering</h2>
+
+      <div style="margin-bottom: 60px;">
+        <h3 class="reveal" style="font-size: 1rem; margin-bottom: 20px; opacity: 0.8;">Execution Pipeline</h3>
+        <div class="reveal" style="padding: 30px; background: rgba(0,0,0,0.3); border-radius: 4px; font-family: monospace; font-size: 0.9rem; line-height: 2.2; color: #fff;">
+          <div style="opacity: 0.7;">Conversation / Intent</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓</div>
+          <div style="margin-top: 8px;">Backlog</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓</div>
+          <div style="margin-top: 8px;">Execute Pipeline</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓</div>
+          <div style="margin-top: 8px;">Task Builder</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓</div>
+          <div style="margin-top: 8px;">Kernel-Governed Agent</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓</div>
+          <div style="margin-top: 8px;">Contracts + Gates + Lessons</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓</div>
+          <div style="margin-top: 8px; color: rgba(74, 210, 144, 0.9);">Validated Artifact / New Capability</div>
+        </div>
+        <p class="reveal" style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Each step enforces contracts, validates gates, and records lessons for the next run.</p>
+      </div>
+
+      <div>
+        <h3 class="reveal" style="font-size: 1rem; margin-bottom: 20px; opacity: 0.8;">Framework Architecture</h3>
+        <div class="reveal" style="padding: 30px; background: rgba(0,0,0,0.3); border-radius: 4px; font-family: monospace; font-size: 0.9rem; line-height: 2.2; color: #fff;">
+          <div style="opacity: 0.7;">Kernel</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓ runs</div>
+          <div style="margin-top: 8px;">Domain Setup</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓ compiles</div>
+          <div style="margin-top: 8px;">Domain Spec + Repo Context</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓ into</div>
+          <div style="margin-top: 8px;">Protocol + Commands + Gates + Lessons</div>
+          <div style="padding-left: 0; margin-top: 8px; opacity: 0.5;">↓ enabling</div>
+          <div style="margin-top: 8px; color: rgba(74, 210, 144, 0.9);">Governed Agent Execution</div>
+        </div>
+        <p class="reveal" style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Not configuration. Not templates. Specification-driven agent harnesses that learn from failures.</p>
+      </div>
     </div>
   </section>
 
@@ -349,7 +381,7 @@
         },
         {
           "rev": 2,
-          "timestamp": "2026-04-26T08:32:02.669009+00:00",
+          "timestamp": "2026-04-26T08:32:02.669007+00:00",
           "raw_input_hash": "c2997805078d038e4f69416fdc1b12fde17d4a20ff8f9556a0559cb449894c0e",
           "backlog_hash_after": "55efdb25cc7c3f1752295b550c0caf328b7b1a255f1cdf7481e633a2de396ad2"
         }
@@ -551,7 +583,7 @@
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
+          observer.unobserve(entry);
         }
       });
     }, { threshold: 0.15 });
