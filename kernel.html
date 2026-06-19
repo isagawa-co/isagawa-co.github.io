@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons recorded and enforced where they can be.">
+  <meta name="description" content="Isagawa Kernel: governed agent runtime with hook-enforced execution. Autonomous task cycling, domain setup, cross-session persistence, and mechanical enforcement.">
   <meta property="og:title" content="Isagawa | Kernel">
-  <meta property="og:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons recorded and enforced where they can be.">
+  <meta property="og:description" content="Isagawa Kernel: governed agent runtime with hook-enforced execution, domain setup, task decomposition, and autonomous cycling. 29 lessons recorded and enforced.">
   <meta property="og:url" content="https://isagawa.co/kernel.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Isagawa | Kernel">
-  <meta name="twitter:description" content="Isagawa Kernel: a self-building agent harness with hook-enforced governance. Hooks, anchors, learn cycles. 29 lessons recorded and enforced where they can be.">
+  <meta name="twitter:description" content="Isagawa Kernel: governed agent runtime with hook-enforced execution, domain setup, task decomposition, and autonomous cycling.">
   <title>Isagawa | Kernel</title>
   <link rel="stylesheet" href="qa-platforms.css">
   <link rel="stylesheet" href="pill-nav.css">
@@ -64,8 +64,8 @@
   <div class="factory-origin"><a href="index.html">&larr; Home</a></div>
 
   <section class="hero">
-    <h1>A self-building agent harness with hook-enforced governance.</h1>
-    <p class="hero__sub">Hooks at the tool-call boundary. Anchors that force re-grounding every N actions. Learn cycles that record each failure as a rule the system enforces mechanically where it can, and re-reads at every anchor where it can't.</p>
+    <h1>Governed agent runtime with hook-enforced execution.</h1>
+    <p class="hero__sub">Domain setup scans your repo and builds initial configuration. Task execution decomposes intent into atomic steps with verification gates. Enforcement operates at the tool-call boundary. Every action is audited and persistent across sessions.</p>
   </section>
 
   <section class="page-section">
@@ -91,9 +91,113 @@
   </section>
 
   <section class="page-section">
+    <p class="page-section__label reveal">Domain Setup</p>
+    <h2 class="reveal">Configuration from code structure.</h2>
+    <p class="page-section__narrative reveal">The domain-setup command scans your repository structure, discovers file patterns, naming conventions, and existing code organization, then generates an initial protocol configuration. This configuration becomes the baseline for governance. Optional domain specs layer industry-specific knowledge on top of the discovered patterns.</p>
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <span class="flow-num">1</span>
+        <div class="flow-content">
+          <h3>Repository Scan</h3>
+          <p>Discovers file structure, naming patterns, testing conventions, build patterns, and existing code organization across the repository.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-1">
+        <span class="flow-num">2</span>
+        <div class="flow-content">
+          <h3>Pattern Extraction</h3>
+          <p>Identifies conventions in use: test frameworks, dependency patterns, file naming, module structure, and architectural patterns already present in the codebase.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-2">
+        <span class="flow-num">3</span>
+        <div class="flow-content">
+          <h3>Protocol Generation</h3>
+          <p>Generates an initial protocol that encodes discovered patterns as rules. The protocol becomes the baseline that governance enforces during execution.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-3">
+        <span class="flow-num">4</span>
+        <div class="flow-content">
+          <h3>Domain Specs (Optional)</h3>
+          <p>Drop-in skill folders that add industry-specific knowledge. Merge with discovered patterns to create domain-aware governance without requiring manual configuration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Task Execution</p>
+    <h2 class="reveal">From intent to verified completion.</h2>
+    <p class="page-section__narrative reveal">The execute-pipeline command transforms written intent into executable tasks. The task-builder decomposes intent into atomic steps, each with a single action and measurable acceptance criteria. Each step includes a gate contract that defines preconditions and success criteria. The run-task.sh executor cycles through tasks with retry logic, state persistence, and failure recording.</p>
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <span class="flow-num">1</span>
+        <div class="flow-content">
+          <h3>/kernel/backlog</h3>
+          <p>Captures intent as a backlog item. Records the user's raw input and the resulting specification for auditability and change tracking.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-1">
+        <span class="flow-num">2</span>
+        <div class="flow-content">
+          <h3>Task Decomposition</h3>
+          <p>Breaks the goal into atomic tasks. Each task has one primary action, measurable acceptance criteria, and dependencies. Task count is tracked to size execution windows appropriately.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-2">
+        <span class="flow-num">3</span>
+        <div class="flow-content">
+          <h3>Gate Contract</h3>
+          <p>Defines BUILD gates (verification tests) and TEST gates (integration validation). Each gate must PASS before the task is marked complete. Failed gates trigger re-execution with lesson recording.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-3">
+        <span class="flow-num">4</span>
+        <div class="flow-content">
+          <h3>Execution & Cycling</h3>
+          <p>run-task.sh cycles through tasks sequentially. Each task runs as a fresh session with full context recovery. Failed tasks retry up to N times, then skip with audit trail preservation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Autonomous Cycling</p>
+    <h2 class="reveal">Task queues across sessions.</h2>
+    <p class="page-section__narrative reveal">The autonomous-cycle command executes task queues sequentially while maintaining full governance enforcement. State persists between sessions — completed tasks are tracked, failed tasks are logged with failure details, and skipped tasks include audit records. The agent picks up exactly where it left off: what task failed, why, and what was attempted.</p>
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <div class="flow-content">
+          <h3>State Persistence</h3>
+          <p>Session state, workflow state, and intent chains survive process restarts. The next session reads this state and resumes mid-task without re-explaining context or repeating completed work.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-1">
+        <div class="flow-content">
+          <h3>Execution Tracking</h3>
+          <p>Every task is tracked: completed (DONE), failed (with retry count and error details), or skipped (with skip reason and timestamp). This tracking enables deterministic resumption and accurate progress reporting.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-2">
+        <div class="flow-content">
+          <h3>Retry Logic</h3>
+          <p>Failed tasks are retried up to a configured limit. After N consecutive failures, the task is skipped and execution continues. Failure details are recorded in the audit trail for later analysis.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-3">
+        <div class="flow-content">
+          <h3>Governance During Cycling</h3>
+          <p>Governance enforcement continues throughout cycling. Anchors fire every N actions. Learn cycles trigger on test failures. State validation gates block writes until preconditions are met. The cycle itself is hook-enforced.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
     <p class="page-section__label reveal">SDD Architecture</p>
-    <h2 class="reveal">Four moving parts. One harness.</h2>
-    <p class="page-section__narrative reveal">Each part solves a specific failure mode. Together they reduce the surface area where the agent has to be trusted to follow text it has already proven it will violate.</p>
+    <h2 class="reveal">Four moving parts. One governance layer.</h2>
+    <p class="page-section__narrative reveal">Each component addresses a specific failure mode. Together they reduce the surface area where the agent must be trusted to follow text it has already proven it will violate.</p>
     <div class="flow-grid">
       <div class="flow-card reveal">
         <span class="flow-num">1</span>
@@ -106,21 +210,21 @@
         <span class="flow-num">2</span>
         <div class="flow-content">
           <h3>Commands</h3>
-          <p>Kernel operations the agent must invoke: anchor, learn, complete, backlog. Skill-based, so the agent calls them through a Skill interface, never directly. Each command enforces template structure and consistency.</p>
+          <p>Kernel operations the agent must invoke: anchor, learn, complete, backlog, execute-pipeline, autonomous-cycle. Skill-based, so the agent calls them through a Skill interface. Each command enforces template structure and consistency.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-2">
         <span class="flow-num">3</span>
         <div class="flow-content">
           <h3>Skills</h3>
-          <p>Multi-step capabilities. Autonomous cycling. Task building. Production testing. Audit workflow. Each skill is an indexed file structure: entry point plus step-by-step references the agent reads at execution time.</p>
+          <p>Multi-step capabilities: autonomous cycling, task building, domain setup, production testing, audit workflows. Each skill is an indexed file structure: entry point plus step-by-step references the agent reads at execution time.</p>
         </div>
       </div>
       <div class="flow-card reveal reveal-delay-3">
         <span class="flow-num">4</span>
         <div class="flow-content">
           <h3>State</h3>
-          <p>Workflow JSON, intent chain, anchor logs. Append-only where it matters (audit trail). Mutable where it doesn't (session counters). Hash-signed for cross-machine verifiability.</p>
+          <p>Session state, workflow state, intent chains, anchor logs, lesson files. Append-only where it matters (audit trail). Mutable where it doesn't (session counters). Hash-signed for cross-machine verifiability and integrity checking.</p>
         </div>
       </div>
     </div>
@@ -129,7 +233,7 @@
   <section class="page-section">
     <p class="page-section__label reveal">Design Decision</p>
     <h2 class="reveal">Two-tier governance. Mechanical and behavioral.</h2>
-    <p class="page-section__narrative reveal">Hooks alone are too rigid. Protocol alone is too soft. Both are necessary. The 29-lesson file is exactly the seam between them: every entry is either already a hook or a candidate to become one.</p>
+    <p class="page-section__narrative reveal">Hooks alone are too rigid. Protocol alone is too soft. Both are necessary. The lesson file is exactly the seam between them: every entry is either already a hook or a candidate to become one.</p>
     <div class="flow-grid">
       <div class="flow-card reveal">
         <div class="flow-content">
@@ -145,6 +249,70 @@
       </div>
     </div>
     <p class="page-section__narrative reveal">Hooks alone would require encoding every conceivable rule in code: impossible for a self-improving system. Protocol alone would rely on the agent following text it has already proven it will violate. Together: hooks for the rules you can enforce mechanically, protocol for the rules you can't.</p>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Specialized Skills</p>
+    <h2 class="reveal">Purpose-built execution patterns.</h2>
+    <p class="page-section__narrative reveal">Beyond core governance, specialized skills extend the kernel for domain-specific and operational use cases. Each skill encodes patterns, workflows, and conventions for a specific capability. All skills run under kernel governance — the enforcement loop applies regardless of what the skill does.</p>
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <div class="flow-content">
+          <h3>Production Testing</h3>
+          <p>Assembles a test environment, copies the codebase, runs L1/L2/L3 tests (existence → execution → correctness), collects results, and cleans up infrastructure. Runs as a spawned sub-process under governance.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-1">
+        <div class="flow-content">
+          <h3>Audit Workflow</h3>
+          <p>Scans kernel infrastructure (commands, skills, hooks, protocol, state, testing) for gaps, generates fix tasks, and cycles through execution. Produces a gap report and auto-remediation tasks.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-2">
+        <div class="flow-content">
+          <h3>Website Cloner</h3>
+          <p>Clones a website structure via Playwright, reproduces HTML/CSS/JS locally, generates a static archive. Useful for testing and local development of web-based tools.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-3">
+        <div class="flow-content">
+          <h3>Agent Swarm</h3>
+          <p>Orchestrates multiple independent agents across separate task folders. Each agent maintains its own state and session. The parent agent monitors, aggregates results, and handles inter-agent coordination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <p class="page-section__label reveal">Cross-Session Persistence</p>
+    <h2 class="reveal">State that survives restarts.</h2>
+    <p class="page-section__narrative reveal">Multiple state files work together to preserve execution context across process restarts. Session state holds anchor status and action counts. Workflow state tracks completed tasks and current task. Intent chains hash user input and generated specifications. Anchor logs record violations. Lesson files document learned rules. Together, they enable deterministic resumption from exactly where execution was interrupted.</p>
+    <div class="flow-grid">
+      <div class="flow-card reveal">
+        <div class="flow-content">
+          <h3>Session State</h3>
+          <p>Current session ID, anchor timestamp, actions since last anchor, protocol hash, and pending anchor tokens. Tracks whether the agent is currently anchored and ready to work.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-1">
+        <div class="flow-content">
+          <h3>Workflow State</h3>
+          <p>Current task, completed task list, skipped task list, total task count, and current action counts. Enables cycling to resume at the exact next task without repeating completed work.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-2">
+        <div class="flow-content">
+          <h3>Intent Chains</h3>
+          <p>SHA-256 hash of raw user input and resulting specification file. Append-only and immutable. Proves what the user requested and what was produced, with cryptographic integrity.</p>
+        </div>
+      </div>
+      <div class="flow-card reveal reveal-delay-3">
+        <div class="flow-content">
+          <h3>Audit Artifacts</h3>
+          <p>Anchor logs record violations and actions reviewed. Lesson files document failures and what changed. All append-only, time-stamped, and searchable. Enable recurrence detection and escalation triggers.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="page-section">
@@ -173,7 +341,7 @@
   <section class="page-section">
     <p class="page-section__label reveal">Produced Harnesses</p>
     <h2 class="reveal">Same kernel. Different stacks.</h2>
-    <p class="page-section__narrative reveal">Every harness below was produced by this kernel through conversation. None of them were hand-coded.</p>
+    <p class="page-section__narrative reveal">Each harness below demonstrates the kernel applied to a specific domain. All use the same governance layer and execution model with domain-specific patterns and conventions encoded in optional domain specs.</p>
     <div class="flow-grid">
       <div class="flow-card reveal">
         <span class="flow-content">
@@ -297,7 +465,7 @@
       <div class="evidence-card reveal">
         <p class="card-tags">ENGINEERING LEADER / FOUNDATION</p>
         <h3>Engineering leaders shipping agents</h3>
-        <p>You've felt the drift. Agents that read the rule then break it. You want governance, not vibes. The harness is the foundation under the agents.</p>
+        <p>You've felt the drift. Agents that read the rule then break it. You want governance, not vibes. The kernel is the execution layer under the agents.</p>
       </div>
       <div class="evidence-card reveal reveal-delay-1">
         <p class="card-tags">FDE / FORWARD-DEPLOYED ENGINEER</p>
