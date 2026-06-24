@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Claude Harness Marketplace Landscape",
+    "category": "market",
+    "timestamp": "2026-06-24T07:40:43.434437+00:00",
+    "task_count": 7,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935710277"
+  },
+  {
     "title": "Research Claude Code Harness Distribution Strategy",
     "category": "market",
     "timestamp": "2026-06-24T07:40:35.100275+00:00",
