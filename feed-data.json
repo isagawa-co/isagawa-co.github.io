@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Agent Orchestration Framework",
+    "category": "kernel",
+    "timestamp": "2026-06-24T07:39:59.229075+00:00",
+    "task_count": 8,
+    "completed_count": 8,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935707461"
+  },
+  {
     "title": "Build Tdd Discipline",
     "category": "kernel",
     "timestamp": "2026-06-24T07:39:49.269438+00:00",
