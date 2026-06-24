@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Production Readiness Critiques",
+    "category": "kernel",
+    "timestamp": "2026-06-24T07:42:47.408941+00:00",
+    "task_count": 6,
+    "completed_count": 6,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935719708"
+  },
+  {
     "title": "Build Deepeval Tiered Index Ab Experiment",
     "category": "kernel",
     "timestamp": "2026-06-24T07:42:35.338280+00:00",
