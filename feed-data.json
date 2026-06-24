@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Nav Restructure",
+    "category": "market",
+    "timestamp": "2026-06-24T07:36:30.311449+00:00",
+    "task_count": 6,
+    "completed_count": 6,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935694687"
+  },
+  {
     "title": "Build Spec Catalog Page",
     "category": "market",
     "timestamp": "2026-06-24T07:36:18.936493+00:00",
