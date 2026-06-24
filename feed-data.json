@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Claude Harness Marketplace Landscape",
+    "category": "market",
+    "timestamp": "2026-06-24T07:40:17.260846+00:00",
+    "task_count": 7,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935708601"
+  },
+  {
     "title": "Research Pulsia Autonomous Ai Platform",
     "category": "market",
     "timestamp": "2026-06-24T07:40:08.158903+00:00",
