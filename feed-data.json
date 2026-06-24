@@ -1,5 +1,15 @@
 [
   {
+    "title": "Refactor Isagawa Site Messaging",
+    "category": "market",
+    "timestamp": "2026-06-24T07:42:17.622966+00:00",
+    "task_count": 5,
+    "completed_count": 5,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935717903"
+  },
+  {
     "title": "Audit Technical Terminology",
     "category": "market",
     "timestamp": "2026-06-24T07:42:08.969193+00:00",
