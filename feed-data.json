@@ -1,5 +1,15 @@
 [
   {
+    "title": "Add Intent Chain Attestation",
+    "category": "kernel",
+    "timestamp": "2026-06-24T07:34:42.789474+00:00",
+    "task_count": 8,
+    "completed_count": 8,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935687923"
+  },
+  {
     "title": "Build Job Application Product Page",
     "category": "market",
     "timestamp": "2026-06-01T00:51:10.095577+00:00",
