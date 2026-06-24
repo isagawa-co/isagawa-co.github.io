@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Release Manager",
+    "category": "kernel",
+    "timestamp": "2026-06-24T07:39:03.661590+00:00",
+    "task_count": 5,
+    "completed_count": 5,
+    "skipped_count": 0,
+    "intent_revisions": 2,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935703731"
+  },
+  {
     "title": "Research Skill Security Auditor",
     "category": "kernel",
     "timestamp": "2026-06-24T07:38:54.424524+00:00",
