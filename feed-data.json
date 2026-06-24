@@ -1,5 +1,15 @@
 [
   {
+    "title": "Fix Hub Spoke Relationship",
+    "category": "market",
+    "timestamp": "2026-06-24T07:36:00.329368+00:00",
+    "task_count": 4,
+    "completed_count": 4,
+    "skipped_count": 0,
+    "intent_revisions": 2,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935692507"
+  },
+  {
     "title": "Fix Nav Consistency",
     "category": "market",
     "timestamp": "2026-06-24T07:35:51.193701+00:00",
