@@ -1,5 +1,15 @@
 [
   {
+    "title": "Audit Technical Terminology",
+    "category": "market",
+    "timestamp": "2026-06-24T07:42:08.969193+00:00",
+    "task_count": 5,
+    "completed_count": 5,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935717011"
+  },
+  {
     "title": "Enhance Ownership Positioning",
     "category": "market",
     "timestamp": "2026-06-24T07:42:00.012336+00:00",
