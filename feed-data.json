@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Spec Catalog Page",
+    "category": "market",
+    "timestamp": "2026-06-24T07:36:18.936493+00:00",
+    "task_count": 0,
+    "completed_count": 0,
+    "skipped_count": 0,
+    "intent_revisions": 1,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935693721"
+  },
+  {
     "title": "Fix Story Self Attestation",
     "category": "market",
     "timestamp": "2026-06-24T07:36:09.661982+00:00",
