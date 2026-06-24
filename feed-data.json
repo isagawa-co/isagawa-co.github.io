@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Nav Consolidation",
+    "category": "market",
+    "timestamp": "2026-06-24T07:35:41.229247+00:00",
+    "task_count": 4,
+    "completed_count": 4,
+    "skipped_count": 0,
+    "intent_revisions": 2,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935691696"
+  },
+  {
     "title": "Build Portfolio Qa Showcase Pages",
     "category": "market",
     "timestamp": "2026-06-24T07:35:29.769838+00:00",
