@@ -1,5 +1,15 @@
 [
   {
+    "title": "Update Homepage Messaging",
+    "category": "market",
+    "timestamp": "2026-06-24T07:41:25.176672+00:00",
+    "task_count": 5,
+    "completed_count": 5,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935713507"
+  },
+  {
     "title": "Research Cross Harness Testing",
     "category": "kernel",
     "timestamp": "2026-06-24T07:41:15.844677+00:00",
