@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Deepeval Tiered Index Ab Experiment",
+    "category": "kernel",
+    "timestamp": "2026-06-24T07:42:35.338280+00:00",
+    "task_count": 0,
+    "completed_count": 0,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=1935719366"
+  },
+  {
     "title": "Build Deepeval Read Tracking Metric",
     "category": "kernel",
     "timestamp": "2026-06-24T07:42:26.793739+00:00",
