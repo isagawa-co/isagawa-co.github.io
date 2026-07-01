@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Eval Platform Design",
+    "category": "market",
+    "timestamp": "2026-07-01T07:00:22.735563+00:00",
+    "task_count": 41,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=2032479350"
+  },
+  {
     "title": "Research Eval Web App Feasibility",
     "category": "market",
     "timestamp": "2026-07-01T07:00:12.278512+00:00",
