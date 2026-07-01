@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Metrics Database",
+    "category": "kernel",
+    "timestamp": "2026-07-01T07:01:15.010139+00:00",
+    "task_count": 41,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=2032491547"
+  },
+  {
     "title": "Research Pokemon Card Retail Investment",
     "category": "market",
     "timestamp": "2026-07-01T07:01:02.731489+00:00",
