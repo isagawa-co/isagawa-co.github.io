@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Automatic Evaluation",
+    "category": "kernel",
+    "timestamp": "2026-07-01T07:02:03.687313+00:00",
+    "task_count": 41,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=2032494712"
+  },
+  {
     "title": "Research Experiment Tracking",
     "category": "kernel",
     "timestamp": "2026-07-01T07:01:53.653641+00:00",
