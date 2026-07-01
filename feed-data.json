@@ -1,5 +1,15 @@
 [
   {
+    "title": "Research Regression Testing",
+    "category": "kernel",
+    "timestamp": "2026-07-01T07:02:36.998077+00:00",
+    "task_count": 41,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=2032500574"
+  },
+  {
     "title": "Research Rollback Mechanism",
     "category": "kernel",
     "timestamp": "2026-07-01T07:02:13.796190+00:00",
