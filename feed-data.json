@@ -1,5 +1,15 @@
 [
   {
+    "title": "Build Targeted Resume Pair",
+    "category": "market",
+    "timestamp": "2026-07-01T07:02:56.589847+00:00",
+    "task_count": 41,
+    "completed_count": 7,
+    "skipped_count": 0,
+    "intent_revisions": 0,
+    "rekor_url": "https://search.sigstore.dev/?logIndex=2032504043"
+  },
+  {
     "title": "Build Self Improvement Observability",
     "category": "kernel",
     "timestamp": "2026-07-01T07:02:46.519707+00:00",
